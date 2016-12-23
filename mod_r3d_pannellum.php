@@ -48,13 +48,18 @@ $ignoregpanoxmp					= $params->get('ignoregpanoxmp', '0');
 $backgroundcolor				= $params->get('backgroundcolor', '');
 
 // get CUBEMAP: "cubemap",
-$cubemap						= $params->get('cubemap', '');
+$cubemap_front					= $params->get('cubemap_front', 'examplepanocube0.jpg');
+$cubemap_right					= $params->get('cubemap_right', 'examplepanocube1.jpg');
+$cubemap_back					= $params->get('cubemap_back', 'examplepanocube2.jpg');
+$cubemap_left					= $params->get('cubemap_left', 'examplepanocube3.jpg');
+$cubemap_up						= $params->get('cubemap_up', 'examplepanocube4.jpg');
+$cubemap_down					= $params->get('cubemap_down', 'examplepanocube5.jpg');
 
 //get MULTIRES: multires_basepath   multires_path    multires_fallbackpath 
 // multires_extension multires_tileresolution multires_maxlevel multires_cuberesolution
 $multires_title					= $params->get('multires_title', 'George Peabody Library');
 $multires_author				= $params->get('multires_author', 'Matthew Petroff');
-$multires_preview_image			= $params->get('multires_preview_image', 'modules/mod_r3d_pannellum/samples/Library_Preview.jpg');
+$multires_preview_image			= $params->get('multires_preview_image', '/modules/mod_r3d_pannellum/samples/Library_Preview.jpg');
 $multires_basepath				= $params->get('multires_basepath', 'https:\/\/pannellum.org/images/multires/library');
 $multires_path					= $params->get('multires_path', '/%l/%s%y_%x');
 $multires_fallbackpath			= $params->get('multires_fallbackpath', '');
@@ -78,7 +83,6 @@ $targethfov						= $params->get('targethfov', '');
 $hotspots_cssclass				= $params->get('hotspots_cssclass', '');
 $hotspotdebug					= $params->get('hotspotdebug', '');
 $scenefadeduration				= $params->get('scenefadeduration', '');
-
 
 
 $doc = JFactory::getDocument();

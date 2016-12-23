@@ -13,7 +13,7 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.0.15</version>
+	<version>1.0.16</version>
 	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
@@ -42,8 +42,8 @@
 					<option value="cubemap">CubeMap</option>
 					<option value="multires">Multires</option>
 				</field>
-				<field type="text" label="MOD_TITLE" name="title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="80" filter="" />
-				<field type="text" label="MOD_AUTHOR" name="author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="80" filter="" />
+				<field type="text" label="MOD_TITLE" name="title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_AUTHOR" name="author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_BASEPATH" name="basepath" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="" class="" size="32" maxlength="250" filter="" />
 				
 				<field 
@@ -72,7 +72,7 @@
 					<option value="0">JNO</option>
 				</field>
 
-				<field type="text" label="MOD_FALLBACK" name="fallback" description="MOD_IF_SET__THE_VALUE_IS_USED_AS" default="" class="" size="32" maxlength="32" filter="" />
+				<field type="text" label="MOD_FALLBACK" name="fallback" description="MOD_IF_SET__THE_VALUE_IS_USED_AS" default="" class="" size="32" maxlength="250" filter="" />
 
 				<field type="radio" label="MOD_ORIENTATIONONBYDEFAULT" name="orientationonbydefault" 
 					description="MOD_IF_SET_TO_TRUE__DEVICE_ORIEN" 
@@ -83,8 +83,8 @@
 				<field type="radio" label="MOD_SHOWZOOMCTRL" name="showzoomctrl" 
 					description="MOD_IF_SET_TO_FALSE__THE_ZOOM_CO" 
 					default="1" class="btn-group btn-group-yesno" >
+					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
-                    <option value="1">JSHOW</option>
 				</field>
 				<field type="radio" label="MOD_KEYBOARDZOOM" 
 					name="keyboardzoom" description="MOD_IF_SET_TO_FALSE__ZOOMING_WIT" 
@@ -101,14 +101,14 @@
 				<field type="radio" label="MOD_SHOWFULLSCREENCTRL" name="showfullscreenctrl" 
 					description="MOD_IF_SET_TO_FALSE__THE_FULLSCR" 
 					default="1" class="btn-group btn-group-yesno" >
+					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
-                    <option value="1">JSHOW</option>
 				</field>
 				<field type="radio" label="MOD_SHOWCONTROLS" name="showcontrols" 
 					description="MOD_IF_SET_TO_FALSE__NO_CONTROLS" 
 					default="1" class="btn-group btn-group-yesno" >
+					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
-                    <option value="1">JSHOW</option>
 				</field>
 
 				<field type="text" label="MOD_YAW" name="yaw" description="MOD_SETS_THE_PANORAMA___S_STARTI" default="0" />
@@ -116,8 +116,8 @@
 				<field type="text" label="MOD_HFOV" name="hfov" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1" default="100" />
 
 				<field type="radio" label="MOD_COMPASS" name="compass" description="MOD_IF_TRUE__A_COMPASS_IS_DISPLA" default="0" class="btn-group btn-group-yesno" >
+					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
-                    <option value="1">JSHOW</option>
 				</field>
 				<field type="text" label="MOD_NORTHOFFSET" name="northoffset" description="MOD_SET_THE_OFFSET__IN_DEGREES__" default="" class="" />
 
@@ -126,7 +126,7 @@
 			<!-- EQUIRECTANGULAR -->
 			<fieldset name="equirectangular_options" label="MOD_EQUIRECTANGULAR_OPTIONS" description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT">
 				<field type="text" label="MOD_PANORAMA" name="panorama" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" 
-					size="32" maxlength="32" />
+					size="32" maxlength="250" />
 				<field type="text" label="MOD_HAOV" name="haov" description="MOD_SETS_THE_PANORAMA___S_HORIZO" 
 					default="360"  	size="3" maxlength="3" />
 				<field type="text" label="MOD_VAOV" name="vaov" description="MOD_SETS_THE_PANORAMA___S_VERTIC" 
@@ -141,18 +141,29 @@
 				</field>
 				<field type="text" label="MOD_BACKGROUNDCOLOR" name="backgroundcolor" 
 					description="MOD_SPECIFIES_AN_ARRAY_CONTAININ" 
-					default="0, 0, 0" size="18" maxlength="17" />
+					default="0, 0, 0" size="16" maxlength="16" />
 			</fieldset>
 			<!-- CUBEMAP -->
 			<fieldset name="cubemap_options" label="MOD_CUBEMAP_OPTIONS" description="MOD_CUBEMAP_SPECIFIC_OPTIONS">
-				<field type="textarea" label="MOD_CUBEMAP" name="cubemap" description="MOD_THIS_IS_AN_ARRAY_OF_URLS_FOR" default="" class="" cols="20" rows="6" />
+				<field type="text" label="MOD_CUBEMAP_FRONT" name="cubemap_front" description="MOD_THIS_IS_AN_ARRAY_FRONT" 
+					default="examplepanocube0.jpg" class="cubemap" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT" name="cubemap_right" description="MOD_THIS_IS_AN_ARRAY_RIGHT" 
+					default="examplepanocube1.jpg" class="cubemap" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK" name="cubemap_back" description="MOD_THIS_IS_AN_ARRAY_BACK" 
+					default="examplepanocube2.jpg" class="cubemap" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT" name="cubemap_left" description="MOD_THIS_IS_AN_ARRAY_LEFT" 
+					default="examplepanocube3.jpg" class="cubemap" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP" name="cubemap_up" description="MOD_THIS_IS_AN_ARRAY_UP" 
+					default="examplepanocube4.jpg" class="cubemap" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN" name="cubemap_down" description="MOD_THIS_IS_AN_ARRAY_DOWN" 
+					default="examplepanocube5.jpg" class="cubemap" size="60" maxlength="256" />
 			</fieldset>
 			<!-- MULTIRES -->
 			<fieldset name="multires_options" label="MOD_MULTIRES_OPTIONS" description="MOD_MULTIRES_SPECIFIC_OPTIONS">
-				<field type="text" label="MOD_TITLE" name="multires_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="George Peabody Library" class="" size="32" maxlength="80" filter="" />
-				<field type="text" label="MOD_AUTHOR" name="multires_author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="" class="Matthew Petroff" size="32" maxlength="80" filter="" />
-				<field type="text" label="MOD_PREVIEW_IMAGE" name="multires_preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="modules/mod_r3d_pannellum/samples/Library_Preview.jpg" class="" size="32" maxlength="250" />
-				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="" class="" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_TITLE" name="multires_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="George Peabody Library" class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_AUTHOR" name="multires_author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="" class="Matthew Petroff" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PREVIEW_IMAGE" name="multires_preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="/modules/mod_r3d_pannellum/samples/Library_Preview.jpg" class="multires" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="https://pannellum.org/images/multires/library" class="multires" size="64" maxlength="256" filter="" />
 				<field type="text" label="MOD_MULTIRES_PATH" name="multires_path" description="MOD_THIS_IS_A_FORMAT_STRING_FOR_" default="/%l/%s%y_%x" class="" size="32" maxlength="256" filter="" />
 				<field type="text" label="MOD_MULTIRES_FALLBACKPATH" name="multires_fallbackpath" description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION" default="/fallback/%s" class="" size="32" maxlength="256" filter="" />
 				<field type="list" label="MOD_MULTIRES_EXTENSION" name="multires_extension" 
@@ -175,13 +186,13 @@
 					<option value="scene">scene</option>
                     <option value="info">info</option>
 				</field>
-				<field type="text" label="MOD_HOTSPOTS_TEXT" name="hotspots_text" description="MOD_THIS_SPECIFIES_THE_TEXT_THAT" default="" class="" size="32" maxlength="32" filter="" />
-				<field type="url" label="MOD_HOTSPOTS_URL" name="hotspots_url" description="MOD_IF_SPECIFIED_FOR_AN_INFO_HOT" default="" class="" size="32" maxlength="32" filter="" />
-				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="" size="32" maxlength="32" filter="" />
+				<field type="text" label="MOD_HOTSPOTS_TEXT" name="hotspots_text" description="MOD_THIS_SPECIFIES_THE_TEXT_THAT" default="" class="" size="32" maxlength="120" filter="" />
+				<field type="url" label="MOD_HOTSPOTS_URL" name="hotspots_url" description="MOD_IF_SPECIFIED_FOR_AN_INFO_HOT" default="" class="" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_TARGETPITCH" name="targetpitch" description="MOD_SPECIFIES_THE_PITCH_OF_THE_T" default="" class="" />
 				<field type="text" label="MOD_TARGETYAW" name="targetyaw" description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR" default="" class="" />
 				<field type="text" label="MOD_TARGETHFOV" name="targethfov" description="MOD_SPECIFIES_THE_HFOV_OF_THE_TA" default="" class="" />
-				<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="" size="32" maxlength="32" filter="" />
+				<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="" size="32" maxlength="120" filter="" />
 				<field type="radio" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
 					description="MOD_WHEN_TRUE__THE_MOUSE_POINTER" 
 					default="0" class="btn-group btn-group-yesno" >
