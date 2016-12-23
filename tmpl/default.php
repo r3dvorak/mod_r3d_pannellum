@@ -219,6 +219,7 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
 <!-- 
 WORKING sample multires
 <script>
+	"type": "multires",
     "title": "ALMA Correlator Facility",
 	"author": "Matthew Petroff",
     "multiRes": {
