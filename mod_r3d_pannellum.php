@@ -85,6 +85,22 @@ $hotspotdebug					= $params->get('hotspotdebug', '');
 $scenefadeduration				= $params->get('scenefadeduration', '');
 
 
+
+// get VIDEO:
+$dynamic						= $params->get('dynamic', '1');
+$video_classes					= $params->get('video_classes', 'video-js vjs-default-skin vjs-big-play-centered');
+$video_controls					= $params->get('video_controls', '1');
+$video_autoplay					= $params->get('video_autoplay', '0');
+$video_preload					= $params->get('video_preload', 'none');
+$video_style					= $params->get('video_style', 'width:100%;height:390px;');
+$video_poster					= $params->get('video_poster', 'https://pannellum.org/images/video/jfk-poster.jpg');
+$video_loop						= $params->get('video_loop', '0');
+$video_datasetup				= $params->get('video_datasetup', '0');
+$video_crossorigin				= $params->get('video_crossorigin', '1');
+$video_webmsource				= $params->get('video_webmsource', 'https://pannellum.org/images/video/jfk.webm');
+$video_mp4source				= $params->get('video_mp4source', 'ttps://pannellum.org//images/video/jfk.mp4');
+
+
 $doc = JFactory::getDocument();
 
 // Include assets

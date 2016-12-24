@@ -13,7 +13,7 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.0.16</version>
+	<version>1.1.0</version>
 	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
@@ -41,6 +41,7 @@
 					<option value="equirectangular">Equirectangular</option>
 					<option value="cubemap">CubeMap</option>
 					<option value="multires">Multires</option>
+					<option value="video">Video</option>
 				</field>
 				<field type="text" label="MOD_TITLE" name="title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_AUTHOR" name="author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
@@ -64,13 +65,6 @@
 				<field type="text" label="MOD_AUTOROTATESTOPDELAY" name="autorotatestopdelay" description="MOD_SETS_THE_DELAY__IN_MILLISECO_DESCRIPTION" />
 
 				<field type="text" label="MOD_PREVIEW_IMAGE" name="preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="alma-preview.jpg" class="" size="32" maxlength="250" />
-
-				<field type="radio" label="MOD_DYNAMIC" 
-					name="dynamic" description="MOD_THE_PANORAMA_SOURCE_IS_CONSI" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
 
 				<field type="text" label="MOD_FALLBACK" name="fallback" description="MOD_IF_SET__THE_VALUE_IS_USED_AS" default="" class="" size="32" maxlength="250" filter="" />
 
@@ -201,6 +195,76 @@
 				</field>
 				<field type="text" label="MOD_SCENEFADEDURATION" name="scenefadeduration" description="MOD_SPECIFIES_THE_FADE_DURATION_" default="" class="" />
 			</fieldset>
+
+
+			<!-- HOTSPOTS -->
+			<fieldset name="video" label="MOD_VIDEO" description="MOD_VIDEO_JS">
+
+				<field type="radio" label="MOD_DYNAMIC" 
+					name="dynamic" description="MOD_THE_PANORAMA_SOURCE_IS_CONSI" 
+					default="1" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field type="text" label="MOD_VIDEOCLASSES" name="video_classes" description="MOD_VIDEOCLASSES_DESC" default="video-js vjs-default-skin vjs-big-play-centered" class="" size="32" maxlength="256" />
+
+				<field type="radio" label="MOD_VIDEOCONTROLS" 
+					name="video_controls" description="MOD_VIDEOCONTROLS_DESC" 
+					default="1" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field type="radio" label="MOD_VIDEOAUTOPLAY" 
+					name="video_autoplay" description="MOD_VIDEOAUTOPLAY_DESC" 
+					default="0" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field 
+					type="list"
+					label="MOD_VIDEOPRELOAD"
+					name="video_preload"
+					description="MOD_VIDEOPRELOAD_DESC"
+					default="none">
+					<option value="auto">auto</option>
+					<option value="metadata">metadata</option>
+					<option value="none">none</option>
+				</field>
+
+				<field type="text" label="MOD_VIDEOSTYLE" name="video_style" description="MOD_VIDEOSTYLE_DESC" default="width:100%;height:390px;" class="" size="32" maxlength="256" />
+
+				<field type="text" label="MOD_VIDEOPOSTER" name="video_poster" description="MOD_VIDEOPOSTER_DESC" default="https://pannellum.org/images/video/jfk-poster.jpg" class="" size="32" maxlength="256" />
+
+				<field type="radio" label="MOD_VIDEOLOOP" 
+					name="video_loop" description="MOD_VIDEOLOOP_DESC" 
+					default="0" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field type="radio" label="MOD_VIDEODATASETUP" 
+					name="video_datasetup" description="MOD_VIDEODATASETUP_DESC" 
+					default="0" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field type="radio" label="MOD_VIDEOCROSSORIGIN" 
+					name="video_crossorigin" description="MOD_VIDEOCROSSORIGIN_DESC" 
+					default="1" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field type="text" label="MOD_VIDEOWEBMSOURCE" name="video_webmsource" description="MOD_VIDEOWEBMSOURCE_DESC" default="https://pannellum.org/images/video/jfk.webm" class="" size="32" maxlength="256" />
+
+				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="" size="32" maxlength="256" />
+
+			</fieldset>
+
 			<fieldset
 				name="advanced">
 				<field
