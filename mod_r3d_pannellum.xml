@@ -7,7 +7,7 @@
 -->
 <extension type="module" method="upgrade" client="site">
 	<name>MOD_R3D_PANNELLUM</name>
-	<creationDate>22.12.2016</creationDate>
+	<creationDate>24.12.2016</creationDate>
 	<author>Richard Dvořák</author>
 	<authorEmail>pannellum@r3d.de</authorEmail>
 	<authorUrl>http://www.r3d.de</authorUrl>
