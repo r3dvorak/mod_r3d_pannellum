@@ -18,15 +18,21 @@ $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/pygments.
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/pannellum.css");
 $doc->addScript(JURI::root()."modules/mod_r3d_pannellum/assets/js/pannellum.js");
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/style.css");
+if($type == 'video') {
+$doc->addStyleSheet("https://vjs.zencdn.net/5.4.6/video-js.css");
+$doc->addScript("https://vjs.zencdn.net/5.4.6/video.js");
+$doc->addScript("modules/mod_r3d_pannellum/assets/js/videojs-pannellum-plugin.js");
+}
 ?>
 
 <div class="pnlm-container <?php echo $moduleclass_sfx; ?>">
-	<!-- style block -->
-	<style type="text/css" scoped></style>
-
+<?php
+if($type == 'equirectangular' || $type == 'cubemap' || $type == 'multires' ) {
+?>
+	<!-- style block
+	<style type="text/css" scoped></style> -->
 	<div id="<?php echo $panorama_id; ?>" style="width:100%;height:380px;"></div>
-
-
+<?php 	} ?>
 
 
 <?php
@@ -58,9 +64,6 @@ if($type == 'equirectangular') {
 <?php 	} ?>
 <?php if($preview_image) {  ?>
     	"preview": "<?php echo $preview_image; ?>",	
-<?php 	} ?>
-<?php if($params->get('dynamic') == 1) {  ?>
-    	"dynamic": "true",
 <?php 	} ?>
 <?php if($fallback) {  ?>
     	"fallback": "<?php echo $fallback; ?>",	
@@ -122,12 +125,6 @@ WORKING sample equirectangular
 </script>
 -->
 <?php 	} ?>
-
-
-
-
-
-
 <?php
 if($type == 'multires') {
 ?>
@@ -235,12 +232,6 @@ WORKING sample multires
 </script>
 -->
 <?php 	} ?>
-
-
-
-
-
-
 <?php
 if($type == 'cubemap') {
 ?>
@@ -341,6 +332,101 @@ WORKING sample cubemap
 </script>
 -->
 <?php 	} ?>
+
+
+
+
+
+<?php
+if($type == 'video') {
+?>
+
+<video id="<?php echo $panorama_id; ?>" 
+<?php if($video_classes) {  ?>
+	class="<?php echo $video_classes; ?>" 
+<?php 	} ?>
+<?php if($params->get('video_controls') == 1) {  ?>
+	controls 
+<?php 	} ?>
+<?php if($params->get('video_autoplay') == 1) {  ?>
+	autoplay  
+<?php 	} ?>
+<?php if($video_preload) {  ?>
+	preload="<?php echo $video_preload; ?>" 
+<?php 	} ?>
+<?php if($video_style) {  ?>
+	style="<?php echo $video_style; ?>" 
+<?php 	} ?>
+<?php if($video_poster) {  ?>
+	poster="<?php echo $video_poster; ?>" 
+<?php 	} ?>
+<?php if($params->get('video_datasetup') == 0) {  ?>
+	data-setup="{}"
+<?php 	} ?>
+<?php if($params->get('video_crossorigin') == 1) {  ?>
+	crossorigin="anonymous"
+<?php 	} ?>
+>
+<?php if($video_webmsource) {  ?>
+	<source src="<?php echo $video_webmsource; ?>" type="video/webm"/> 
+<?php 	} ?> 
+<?php if($video_mp4source) {  ?>
+	<source src="<?php echo $video_mp4source; ?>" type="video/mp4"/> 
+<?php 	} ?>
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to
+        a web browser that <a href="http://videojs.com/html5-video-support/"
+        target="_blank">supports HTML5 video</a>
+    </p>
+</video>
+<script>
+videojs('<?php echo $panorama_id; ?>', {
+    plugins: {
+        pannellum: {}
+    }
+});
+</script>
+<!-- WORKING sample video START
+<video id="video" 
+	class="video-js vjs-default-skin vjs-big-play-centered"
+  	controls 
+  	preload="none" 
+  	style="width:100%;height:390px;" 
+  	poster="https://pannellum.org//images/video/jfk-poster.jpg" 
+  	data-setup="{}" 
+  	crossorigin="anonymous
+  	">
+    <source src="https://pannellum.org/images/video/jfk.webm" type="video/webm"/>
+    <source src="https://pannellum.org//images/video/jfk.mp4" type="video/mp4"/>
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to
+        a web browser that <a href="http://videojs.com/html5-video-support/"
+        target="_blank">supports HTML5 video</a>
+    </p>
+</video>
+<script>
+videojs('video', {
+    plugins: {
+        pannellum: {}
+    }
+});
+</script>
+END WORKING sample video -->
+<?php 	} ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php  // DEBUG check variables
 //echo "<br>\n";
 //$arr = get_defined_vars();
