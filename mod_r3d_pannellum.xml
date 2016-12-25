@@ -13,8 +13,12 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.1.0</version>
-	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
+	<version>1.2.1</version>
+	<!-- <description>MOD_R3D_PANNELLUM_DESCRIPTION</description> -->
+	<description><![CDATA[
+		<script type="text/javascript">jQuery(function(n){function t(){n(this).parents(".clonedInput").clone().appendTo("body").attr("id","clonedInput"+e).find("*").each(function(){var n=this.id||"",t=n.match(c)||[];3==t.length&&(this.id=t[1]+e)}).on("click","button.clone",t).on("click","button.remove",o),e++}function o(){n(this).parents(".clonedInput").remove()}var c=/^(.+?)(\d+)$/i,e=n(".clonedInput").length;n("button.clone").on("click",t),n("button.remove").on("click",o)});</script><div class="description"><span class="credits">Credits: <a href="http://pannellum.org" target="_blank" >Pannellum</a>, <a href="http://videojs.com" target="_blank" >video.js</a> and <a href="http://www.r3d.de" target="_blank" >R3D</a></span></div>
+	]]>
+	</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
 		<filename>mod_r3d_pannellum.xml</filename>
@@ -30,7 +34,7 @@
 				<field 
 					type="text" label="MOD_PANORAMA_ID" name="panorama_id" 
 					description="MOD_ENTER_LOWERCASE_NAME_OF_DIV_" 
-					size="32" 
+					size="32"
 					maxlength="32" />
 				<field 
 					type="list"
@@ -42,11 +46,12 @@
 					<option value="cubemap">CubeMap</option>
 					<option value="multires">Multires</option>
 					<option value="video">Video</option>
+					<option value="hotspots">Hot Spots</option>
+					<option value="tour">Tour</option>
 				</field>
 				<field type="text" label="MOD_TITLE" name="title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_AUTHOR" name="author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_BASEPATH" name="basepath" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="" class="" size="32" maxlength="250" filter="" />
-				
+				<field type="text" label="MOD_BASEPATH" name="basepath" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="" class="input-xxlarge" size="32" maxlength="256" filter="" />
 				<field 
 					type="radio"
 					label="MOD_AUTOLOAD"
@@ -58,13 +63,13 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="text" label="MOD_AUTOROTATE" name="autorotate" description="MOD_SETTING_THIS_PARAMETER_CAUSE" />
+				<field type="text" label="MOD_AUTOROTATE" name="autorotate" description="MOD_SETTING_THIS_PARAMETER_CAUSE" class="input-mini" />
 
-				<field type="text" label="MOD_AUTOROTATEINACTIVITYDELAY" name="autorotateinactivitydelay" description="MOD_SETS_THE_DELAY__IN_MILLISECO" />
+				<field type="text" label="MOD_AUTOROTATEINACTIVITYDELAY" name="autorotateinactivitydelay" description="MOD_SETS_THE_DELAY__IN_MILLISECO" class="input-mini" />
 
-				<field type="text" label="MOD_AUTOROTATESTOPDELAY" name="autorotatestopdelay" description="MOD_SETS_THE_DELAY__IN_MILLISECO_DESCRIPTION" />
+				<field type="text" label="MOD_AUTOROTATESTOPDELAY" name="autorotatestopdelay" description="MOD_SETS_THE_DELAY__IN_MILLISECO_DESCRIPTION" class="input-mini" />
 
-				<field type="text" label="MOD_PREVIEW_IMAGE" name="preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="alma-preview.jpg" class="" size="32" maxlength="250" />
+				<field type="text" label="MOD_PREVIEW_IMAGE" name="preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="alma-preview.jpg" class="input-xxlarge" size="32" maxlength="250" />
 
 				<field type="text" label="MOD_FALLBACK" name="fallback" description="MOD_IF_SET__THE_VALUE_IS_USED_AS" default="" class="" size="32" maxlength="250" filter="" />
 
@@ -105,28 +110,27 @@
 					<option value="0">JHIDE</option>
 				</field>
 
-				<field type="text" label="MOD_YAW" name="yaw" description="MOD_SETS_THE_PANORAMA___S_STARTI" default="0" />
-				<field type="text" label="MOD_PITCH" name="pitch" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION" default="0" />
-				<field type="text" label="MOD_HFOV" name="hfov" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1" default="100" />
+				<field type="text" label="MOD_YAW" name="yaw" description="MOD_SETS_THE_PANORAMA___S_STARTI" default="0" class="input-mini" />
+				<field type="text" label="MOD_PITCH" name="pitch" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION" default="0" class="input-mini" />
+				<field type="text" label="MOD_HFOV" name="hfov" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1" default="100" class="input-mini" />
 
 				<field type="radio" label="MOD_COMPASS" name="compass" description="MOD_IF_TRUE__A_COMPASS_IS_DISPLA" default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
 				</field>
-				<field type="text" label="MOD_NORTHOFFSET" name="northoffset" description="MOD_SET_THE_OFFSET__IN_DEGREES__" default="" class="" />
+				<field type="text" label="MOD_NORTHOFFSET" name="northoffset" description="MOD_SET_THE_OFFSET__IN_DEGREES__" default="" class="input-mini" />
 
-				<field type="text" label="MOD_NORTHOFFSET_LABEL" name="northoffset" description="MOD_NORTHOFFSET" default="" />
 			</fieldset>
 			<!-- EQUIRECTANGULAR -->
 			<fieldset name="equirectangular_options" label="MOD_EQUIRECTANGULAR_OPTIONS" description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT">
 				<field type="text" label="MOD_PANORAMA" name="panorama" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" 
-					size="32" maxlength="250" />
+					size="32" maxlength="250" class="input-xxlarge" />
 				<field type="text" label="MOD_HAOV" name="haov" description="MOD_SETS_THE_PANORAMA___S_HORIZO" 
-					default="360"  	size="3" maxlength="3" />
+					default="360" class="input-mini"	size="3" maxlength="3" />
 				<field type="text" label="MOD_VAOV" name="vaov" description="MOD_SETS_THE_PANORAMA___S_VERTIC" 
-					default="180"  	size="3" maxlength="3" />
+					default="180" class="input-mini"	size="3" maxlength="3" />
 				<field type="text" label="MOD_VOFFSET" name="voffset" description="MOD_SETS_THE_VERTICAL_OFFSET_OF_" 
-					default="0"  	size="3" maxlength="3" />
+					default="0" class="input-mini"	size="3" maxlength="3" />
 				<field type="radio" label="MOD_IGNOREGPANOXMP" name="ignoregpanoxmp" 
 					description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED" 
 					default="0" class="btn-group btn-group-yesno" >
@@ -135,7 +139,7 @@
 				</field>
 				<field type="text" label="MOD_BACKGROUNDCOLOR" name="backgroundcolor" 
 					description="MOD_SPECIFIES_AN_ARRAY_CONTAININ" 
-					default="0, 0, 0" size="16" maxlength="16" />
+					default="0, 0, 0" size="16" maxlength="16" class="input-small" />
 			</fieldset>
 			<!-- CUBEMAP -->
 			<fieldset name="cubemap_options" label="MOD_CUBEMAP_OPTIONS" description="MOD_CUBEMAP_SPECIFIC_OPTIONS">
@@ -154,116 +158,121 @@
 			</fieldset>
 			<!-- MULTIRES -->
 			<fieldset name="multires_options" label="MOD_MULTIRES_OPTIONS" description="MOD_MULTIRES_SPECIFIC_OPTIONS">
-				<field type="text" label="MOD_TITLE" name="multires_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="George Peabody Library" class="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_AUTHOR" name="multires_author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="" class="Matthew Petroff" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_PREVIEW_IMAGE" name="multires_preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="/modules/mod_r3d_pannellum/samples/Library_Preview.jpg" class="multires" size="32" maxlength="250" />
-				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="https://pannellum.org/images/multires/library" class="multires" size="64" maxlength="256" filter="" />
-				<field type="text" label="MOD_MULTIRES_PATH" name="multires_path" description="MOD_THIS_IS_A_FORMAT_STRING_FOR_" default="/%l/%s%y_%x" class="" size="32" maxlength="256" filter="" />
-				<field type="text" label="MOD_MULTIRES_FALLBACKPATH" name="multires_fallbackpath" description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION" default="/fallback/%s" class="" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_TITLE" name="multires_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="George Peabody Library" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_AUTHOR" name="multires_author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PREVIEW_IMAGE" name="multires_preview_image" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="/modules/mod_r3d_pannellum/samples/Library_Preview.jpg" class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="https://pannellum.org/images/multires/library" class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH" name="multires_path" description="MOD_THIS_IS_A_FORMAT_STRING_FOR_" default="/%l/%s%y_%x" class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH" name="multires_fallbackpath" description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION" default="/fallback/%s" class="input-medium" size="32" maxlength="256" filter="" />
 				<field type="list" label="MOD_MULTIRES_EXTENSION" name="multires_extension" 
 					description="MOD_SPECIFIES_THE_TILES____FILE_" 
-					default="jpg" class="btn-group btn-group-yesno" >
+					default="jpg" class="btn-group btn-group-yesno input-small" >
 					<option value="jpg">JPG</option>
                     <option value="png">PNG</option>
 				</field>
-				<field type="text" label="MOD_MULTIRES_TILERESOLUTION" name="multires_tileresolution" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P" default="512" />
-				<field type="text" label="MOD_MULTIRES_MAXLEVEL" name="multires_maxlevel" description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z" default="6" />
-				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION" name="multires_cuberesolution" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION" default="8432" />
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION" name="multires_tileresolution" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P" default="512" class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL" name="multires_maxlevel" description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z" default="6" class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION" name="multires_cuberesolution" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION" default="8432" class="input-mini" />
 			</fieldset>
-			<!-- HOTSPOTS -->
-			<fieldset name="hotspots" label="MOD_HOTSPOTS" description="MOD_THIS_SPECIFIES_AN_ARRAY_OF_H">
-				<field type="text" label="MOD_HOTSPOTS_PITCH" name="hotspots_pitch" description="MOD_SPECIFIES_THE_PITCH_PORTION_" default="" class="" />
-				<field type="text" label="MOD_HOTSPOTS_YAW" name="hotspots_yaw" description="MOD_SPECIFIES_THE_YAW_PORTION_OF" default="" class="" />
-				<field type="radio" label="MOD_HOTSPOTS_TYPE" name="hotspots_type" 
-					description="MOD_SPECIFIES_THE_TYPE_OF_THE_HO" 
-					default="scene" class="btn-group btn-group-yesno" >
-					<option value="scene">scene</option>
-                    <option value="info">info</option>
-				</field>
-				<field type="text" label="MOD_HOTSPOTS_TEXT" name="hotspots_text" description="MOD_THIS_SPECIFIES_THE_TEXT_THAT" default="" class="" size="32" maxlength="120" filter="" />
-				<field type="url" label="MOD_HOTSPOTS_URL" name="hotspots_url" description="MOD_IF_SPECIFIED_FOR_AN_INFO_HOT" default="" class="" size="32" maxlength="256" filter="" />
-				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_TARGETPITCH" name="targetpitch" description="MOD_SPECIFIES_THE_PITCH_OF_THE_T" default="" class="" />
-				<field type="text" label="MOD_TARGETYAW" name="targetyaw" description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR" default="" class="" />
-				<field type="text" label="MOD_TARGETHFOV" name="targethfov" description="MOD_SPECIFIES_THE_HFOV_OF_THE_TA" default="" class="" />
-				<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="" size="32" maxlength="120" filter="" />
-				<field type="radio" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
-					description="MOD_WHEN_TRUE__THE_MOUSE_POINTER" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_SCENEFADEDURATION" name="scenefadeduration" description="MOD_SPECIFIES_THE_FADE_DURATION_" default="" class="" />
-			</fieldset>
-
-
-			<!-- HOTSPOTS -->
+			<!-- VIDEO -->
 			<fieldset name="video" label="MOD_VIDEO" description="MOD_VIDEO_JS">
-
 				<field type="radio" label="MOD_DYNAMIC" 
 					name="dynamic" description="MOD_THE_PANORAMA_SOURCE_IS_CONSI" 
 					default="1" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
-				<field type="text" label="MOD_VIDEOCLASSES" name="video_classes" description="MOD_VIDEOCLASSES_DESC" default="video-js vjs-default-skin vjs-big-play-centered" class="" size="32" maxlength="256" />
-
+				<field type="text" label="MOD_VIDEOCLASSES" name="video_classes" description="MOD_VIDEOCLASSES_DESC" default="video-js vjs-default-skin vjs-big-play-centered" class="input-xxlarge" size="32" maxlength="256" />
 				<field type="radio" label="MOD_VIDEOCONTROLS" 
 					name="video_controls" description="MOD_VIDEOCONTROLS_DESC" 
 					default="1" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
 				<field type="radio" label="MOD_VIDEOAUTOPLAY" 
 					name="video_autoplay" description="MOD_VIDEOAUTOPLAY_DESC" 
 					default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
 				<field 
 					type="list"
 					label="MOD_VIDEOPRELOAD"
 					name="video_preload"
 					description="MOD_VIDEOPRELOAD_DESC"
-					default="none">
+					default="none" class="input-medium">
 					<option value="auto">auto</option>
 					<option value="metadata">metadata</option>
 					<option value="none">none</option>
 				</field>
-
-				<field type="text" label="MOD_VIDEOSTYLE" name="video_style" description="MOD_VIDEOSTYLE_DESC" default="width:100%;height:390px;" class="" size="32" maxlength="256" />
-
-				<field type="text" label="MOD_VIDEOPOSTER" name="video_poster" description="MOD_VIDEOPOSTER_DESC" default="https://pannellum.org/images/video/jfk-poster.jpg" class="" size="32" maxlength="256" />
-
+				<field type="text" label="MOD_VIDEOSTYLE" name="video_style" description="MOD_VIDEOSTYLE_DESC" default="width:100%;height:390px;" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="text" label="MOD_VIDEOPOSTER" name="video_poster" description="MOD_VIDEOPOSTER_DESC" default="https://pannellum.org/images/video/jfk-poster.jpg" class="input-xxlarge" size="32" maxlength="256" />
 				<field type="radio" label="MOD_VIDEOLOOP" 
 					name="video_loop" description="MOD_VIDEOLOOP_DESC" 
 					default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
 				<field type="radio" label="MOD_VIDEODATASETUP" 
 					name="video_datasetup" description="MOD_VIDEODATASETUP_DESC" 
 					default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
 				<field type="radio" label="MOD_VIDEOCROSSORIGIN" 
 					name="video_crossorigin" description="MOD_VIDEOCROSSORIGIN_DESC" 
 					default="1" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
-				<field type="text" label="MOD_VIDEOWEBMSOURCE" name="video_webmsource" description="MOD_VIDEOWEBMSOURCE_DESC" default="https://pannellum.org/images/video/jfk.webm" class="" size="32" maxlength="256" />
-
-				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="" size="32" maxlength="256" />
-
+				<field type="text" label="MOD_VIDEOWEBMSOURCE" name="video_webmsource" description="MOD_VIDEOWEBMSOURCE_DESC" default="https://pannellum.org/images/video/jfk.webm" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="input-xxlarge" size="32" maxlength="256" />
 			</fieldset>
+
+			<!-- HOTSPOTS -->
+			<fieldset name="hotspots" label="MOD_HOTSPOTS" description="MOD_THIS_SPECIFIES_AN_ARRAY_OF_H">
+				<field 
+					type="list"
+					label="MOD_HOTSPOTS_PANOTYPE"
+					name="hotspots_panotype"
+					description="MOD_HOTSPOTS_PANOTYPE_DESC"
+					default="equirectangular">
+					<option value="equirectangular">Equirectangular</option>
+					<option value="cubemap">CubeMap</option>
+					<option value="multires">Multires</option>
+				</field>
+				<field type="text" label="MOD_HOTSPOTS_PITCH" name="hotspots_pitch" description="MOD_SPECIFIES_THE_PITCH_PORTION_" default="14.1" class="input-mini" />
+				<field type="text" label="MOD_HOTSPOTS_YAW" name="hotspots_yaw" description="MOD_SPECIFIES_THE_YAW_PORTION_OF" default="1.5" class="input-mini" />
+				<field type="radio" label="MOD_HOTSPOTS_TYPE" name="hotspots_type" 
+					description="MOD_SPECIFIES_THE_TYPE_OF_THE_HO" 
+					default="info" class="btn-group btn-group-yesno" >
+					<option value="scene">scene</option>
+                    <option value="info">info</option>
+				</field>
+				<field type="text" label="MOD_HOTSPOTS_TEXT" name="hotspots_text" description="MOD_THIS_SPECIFIES_THE_TEXT_THAT" default="Info button with test link to pannellum" class="input-xxlarge" size="32" maxlength="256" filter="" />
+				<field type="url" label="MOD_HOTSPOTS_URL" name="hotspots_url" description="MOD_IF_SPECIFIED_FOR_AN_INFO_HOT" default="https://pannellum.org/" class="input-xxlarge" size="32" maxlength="256" filter="" />
+
+				<field type="radio" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
+					description="MOD_WHEN_TRUE__THE_MOUSE_POINTER" 
+					default="0" class="btn-group btn-group-yesno" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- Tour ONLY-->
+				<field type="spacer" name="Tour only" />
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TARGETPITCH" name="targetpitch" description="MOD_SPECIFIES_THE_PITCH_OF_THE_T" default="" class="input-mini" />
+				<field type="text" label="MOD_TARGETYAW" name="targetyaw" description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR" default="" class="input-mini" />
+				<field type="text" label="MOD_TARGETHFOV" name="targethfov" description="MOD_SPECIFIES_THE_HFOV_OF_THE_TA" default="" class="input-mini" />
+				<field type="text" label="MOD_SCENEFADEDURATION" name="scenefadeduration" description="MOD_SPECIFIES_THE_FADE_DURATION_" default="" class="input-mini" />
+				<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="input-xlarge" size="32" maxlength="120" filter="" />
+				
+				
+			</fieldset>
+
+
 
 			<fieldset
 				name="advanced">
