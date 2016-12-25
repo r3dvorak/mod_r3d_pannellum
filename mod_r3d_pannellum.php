@@ -71,17 +71,19 @@ $multires_cuberesolution		= $params->get('multires_cuberesolution', '');
 // get HOTSPOTS: "hotspots_pitch","hotspots_yaw","hotspots_type","hotspots_text","hotspots_url
 // hotspots_sceneid","targetpitch","targetyaw","targethfov
 // hotspots_cssclass","hotspotdebug","scenefadeduration
-$hotspots_pitch					= $params->get('hotspots_pitch', '');
-$hotspots_yaw					= $params->get('hotspots_yaw', '');
-$hotspots_type					= $params->get('hotspots_type', '');
-$hotspots_text					= $params->get('hotspots_text', '');
-$hotspots_url					= $params->get('hotspots_url', '');
+$hotspots_panotype				= $params->get('hotspots_panotype', 'equirectangular');
+$hotspots_pitch					= $params->get('hotspots_pitch', '14.1');
+$hotspots_yaw					= $params->get('hotspots_yaw', '1.5');
+$hotspots_type					= $params->get('hotspots_type', 'info');
+$hotspots_text					= $params->get('hotspots_text', 'Info button with test link to pannellum');
+$hotspots_url					= $params->get('hotspots_url', 'https://pannellum.org/');
+$hotspotdebug					= $params->get('hotspotdebug', 'false');
+// tour only
 $hotspots_sceneid				= $params->get('hotspots_sceneid', '');
 $targetpitch					= $params->get('targetpitch', '');
 $targetyaw						= $params->get('targetyaw', '');
 $targethfov						= $params->get('targethfov', '');
 $hotspots_cssclass				= $params->get('hotspots_cssclass', '');
-$hotspotdebug					= $params->get('hotspotdebug', '');
 $scenefadeduration				= $params->get('scenefadeduration', '');
 
 

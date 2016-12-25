@@ -27,7 +27,7 @@ $doc->addScript("modules/mod_r3d_pannellum/assets/js/videojs-pannellum-plugin.js
 
 <div class="pnlm-container <?php echo $moduleclass_sfx; ?>">
 <?php
-if($type == 'equirectangular' || $type == 'cubemap' || $type == 'multires' ) {
+if($type == 'equirectangular' || $type == 'cubemap' || $type == 'multires' || $type == 'hotspots' || $type == 'tour' ) {
 ?>
 	<!-- style block
 	<style type="text/css" scoped></style> -->
@@ -335,8 +335,6 @@ WORKING sample cubemap
 
 
 
-
-
 <?php
 if($type == 'video') {
 ?>
@@ -416,14 +414,234 @@ END WORKING sample video -->
 
 
 
+<?php
+if($type == 'hotspots') {
+?>
+<script>
+pannellum.viewer('<?php echo $panorama_id; ?>', {
+
+    "type": "<?php echo $hotspots_panotype; ?>",
+<?php if($title) {  ?>
+    "title": "<?php echo $title; ?>",
+<?php   } ?>
+<?php if($author) {  ?>
+    "author": "<?php echo $author; ?>",
+<?php   } ?>
+<?php if($basepath) {  ?>
+    "basePath": "<?php echo $basepath; ?>",
+<?php   } ?>
+<?php if($params->get('autoload') == 1) {  ?>
+    "autoLoad": true,
+<?php   } ?>
+<?php if($autorotate) {  ?>
+    "autoRotate": <?php echo $autorotate; ?>,
+<?php   } ?>
+<?php if($autorotateinactivitydelay) {  ?>
+    "autoRotateInactivityDelay": <?php echo $autorotateinactivitydelay; ?>,
+<?php   } ?>
+<?php if($autorotatestopdelay) {  ?>
+    "autoRotateStopDelay": <?php echo $autorotatestopdelay; ?>,
+<?php   } ?>
+<?php if($preview_image) {  ?>
+    "preview": "<?php echo $preview_image; ?>", 
+<?php   } ?>
+<?php if($fallback) {  ?>
+    "fallback": "<?php echo $fallback; ?>", 
+<?php   } ?>
+<?php if($params->get('orientationonbydefault') == 1) {  ?>
+    "orientationOnByDefault": "true",
+<?php   } ?>
+<?php if($params->get('showzoomctrl') == 0) {  ?>
+        "showZoomCtrl": "false",
+<?php   } ?>
+<?php if($params->get('keyboardzoom') == 0) {  ?>
+    "keyboardZoom": "false",
+<?php   } ?>
+<?php if($params->get('mousezoom') == 0) {  ?>
+    "mouseZoom": "false",
+<?php   } ?>
+<?php if($params->get('showfullscreenctrl') == 0) {  ?>
+    "showFullscreenCtrl": "false",
+<?php   } ?>
+<?php if($params->get('showcontrols') == 0) {  ?>
+    "showControls": "false",
+<?php   } ?>
+<?php if($params->get('yaw') > 0) {  ?>
+    "YAW": "<?php echo $yaw; ?>",
+<?php   } ?>
+<?php if($params->get('pitch') > 0) {  ?>
+    "PITCH": "<?php echo $pitch; ?>",
+<?php   } ?>
+<?php if($params->get('hfov') != 100) {  ?>
+    "HFOV": "<?php echo $hfov; ?>",
+<?php   } ?>
+<?php if($panorama) {  ?>
+    "panorama": "<?php echo $panorama; ?>",
+<?php   } ?>
+<?php if($params->get('compass') == 1) {  ?>
+    "compass": true,
+    <?php if($northoffset) {  ?>
+    "northOffset": <?php echo $northoffset; ?>,
+    <?php   } ?>
+<?php   } ?>
+    "hotSpotDebug": false,
+    "hotSpots": [
+        {
+            "pitch": <?php echo $hotspots_pitch; ?>,
+            "yaw": <?php echo $hotspots_yaw; ?>,
+            "type": "<?php echo $hotspots_type; ?>",
+            "text": "<?php echo $hotspots_text; ?>",
+            "URL": "<?php echo $hotspots_url; ?>"
+        }
+    ]
+});
+</script>
+
+<!-- Sample Hot Spots
+<script>
+pannellum.viewer('<?php echo $panorama_id; ?>', {
+    "type": "equirectangular",
+    "title": "ALMA Correlator Facility",
+    "author": "Matthew Petroff",
+    "autoLoad": false,
+    "autoRotate": -3,
+    "basePath": "/modules/mod_r3d_pannellum/samples/",
+    "preview": "alma-preview.jpg",
+    "panorama": "https://pannellum.org/images/alma.jpg",
+    "compass": true,
+    "northOffset": 247.5,
+    "hotSpotDebug": false,
+    "hotSpots": [
+        {
+            "pitch": 14.1,
+            "yaw": 1.5,
+            "type": "info",
+            "text": "Baltimore Museum of Art",
+            "URL": "https://artbma.org/"
+        },
+        {
+            "pitch": -9.4,
+            "yaw": 222.6,
+            "type": "info",
+            "text": "Art Museum Drive"
+        },
+        {
+            "pitch": -0.9,
+            "yaw": 144.4,
+            "type": "info",
+            "text": "North Charles Street"
+        }
+    ]
+});
+</script>
+END WORKING Sample Hot Spots -->
+<?php   } ?>
 
 
 
+<?php
+if($type == 'tour') {
+?>
 
+<script>
+pannellum.viewer('panorama', {   
+    "default": {
+        "firstScene": "circle",
+        "author": "Matthew Petroff",
+        "sceneFadeDuration": 1000
+    },
 
+    "scenes": {
+        "circle": {
+            "title": "Mason Circle",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 117,
+            "type": "equirectangular",
+            "panorama": "/images/from-tree.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -2.1,
+                    "yaw": 132.9,
+                    "type": "scene",
+                    "text": "Spring House or Dairy",
+                    "sceneId": "house"
+                }
+            ]
+        },
 
+        "house": {
+            "title": "Spring House or Dairy",
+            "hfov": 110,
+            "yaw": 5,
+            "type": "equirectangular",
+            "panorama": "/images/bma-0.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "Mason Circle",
+                    "sceneId": "circle",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                }
+            ]
+        }
+    }
+});
+</script>
 
+<!-- Sample TOUR
+<script>
+pannellum.viewer('panorama', {   
+    "default": {
+        "firstScene": "circle",
+        "author": "Matthew Petroff",
+        "sceneFadeDuration": 1000
+    },
 
+    "scenes": {
+        "circle": {
+            "title": "Mason Circle",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 117,
+            "type": "equirectangular",
+            "panorama": "/images/from-tree.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -2.1,
+                    "yaw": 132.9,
+                    "type": "scene",
+                    "text": "Spring House or Dairy",
+                    "sceneId": "house"
+                }
+            ]
+        },
+        "house": {
+            "title": "Spring House or Dairy",
+            "hfov": 110,
+            "yaw": 5,
+            "type": "equirectangular",
+            "panorama": "/images/bma-0.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "Mason Circle",
+                    "sceneId": "circle",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                }
+            ]
+        }
+    }
+});
+</script>
+END WORKING Sample TOUR -->
+<?php   } ?>
 
 
 
