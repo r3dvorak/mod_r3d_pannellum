@@ -13,8 +13,12 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.1.0</version>
-	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
+	<version>1.2.1</version>
+	<!-- <description>MOD_R3D_PANNELLUM_DESCRIPTION</description> -->
+	<description><![CDATA[
+		<script type="text/javascript">jQuery(function(n){function t(){n(this).parents(".clonedInput").clone().appendTo("body").attr("id","clonedInput"+e).find("*").each(function(){var n=this.id||"",t=n.match(c)||[];3==t.length&&(this.id=t[1]+e)}).on("click","button.clone",t).on("click","button.remove",o),e++}function o(){n(this).parents(".clonedInput").remove()}var c=/^(.+?)(\d+)$/i,e=n(".clonedInput").length;n("button.clone").on("click",t),n("button.remove").on("click",o)});</script><div class="description"><span class="credits">Credits: <a href="http://pannellum.org" target="_blank" >Pannellum</a>, <a href="http://videojs.com" target="_blank" >video.js</a> and <a href="http://www.r3d.de" target="_blank" >R3D</a></span></div>
+	]]>
+	</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
 		<filename>mod_r3d_pannellum.xml</filename>
