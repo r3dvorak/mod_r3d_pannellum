@@ -2,7 +2,6 @@
 /**
  * @copyright	Copyright © 2016 R3D - All rights reserved.
  * @license		GNU General Public License v2.0
- * @generator	http://xdsoft/joomla-module-generator/
  */
 defined('_JEXEC') or die;
 
@@ -106,14 +105,6 @@ $video_mp4source				= $params->get('video_mp4source', 'ttps://pannellum.org//ima
 $doc = JFactory::getDocument();
 
 // Include assets
-//<link rel="stylesheet" href="css/bootstrap.min.css">
-//<script type="text/javascript" src="js/bootstrap-native.min.js"></script>
-//<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600%7CSource+Code+Pro:400,600' rel='stylesheet' type='text/css'>
-//<link rel="stylesheet" href="css/pygments.css">
-//<link rel="stylesheet" href="css/pannellum.css"/>
-//<script type="text/javascript" src="js/pannellum.js"></script>
-//<link rel="stylesheet" href="css/style.css">
-
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/bootstrap.min.css");
 $doc->addScript(JURI::root()."modules/mod_r3d_pannellum/assets/js/bootstrap-native.min.js");
 $doc->addStyleSheet("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600%7CSource+Code+Pro:400,600");

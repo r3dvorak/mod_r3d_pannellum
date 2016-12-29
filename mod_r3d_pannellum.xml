@@ -231,48 +231,25 @@
 
 			<!-- HOTSPOTS -->
 			<fieldset name="hotspots" label="MOD_HOTSPOTS" description="MOD_THIS_SPECIFIES_AN_ARRAY_OF_H">
-				<field 
-					type="list"
-					label="MOD_HOTSPOTS_PANOTYPE"
-					name="hotspots_panotype"
-					description="MOD_HOTSPOTS_PANOTYPE_DESC"
-					default="equirectangular">
-					<option value="equirectangular">Equirectangular</option>
-					<option value="cubemap">CubeMap</option>
-					<option value="multires">Multires</option>
-				</field>
-				<field type="text" label="MOD_HOTSPOTS_PITCH" name="hotspots_pitch" description="MOD_SPECIFIES_THE_PITCH_PORTION_" default="14.1" class="input-mini" />
-				<field type="text" label="MOD_HOTSPOTS_YAW" name="hotspots_yaw" description="MOD_SPECIFIES_THE_YAW_PORTION_OF" default="1.5" class="input-mini" />
-				<field type="radio" label="MOD_HOTSPOTS_TYPE" name="hotspots_type" 
-					description="MOD_SPECIFIES_THE_TYPE_OF_THE_HO" 
-					default="info" class="btn-group btn-group-yesno" >
-					<option value="scene">scene</option>
-                    <option value="info">info</option>
-				</field>
-				<field type="text" label="MOD_HOTSPOTS_TEXT" name="hotspots_text" description="MOD_THIS_SPECIFIES_THE_TEXT_THAT" default="Info button with test link to pannellum" class="input-xxlarge" size="32" maxlength="256" filter="" />
-				<field type="url" label="MOD_HOTSPOTS_URL" name="hotspots_url" description="MOD_IF_SPECIFIED_FOR_AN_INFO_HOT" default="https://pannellum.org/" class="input-xxlarge" size="32" maxlength="256" filter="" />
-
-				<field type="radio" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
+				<field type="list" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
 					description="MOD_WHEN_TRUE__THE_MOUSE_POINTER" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+					default="no" class="input-small" >
+					<option value="no">False</option>
+					<option value="yes">True</option>
 				</field>
-
-				<!-- Tour ONLY-->
-				<field type="spacer" name="Tour only" />
-
-				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="input-medium" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_TARGETPITCH" name="targetpitch" description="MOD_SPECIFIES_THE_PITCH_OF_THE_T" default="" class="input-mini" />
-				<field type="text" label="MOD_TARGETYAW" name="targetyaw" description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR" default="" class="input-mini" />
-				<field type="text" label="MOD_TARGETHFOV" name="targethfov" description="MOD_SPECIFIES_THE_HFOV_OF_THE_TA" default="" class="input-mini" />
-				<field type="text" label="MOD_SCENEFADEDURATION" name="scenefadeduration" description="MOD_SPECIFIES_THE_FADE_DURATION_" default="" class="input-mini" />
-				<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="input-xlarge" size="32" maxlength="120" filter="" />
-				
-				
+				<field 
+				type="subform" 
+			    name="multiple-hotspots"
+			    label="Add Hot Spots and Scenes" 
+			    description="Subform Field Description 2"
+			    required="true"
+			    message="please add" 
+			    formsource="modules/mod_r3d_pannellum/elements/scenesform.xml"
+			    multiple="true" 
+			    groupByFieldset="true" 
+			    layout="joomla.form.field.subform.repeatable-table" 
+				/>
 			</fieldset>
-
-
 
 			<fieldset
 				name="advanced">
