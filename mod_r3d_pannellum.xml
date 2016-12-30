@@ -14,11 +14,7 @@
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
 	<version>1.2.1</version>
-	<!-- <description>MOD_R3D_PANNELLUM_DESCRIPTION</description> -->
-	<description><![CDATA[
-		<script type="text/javascript">jQuery(function(n){function t(){n(this).parents(".clonedInput").clone().appendTo("body").attr("id","clonedInput"+e).find("*").each(function(){var n=this.id||"",t=n.match(c)||[];3==t.length&&(this.id=t[1]+e)}).on("click","button.clone",t).on("click","button.remove",o),e++}function o(){n(this).parents(".clonedInput").remove()}var c=/^(.+?)(\d+)$/i,e=n(".clonedInput").length;n("button.clone").on("click",t),n("button.remove").on("click",o)});</script><div class="description"><span class="credits">Credits: <a href="http://pannellum.org" target="_blank" >Pannellum</a>, <a href="http://videojs.com" target="_blank" >video.js</a> and <a href="http://www.r3d.de" target="_blank" >R3D</a></span></div>
-	]]>
-	</description>
+	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
 		<filename>mod_r3d_pannellum.xml</filename>
@@ -43,11 +39,15 @@
 					description="MOD_THIS_SPECIFIES_THE_PANORAMA_"
 					default="equirectangular">
 					<option value="equirectangular">Equirectangular</option>
+					<option value="equirectangular_hotspots">Equirectangular with Hot Spots</option>
+					<option value="equirectangular_tour">Equirectangular Tour</option>
 					<option value="cubemap">CubeMap</option>
+					<option value="cubemap_hotspots">CubeMap with Hot Spots</option>
+					<option value="cubemap_tour">CubeMap Tour</option>
 					<option value="multires">Multires</option>
+					<option value="multires_hotspots">Multires with Hot Spots</option>
+					<option value="multires_tour">Multires Tour</option>
 					<option value="video">Video</option>
-					<option value="hotspots">Hot Spots</option>
-					<option value="tour">Tour</option>
 				</field>
 				<field type="text" label="MOD_TITLE" name="title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_AUTHOR" name="author" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
@@ -229,7 +229,7 @@
 				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="input-xxlarge" size="32" maxlength="256" />
 			</fieldset>
 
-			<!-- HOTSPOTS -->
+			<!-- HOTSPOTS ONLY -->
 			<fieldset name="hotspots" label="MOD_HOTSPOTS" description="MOD_THIS_SPECIFIES_AN_ARRAY_OF_H">
 				<field type="list" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
 					description="MOD_WHEN_TRUE__THE_MOUSE_POINTER" 
@@ -237,17 +237,28 @@
 					<option value="no">False</option>
 					<option value="yes">True</option>
 				</field>
-				<field 
-				type="subform" 
-			    name="multiple-hotspots"
-			    label="Add Hot Spots and Scenes" 
-			    description="Subform Field Description 2"
-			    required="true"
-			    message="please add" 
+				<field type="subform" 
+			    name="multiple_hotspots"
+			    label="MOD_HOTSPOTS_FIELD" 
+			    description="MOD_HOTSPOTS_FIELD_DESC"
+			    required="false"
 			    formsource="modules/mod_r3d_pannellum/elements/scenesform.xml"
 			    multiple="true" 
 			    groupByFieldset="true" 
 			    layout="joomla.form.field.subform.repeatable-table" 
+				/>
+			</fieldset>
+
+
+			<!-- TOURS & HOTSPOTS -->
+			<fieldset name="tours" label="MOD_TOURS" description="MOD_TOURS_DESC">
+				<field type="subform" 
+			    name="multiple_tours"
+			    label="MOD_TOURS_FIELD" 
+			    description="MOD_TOURS_FIELD_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/toursform.xml"
+			    multiple="true" 
 				/>
 			</fieldset>
 
@@ -289,81 +300,6 @@
 				</field>
 			</fieldset>
 		</fields>
-
-<!--
-########################################################################################
-The following are a list of all the different types of fields you can add to this file
-They are here for copy pasting - neat eh?
-Full list https://docs.joomla.org/Standard_form_field_types
-########################################################################################
-
-https://docs.joomla.org/Calendar_form_field_type
-<field name="mycalendar" type="calendar" default="5-10-2008" label="Select a date" description="" format="%d-%m-%Y" />
-
-https://docs.joomla.org/Category_form_field_type
-<field name="mycategory" type="category" label="Select a category" description="" section="3" />
-
-https://docs.joomla.org/Editor_form_field_type
-<field name="myeditor" type="editors" default="none" label="Select an editor" />
-
-https://docs.joomla.org/Filelist_form_field_type
-<field name="myfile" type="filelist" default="" label="Select a file" description="" directory="administrator" filter="" exclude="" stripext="" />
-
-https://docs.joomla.org/Folderlist_form_field_type
-<field name="myfolder" type="folderlist" default="" label="Select a folder" directory="administrator" filter="" exclude="" stripext="" />
-
-https://docs.joomla.org/Helpsite_form_field_type
-<field name="myhelpsite" type="helpsites" default="" label="Select a help site" description="" />
-
-https://docs.joomla.org/Hidden_form_field_type
-<field name="mysecretvariable" type="hidden" default="" />
-
-https://docs.joomla.org/Imagelist_form_field_type
-<field name="myimage" type="imagelist" default="" label="Select an image" description="" directory="" exclude="" stripext="" />
-
-https://docs.joomla.org/Language_form_field_type
-<field name="mylanguage" type="languages" client="site" default="en-GB" label="Select a language" description="" />
-
-https://docs.joomla.org/List_form_field_type
-<field name="mylistvalue" type="list" default="" label="Select an option" description="">
-  <option value="0">Option 1</option>
-  <option value="1">Option 2</option>
-</field>
-
-https://docs.joomla.org/Menu_form_field_type
-<field name="mymenu" type="menu" default="mainmenu" label="Select a menu" description="Select a menu" />
-
-https://docs.joomla.org/Menuitem_form_field_type
-<field name="mymenuitem" type="menuitem" default="45" label="Select a menu item" description="Select a menu item" />
-
-https://docs.joomla.org/Password_form_field_type
-<field name="mypassword" type="password" default="secret" label="Enter a password" description="" size="5" />
-
-https://docs.joomla.org/Radio_form_field_type
-<field name="myradiovalue" type="radio" default="0" label="Select an option" description="" class="btn-group btn-group-yesno">
-  <option value="0">JYES</option>
-  <option value="1">JNO</option>
-</field>
-
-https://docs.joomla.org/Spacer_form_field_type
-<field type="spacer" default="&lt;b&gt;Advanced parameters&lt;/b&gt;" />
-<field type="spacer" name="myspacer" hr="1" />
-
-https://docs.joomla.org/SQL_form_field_type
-<field name="myfield" type="sql" default="10" label="Select an article" query="SELECT id, title FROM #__content" key_field="id" value_field="title" />
-
-https://docs.joomla.org/Text_form_field_type
-<field name="mytextvalue" type="text" default="Some text" label="Enter some text" description="" size="10" />
-
-https://docs.joomla.org/Textarea_form_field_type
-<field name="mytextarea" type="textarea" default="default" label="Enter some text" description="" rows="10" cols="5" />
-
-https://docs.joomla.org/Timezone_form_field_type
-<field name="mytimezone" type="timezones" default="-10" label="Select a timezone" description="" />
-
-https://docs.joomla.org/Usergroup_form_field_type
-<field name="myusergroups" type="usergroup" default="" label="Select a user group" description="" />
--->
 	</config> 
 	<languages folder="language">
 		<language tag="de-DE">de-DE/de-DE.mod_r3d_pannellum.sys.ini</language>

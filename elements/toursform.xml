@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="scenes" label="Add Scenes and Hot Spots">
+		<field type="hidden" name="scene_type" value="scene" ></field>
+		<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="input-medium" size="32" maxlength="120" filter="" />
+		<field type="text" label="MOD_TARGETPITCH" name="targetpitch" description="MOD_SPECIFIES_THE_PITCH_OF_THE_T" default="" class="input-mini" showon="hotspots_type:scene" />
+		<field type="text" label="MOD_TARGETYAW" name="targetyaw" description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR" default="" class="input-mini" />
+		<field type="text" label="MOD_TARGETHFOV" name="targethfov" description="MOD_SPECIFIES_THE_HFOV_OF_THE_TA" default="" class="input-mini" />
+		<field type="text" label="MOD_SCENEFADEDURATION" name="scenefadeduration" description="MOD_SPECIFIES_THE_FADE_DURATION_" default="" class="input-mini" />
+		<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="input-xlarge" size="32" maxlength="120" filter="" />
+	</fieldset>
+	<fieldset name="scenes_hotspots" label="Add Hot Spots">
+		<field type="subform" 
+		    name="scene_hotspots"
+		    label="MOD_SCENE_HOTSPOTS_FIELD" 
+		    description="MOD_SCENE_HOTSPOTS_FIELD_DESC"
+		    required="false"
+		    formsource="modules/mod_r3d_pannellum/elements/tour_hotspotsform.xml"
+		    multiple="true" 
+		    layout="joomla.form.field.subform.repeatable-table" 
+		/>
+	</fieldset>
+</form>

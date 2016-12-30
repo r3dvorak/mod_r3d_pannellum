@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL | E_STRICT);
+
+
 defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
@@ -27,7 +31,7 @@ $doc->addScript("modules/mod_r3d_pannellum/assets/js/videojs-pannellum-plugin.js
 
 <div class="pnlm-container <?php echo $moduleclass_sfx; ?>">
 <?php
-if($type == 'equirectangular' || $type == 'cubemap' || $type == 'multires' || $type == 'hotspots' || $type == 'tour' ) {
+if($type == 'equirectangular' || $type == 'equirectangular_hotspots' || $type == 'cubemap' || $type == 'cubemap_hotspots' || $type == 'multires' || $type == 'multires_hotspots' || $type == 'tour' ) {
 ?>
 	<!-- style block
 	<style type="text/css" scoped></style> -->
@@ -414,13 +418,22 @@ END WORKING sample video -->
 
 
 
+
 <?php
-if($type == 'hotspots') {
+if($type == 'equirectangular_hotspots' || $type == 'cubemap_hotspots' || $type == 'multires_hotspots') {
 ?>
+
 <script>
 pannellum.viewer('<?php echo $panorama_id; ?>', {
 
-    "type": "<?php echo $hotspots_panotype; ?>",
+<?php if($type == 'equirectangular_hotspots') {  ?>
+    "type": "equirectangular",
+<?php   } if($type == 'multires_hotspots') { ?>
+    "type": "multires",
+<?php   } if($type == 'cubemap_hotspots') { ?>
+    "type": "cubemap",
+<?php   } ?>
+
 <?php if($title) {  ?>
     "title": "<?php echo $title; ?>",
 <?php   } ?>
@@ -481,23 +494,39 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
 <?php if($params->get('compass') == 1) {  ?>
     "compass": true,
     <?php if($northoffset) {  ?>
-    "northOffset": <?php echo $northoffset; ?>,
+"northOffset": <?php echo $northoffset; ?>,
     <?php   } ?>
 <?php   } ?>
-    "hotSpotDebug": false,
+<?php if($params->get('hotSpotDebug') == 'yes') {  ?>
+    "hotSpotDebug": <?php echo $hotspotdebug; ?>,
+<?php   } ?>
     "hotSpots": [
+<?php for ($i = 0; $i <= $hloops; $i++) { ?>
         {
-            "pitch": <?php echo $hotspots_pitch; ?>,
-            "yaw": <?php echo $hotspots_yaw; ?>,
-            "type": "<?php echo $hotspots_type; ?>",
-            "text": "<?php echo $hotspots_text; ?>",
-            "URL": "<?php echo $hotspots_url; ?>"
-        }
+            "pitch": <?php echo $hotspots_pitch[$i]; ?>,
+            "yaw": <?php echo $hotspots_yaw[$i]; ?>,
+            "type": "<?php echo $hotspots_type[$i]; ?>",
+            "text": "<?php echo $hotspots_text[$i]; ?>",
+<?php if($hotspots_url[$i]) {  ?>
+            "URL": "<?php echo $hotspots_url[$i]; ?>"
+<?php   } ?>
+        },
+<?php } ?>
     ]
 });
 </script>
 
 <!-- Sample Hot Spots
+
+<?php echo $hotspots_panotype[$i]; ?>
+<?php echo $hotspots_sceneid[$i]; ?>
+<?php echo $targetpitch[$i]; ?>
+<?php echo $targetyaw[$i]; ?>
+<?php echo $targethfov[$i]; ?>
+<?php echo $hotspots_cssclass[$i]; ?>
+<?php echo $scenefadeduration[$i]; ?>
+
+
 <script>
 pannellum.viewer('<?php echo $panorama_id; ?>', {
     "type": "equirectangular",
