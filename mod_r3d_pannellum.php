@@ -2,7 +2,6 @@
 /**
  * @copyright	Copyright © 2016 R3D - All rights reserved.
  * @license		GNU General Public License v2.0
- * @generator	http://xdsoft/joomla-module-generator/
  */
 defined('_JEXEC') or die;
 
@@ -71,20 +70,28 @@ $multires_cuberesolution		= $params->get('multires_cuberesolution', '');
 // get HOTSPOTS: "hotspots_pitch","hotspots_yaw","hotspots_type","hotspots_text","hotspots_url
 // hotspots_sceneid","targetpitch","targetyaw","targethfov
 // hotspots_cssclass","hotspotdebug","scenefadeduration
-$hotspots_panotype				= $params->get('hotspots_panotype', 'equirectangular');
-$hotspots_pitch					= $params->get('hotspots_pitch', '14.1');
-$hotspots_yaw					= $params->get('hotspots_yaw', '1.5');
-$hotspots_type					= $params->get('hotspots_type', 'info');
-$hotspots_text					= $params->get('hotspots_text', 'Info button with test link to pannellum');
-$hotspots_url					= $params->get('hotspots_url', 'https://pannellum.org/');
+
 $hotspotdebug					= $params->get('hotspotdebug', 'false');
+$tour_firstscene                = $params->get('tour_firstscene', '');
+
+$multiple_hotspots = $params->get('multiple_hotspots');
+$total = count((array)$multiple_hotspots);
+$hloops = $total-1;
+foreach ($multiple_hotspots as $key => $value) {
+
+    $hotspots_type[] 	= $value->hotspots_type;
+    $hotspots_pitch[] 	= $value->hotspots_pitch;
+    $hotspots_yaw[] 	= $value->hotspots_yaw;
+    $hotspots_text[] 	= $value->hotspots_text;
+    $hotspots_url[] 	= $value->hotspots_url;
 // tour only
-$hotspots_sceneid				= $params->get('hotspots_sceneid', '');
-$targetpitch					= $params->get('targetpitch', '');
-$targetyaw						= $params->get('targetyaw', '');
-$targethfov						= $params->get('targethfov', '');
-$hotspots_cssclass				= $params->get('hotspots_cssclass', '');
-$scenefadeduration				= $params->get('scenefadeduration', '');
+    $hotspots_sceneid[] 	= $value->hotspots_sceneid;
+    $targetpitch[] 			= $value->targetpitch;
+    $targetyaw[] 			= $value->targetyaw;
+    $targethfov[] 			= $value->targethfov;
+    $hotspots_cssclass[] 	= $value->hotspots_cssclass;
+    $scenefadeduration[] 	= $value->scenefadeduration;
+}
 
 
 
@@ -106,14 +113,6 @@ $video_mp4source				= $params->get('video_mp4source', 'ttps://pannellum.org//ima
 $doc = JFactory::getDocument();
 
 // Include assets
-//<link rel="stylesheet" href="css/bootstrap.min.css">
-//<script type="text/javascript" src="js/bootstrap-native.min.js"></script>
-//<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600%7CSource+Code+Pro:400,600' rel='stylesheet' type='text/css'>
-//<link rel="stylesheet" href="css/pygments.css">
-//<link rel="stylesheet" href="css/pannellum.css"/>
-//<script type="text/javascript" src="js/pannellum.js"></script>
-//<link rel="stylesheet" href="css/style.css">
-
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/bootstrap.min.css");
 $doc->addScript(JURI::root()."modules/mod_r3d_pannellum/assets/js/bootstrap-native.min.js");
 $doc->addStyleSheet("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600%7CSource+Code+Pro:400,600");

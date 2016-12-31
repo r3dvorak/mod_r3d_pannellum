@@ -1,16 +1,12 @@
 <?php
+//ini_set('display_errors', 'On');
+//error_reporting(E_ALL | E_STRICT);
+
+
 defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
 
-// Include assets
-//<link rel="stylesheet" href="css/bootstrap.min.css">
-//<script type="text/javascript" src="js/bootstrap-native.min.js"></script>
-//<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600%7CSource+Code+Pro:400,600' rel='stylesheet' type='text/css'>
-//<link rel="stylesheet" href="css/pygments.css">
-//<link rel="stylesheet" href="css/pannellum.css"/>
-//<script type="text/javascript" src="js/pannellum.js"></script>
-//<link rel="stylesheet" href="css/style.css">
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/bootstrap.min.css");
 $doc->addScript(JURI::root()."modules/mod_r3d_pannellum/assets/js/bootstrap-native.min.js");
 $doc->addStyleSheet("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600%7CSource+Code+Pro:400,600");
@@ -27,10 +23,8 @@ $doc->addScript("modules/mod_r3d_pannellum/assets/js/videojs-pannellum-plugin.js
 
 <div class="pnlm-container <?php echo $moduleclass_sfx; ?>">
 <?php
-if($type == 'equirectangular' || $type == 'cubemap' || $type == 'multires' || $type == 'hotspots' || $type == 'tour' ) {
+if($type == 'equirectangular' || $type == 'equirectangular_hotspots' || $type == 'equirectangular_tour'  || $type == 'cubemap' || $type == 'cubemap_hotspots' || $type == 'cubemap_tour'  || $type == 'multires' || $type == 'multires_hotspots' || $type == 'multires_tour'  ) {
 ?>
-	<!-- style block
-	<style type="text/css" scoped></style> -->
 	<div id="<?php echo $panorama_id; ?>" style="width:100%;height:380px;"></div>
 <?php 	} ?>
 
@@ -414,13 +408,22 @@ END WORKING sample video -->
 
 
 
+
 <?php
-if($type == 'hotspots') {
+if($type == 'equirectangular_hotspots' || $type == 'cubemap_hotspots' || $type == 'multires_hotspots') {
 ?>
+
 <script>
 pannellum.viewer('<?php echo $panorama_id; ?>', {
 
-    "type": "<?php echo $hotspots_panotype; ?>",
+<?php if($type == 'equirectangular_hotspots') {  ?>
+    "type": "equirectangular",
+<?php   } if($type == 'multires_hotspots') { ?>
+    "type": "multires",
+<?php   } if($type == 'cubemap_hotspots') { ?>
+    "type": "cubemap",
+<?php   } ?>
+
 <?php if($title) {  ?>
     "title": "<?php echo $title; ?>",
 <?php   } ?>
@@ -481,18 +484,24 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
 <?php if($params->get('compass') == 1) {  ?>
     "compass": true,
     <?php if($northoffset) {  ?>
-    "northOffset": <?php echo $northoffset; ?>,
+"northOffset": <?php echo $northoffset; ?>,
     <?php   } ?>
 <?php   } ?>
-    "hotSpotDebug": false,
+<?php if($params->get('hotSpotDebug') == 'yes') {  ?>
+    "hotSpotDebug": <?php echo $hotspotdebug; ?>,
+<?php   } ?>
     "hotSpots": [
+<?php for ($i = 0; $i <= $hloops; $i++) { ?>
         {
-            "pitch": <?php echo $hotspots_pitch; ?>,
-            "yaw": <?php echo $hotspots_yaw; ?>,
-            "type": "<?php echo $hotspots_type; ?>",
-            "text": "<?php echo $hotspots_text; ?>",
-            "URL": "<?php echo $hotspots_url; ?>"
-        }
+            "pitch": <?php echo $hotspots_pitch[$i]; ?>,
+            "yaw": <?php echo $hotspots_yaw[$i]; ?>,
+            "type": "<?php echo $hotspots_type[$i]; ?>",
+            "text": "<?php echo $hotspots_text[$i]; ?>",
+<?php if($hotspots_url[$i]) {  ?>
+            "URL": "<?php echo $hotspots_url[$i]; ?>"
+<?php   } ?>
+        },
+<?php } ?>
     ]
 });
 </script>
@@ -540,14 +549,19 @@ END WORKING Sample Hot Spots -->
 
 
 <?php
-if($type == 'tour') {
+if($type == 'equirectangular_tour' || $type == 'cubemap_tour' || $type == 'multires_tour') {
 ?>
 
 <script>
-pannellum.viewer('panorama', {   
+pannellum.viewer('<?php echo $panorama_id; ?>', {   
     "default": {
-        "firstScene": "circle",
-        "author": "Matthew Petroff",
+        "firstScene": "<?php echo $tour_firstscene; ?>",
+<?php if($title) {  ?>
+    "title": "<?php echo $title; ?>",
+<?php   } ?>
+<?php if($author) {  ?>
+    "author": "<?php echo $author; ?>",
+<?php   } ?>
         "sceneFadeDuration": 1000
     },
 
@@ -558,7 +572,7 @@ pannellum.viewer('panorama', {
             "pitch": -3,
             "yaw": 117,
             "type": "equirectangular",
-            "panorama": "/images/from-tree.jpg",
+            "panorama": "https://pannellum.org/images/from-tree.jpg",
             "hotSpots": [
                 {
                     "pitch": -2.1,
@@ -575,7 +589,7 @@ pannellum.viewer('panorama', {
             "hfov": 110,
             "yaw": 5,
             "type": "equirectangular",
-            "panorama": "/images/bma-0.jpg",
+            "panorama": "https://pannellum.org/images/bma-0.jpg",
             "hotSpots": [
                 {
                     "pitch": -0.6,
@@ -594,7 +608,7 @@ pannellum.viewer('panorama', {
 
 <!-- Sample TOUR
 <script>
-pannellum.viewer('panorama', {   
+pannellum.viewer('<?php echo $panorama_id; ?>', {   
     "default": {
         "firstScene": "circle",
         "author": "Matthew Petroff",
