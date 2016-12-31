@@ -2,6 +2,7 @@ Changelog
 =========
 
 
+
 Changes in mod_r3d_pannellum 1.3.2
 --------------------------
 
@@ -139,3 +140,4 @@ mod_r3d_pannellum 1.0
 ------------------------
 
 Created first version using Joomla Module Generator version 1.0.4 by http://xdsoft.net
+
