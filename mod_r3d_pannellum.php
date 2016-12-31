@@ -72,6 +72,7 @@ $multires_cuberesolution		= $params->get('multires_cuberesolution', '');
 // hotspots_cssclass","hotspotdebug","scenefadeduration
 
 $hotspotdebug					= $params->get('hotspotdebug', 'false');
+$tour_firstscene                = $params->get('tour_firstscene', '');
 
 $multiple_hotspots = $params->get('multiple_hotspots');
 $total = count((array)$multiple_hotspots);
@@ -91,6 +92,8 @@ foreach ($multiple_hotspots as $key => $value) {
     $hotspots_cssclass[] 	= $value->hotspots_cssclass;
     $scenefadeduration[] 	= $value->scenefadeduration;
 }
+
+
 
 // get VIDEO:
 $dynamic						= $params->get('dynamic', '1');

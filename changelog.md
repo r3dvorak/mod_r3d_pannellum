@@ -2,6 +2,32 @@ Changelog
 =========
 
 
+Changes in mod_r3d_pannellum 1.3.2
+--------------------------
+
+New Features:
+ - Implemented new J3.6 mutliple subform fieldtype for tours
+
+ Bugfixes:
+ - Various
+ - Removed unused files
+
+
+Changes in mod_r3d_pannellum 1.3.1
+--------------------------
+
+New Features:
+ - Implemented new J3.6 mutliple subform fieldtype for Hot Spots
+ - see https://docs.joomla.org/Subform_form_field_type
+
+
+Changes in mod_r3d_pannellum 1.3.0
+--------------------------
+
+New Features:
+ - Added Multiple Hot Spots Functionality
+
+
 Changes in mod_r3d_pannellum 1.2.3
 --------------------------
 
