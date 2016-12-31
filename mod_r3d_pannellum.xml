@@ -254,10 +254,18 @@
 			<fieldset name="tours" label="MOD_TOURS" description="MOD_TOURS_DESC">
 				<field type="subform" 
 			    name="multiple_tours"
-			    label="MOD_TOURS_FIELD" 
-			    description="MOD_TOURS_FIELD_DESC"
+			    label="Add Tours" 
+			    description="Please Click to add Tour parameters"
 			    required="false"
 			    formsource="modules/mod_r3d_pannellum/elements/toursform.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_hotspots"
+			    label="Add Hot Spots" 
+			    description="Add Hot Spots to Tours"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/tour_hotspotsform.xml"
 			    multiple="true" 
 				/>
 			</fieldset>

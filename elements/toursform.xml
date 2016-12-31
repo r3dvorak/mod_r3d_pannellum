@@ -9,15 +9,4 @@
 		<field type="text" label="MOD_SCENEFADEDURATION" name="scenefadeduration" description="MOD_SPECIFIES_THE_FADE_DURATION_" default="" class="input-mini" />
 		<field type="text" label="MOD_HOTSPOTS_CSSCLASS" name="hotspots_cssclass" description="MOD_IF_SPECIFIED__STRING_IS_USED" default="" class="input-xlarge" size="32" maxlength="120" filter="" />
 	</fieldset>
-	<fieldset name="scenes_hotspots" label="Add Hot Spots">
-		<field type="subform" 
-		    name="scene_hotspots"
-		    label="MOD_SCENE_HOTSPOTS_FIELD" 
-		    description="MOD_SCENE_HOTSPOTS_FIELD_DESC"
-		    required="false"
-		    formsource="modules/mod_r3d_pannellum/elements/tour_hotspotsform.xml"
-		    multiple="true" 
-		    layout="joomla.form.field.subform.repeatable-table" 
-		/>
-	</fieldset>
 </form>
