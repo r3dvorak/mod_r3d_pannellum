@@ -19,6 +19,9 @@ $panorama_id					= $params->get('panorama_id', 'panorama');
 $type							= $params->get('type', 'equirectangular');
 $title							= $params->get('title', 'ALMA Correlator Facility');
 $author							= $params->get('author', 'Matthew Petroff');
+
+// OPTIONAL FIELDS
+$optionalfields                 = $params->get('optionalfields', '0');
 $basepath						= $params->get('basepath', 'modules/mod_r3d_pannellum/samples/');
 $autoload						= $params->get('autoLoad', '0');
 $autorotate						= $params->get('autorotate', '');

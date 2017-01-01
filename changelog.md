@@ -3,13 +3,29 @@ Changelog
 
 
 
+Changes in mod_r3d_pannellum 1.3.4
+--------------------------
+
+New Features:
+ - Backend Restructuring
+
+
+Changes in mod_r3d_pannellum 1.3.3
+--------------------------
+
+ - Updated Pannellum Files to v2.3.2 (.JS & .CSS)
+
+Bugfixes:
+ - Various
+
+
 Changes in mod_r3d_pannellum 1.3.2
 --------------------------
 
 New Features:
  - Implemented new J3.6 mutliple subform fieldtype for tours
 
- Bugfixes:
+Bugfixes:
  - Various
  - Removed unused files
 
