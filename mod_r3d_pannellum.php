@@ -42,7 +42,7 @@ $compass						= $params->get('compass', '0');
 $northoffset					= $params->get('northoffset', '');
 
 // get EQUIRECTANGULAR_OPTIONS: "panorama","haov","vaov","voffset","ignoregpanoxmp","backgroundcolor"
-$panorama						= $params->get('panorama', 'alma.jpg');
+$panorama						= $params->get('panorama', 'https://pannellum.org/images/alma.jpg');
 $haov							= $params->get('haov', '');
 $vaov							= $params->get('vaov', '');
 $voffset						= $params->get('voffset', '');
