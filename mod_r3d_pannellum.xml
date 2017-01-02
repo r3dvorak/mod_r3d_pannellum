@@ -2,7 +2,6 @@
 /**
  * @copyright	Copyright © 2016 R3D - All rights reserved.
  * @license		GNU General Public License v2.0
- * @generator	http://xdsoft/joomla-module-generator/
  */
 -->
 <extension type="module" method="upgrade" client="site">
@@ -13,16 +12,17 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.3.4</version>
+	<version>1.3.5</version>
 	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
 		<filename>mod_r3d_pannellum.xml</filename>
 		<filename>index.html</filename>
-		<folder>language</folder>
-		<folder>tmpl</folder>
 		<folder>assets</folder>
+		<folder>elements</folder>
+		<folder>language</folder>
 		<folder>samples</folder>
+		<folder>tmpl</folder>
 	</files>
 	<config>
 		<fields name="params">
@@ -52,12 +52,12 @@
 
 				<field type="text" label="MOD_TITLE" name="title" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_AUTHOR" name="author" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_BASEPATH" name="basepath" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="" class="input-xxlarge" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_BASEPATH" name="basepath" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="/modules/mod_r3d_pannellum/samples/" class="input-xxlarge" size="32" maxlength="256" filter="" />
 
 				<!-- show only when type:equirectangular,equirectangular_hotspots,equirectangular_tour -->
 				<field name="equirectangular_options" type="note" class="alert alert-info" label="MOD_EQUIRECTANGULAR_OPTIONS" description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" />
 
-				<field type="text" label="MOD_PANORAMA" name="panorama" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" 
+				<field type="text" label="MOD_PANORAMA" name="panorama" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" default="https://pannellum.org/images/alma.jpg" 
 					size="32" maxlength="250" class="input-xxlarge" />
 				<field type="text" label="MOD_HAOV" name="haov" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_HORIZO" 
 					default="360" class="input-mini"	size="3" maxlength="3" />
