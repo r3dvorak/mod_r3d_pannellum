@@ -3,6 +3,13 @@ Changelog
 
 
 
+Changes in mod_r3d_pannellum 1.3.5
+--------------------------
+
+Bugfixes:
+ - Various
+
+
 Changes in mod_r3d_pannellum 1.3.4
 --------------------------
 
