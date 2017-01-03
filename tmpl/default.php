@@ -1,7 +1,10 @@
 <?php
+/**
+ * @copyright	Copyright © 2016 R3D - All rights reserved.
+ * @license		GNU General Public License v2.0
+ */
 //ini_set('display_errors', 'On');
 //error_reporting(E_ALL | E_STRICT);
-
 
 defined('_JEXEC') or die;
 
