@@ -17,7 +17,7 @@ $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/pygments.
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/pannellum.css");
 $doc->addScript(JURI::root()."modules/mod_r3d_pannellum/assets/js/pannellum.js");
 $doc->addStyleSheet(JURI::root()."modules/mod_r3d_pannellum/assets/css/style.css");
-if($type == 'video') {
+if($ptype == 'video') {
 $doc->addStyleSheet("https://vjs.zencdn.net/5.4.6/video-js.css");
 $doc->addScript("https://vjs.zencdn.net/5.4.6/video.js");
 $doc->addScript("modules/mod_r3d_pannellum/assets/js/videojs-pannellum-plugin.js");
@@ -26,14 +26,14 @@ $doc->addScript("modules/mod_r3d_pannellum/assets/js/videojs-pannellum-plugin.js
 
 <div class="pnlm-container <?php echo $moduleclass_sfx; ?>">
 <?php
-if($type == 'equirectangular' || $type == 'equirectangular_hotspots' || $type == 'equirectangular_tour'  || $type == 'cubemap' || $type == 'cubemap_hotspots' || $type == 'cubemap_tour'  || $type == 'multires' || $type == 'multires_hotspots' || $type == 'multires_tour'  ) {
+if($ptype == 'equirectangular' || $ptype == 'equirectangular_hotspots' || $ptype == 'equirectangular_tour'  || $ptype == 'cubemap' || $ptype == 'cubemap_hotspots' || $ptype == 'cubemap_tour'  || $ptype == 'multires' || $ptype == 'multires_hotspots' || $ptype == 'multires_tour'  ) {
 ?>
 	<div id="<?php echo $panorama_id; ?>" style="width:100%;height:380px;"></div>
 <?php 	} ?>
 
 
 <?php
-if($type == 'equirectangular') {
+if($ptype == 'equirectangular') {
 ?>
 <script>
 	pannellum.viewer('<?php echo $panorama_id; ?>', {
@@ -123,7 +123,7 @@ WORKING sample equirectangular
 -->
 <?php 	} ?>
 <?php
-if($type == 'multires') {
+if($ptype == 'multires') {
 ?>
 <script>
 pannellum.viewer('<?php echo $panorama_id; ?>', {
@@ -230,7 +230,7 @@ WORKING sample multires
 -->
 <?php 	} ?>
 <?php
-if($type == 'cubemap') {
+if($ptype == 'cubemap') {
 ?>
 
 <script>
@@ -333,7 +333,7 @@ WORKING sample cubemap
 
 
 <?php
-if($type == 'video') {
+if($ptype == 'video') {
 ?>
 
 <video id="<?php echo $panorama_id; ?>" 
@@ -413,17 +413,17 @@ END WORKING sample video -->
 
 
 <?php
-if($type == 'equirectangular_hotspots' || $type == 'cubemap_hotspots' || $type == 'multires_hotspots') {
+if($ptype == 'equirectangular_hotspots' || $ptype == 'cubemap_hotspots' || $ptype == 'multires_hotspots') {
 ?>
 
 <script>
 pannellum.viewer('<?php echo $panorama_id; ?>', {
 
-<?php if($type == 'equirectangular_hotspots') {  ?>
+<?php if($ptype == 'equirectangular_hotspots') {  ?>
     "type": "equirectangular",
-<?php   } if($type == 'multires_hotspots') { ?>
+<?php   } if($ptype == 'multires_hotspots') { ?>
     "type": "multires",
-<?php   } if($type == 'cubemap_hotspots') { ?>
+<?php   } if($ptype == 'cubemap_hotspots') { ?>
     "type": "cubemap",
 <?php   } ?>
 
@@ -552,7 +552,7 @@ END WORKING Sample Hot Spots -->
 
 
 <?php
-if($type == 'equirectangular_tour' || $type == 'cubemap_tour' || $type == 'multires_tour') {
+if($ptype == 'equirectangular_tour' || $ptype == 'cubemap_tour' || $ptype == 'multires_tour') {
 ?>
 
 <script>
