@@ -12,7 +12,7 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.3.5</version>
+	<version>1.3.7</version>
 	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
@@ -30,7 +30,7 @@
 				<field 
 					type="list"
 					label="MOD_TYPE"
-					name="type"
+					name="ptype"
 					description="MOD_THIS_SPECIFIES_THE_PANORAMA_"
 					default="equirectangular">
 					<option value="equirectangular">Equirectangular</option>
@@ -50,81 +50,81 @@
 					size="32"
 					maxlength="32" />
 
-				<field type="text" label="MOD_TITLE" name="title" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_AUTHOR" name="author" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_BASEPATH" name="basepath" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="/modules/mod_r3d_pannellum/samples/" class="input-xxlarge" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_TITLE" name="title" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_AUTHOR" name="author" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_BASEPATH" name="basepath" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_SPECIFIES_A_BASE_PATH_T" default="/modules/mod_r3d_pannellum/samples/" class="input-xxlarge" size="32" maxlength="256" filter="" />
 
 				<!-- show only when type:equirectangular,equirectangular_hotspots,equirectangular_tour -->
-				<field name="equirectangular_options" type="note" class="alert alert-info" label="MOD_EQUIRECTANGULAR_OPTIONS" description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" />
+				<field name="equirectangular_options" type="note" class="alert alert-info" label="MOD_EQUIRECTANGULAR_OPTIONS" description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" />
 
-				<field type="text" label="MOD_PANORAMA" name="panorama" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" default="https://pannellum.org/images/alma.jpg" 
+				<field type="text" label="MOD_PANORAMA" name="panorama" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" default="https://pannellum.org/images/alma.jpg" 
 					size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV" name="haov" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_HORIZO" 
+				<field type="text" label="MOD_HAOV" name="haov" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_HORIZO" 
 					default="360" class="input-mini"	size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV" name="vaov" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_VERTIC" 
+				<field type="text" label="MOD_VAOV" name="vaov" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_VERTIC" 
 					default="180" class="input-mini"	size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET" name="voffset" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_VERTICAL_OFFSET_OF_" 
+				<field type="text" label="MOD_VOFFSET" name="voffset" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_VERTICAL_OFFSET_OF_" 
 					default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP" name="ignoregpanoxmp" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED" default="0" class="btn-group btn-group-yesno" >
+				<field type="radio" label="MOD_IGNOREGPANOXMP" name="ignoregpanoxmp" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED" default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR" name="backgroundcolor" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SPECIFIES_AN_ARRAY_CONTAININ" default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				<field type="text" label="MOD_BACKGROUNDCOLOR" name="backgroundcolor" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SPECIFIES_AN_ARRAY_CONTAININ" default="0, 0, 0" size="16" maxlength="16" class="input-small" />
 				
 				<!-- show only when CUBEMAP selected -> type:cubemap,cubemap_hotspots,cubemap_tour -->
-				<field type="note" class="alert alert-info" name="mycubemap" label="MOD_CUBEMAP_OPTIONS" description="MOD_CUBEMAP_SPECIFIC_OPTIONS" showon="type:cubemap,cubemap_hotspots,cubemap_tour" />
-				<field type="text" label="MOD_CUBEMAP_FRONT" name="cubemap_front" showon="type:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_FRONT" 
+				<field type="note" class="alert alert-info" name="mycubemap" label="MOD_CUBEMAP_OPTIONS" description="MOD_CUBEMAP_SPECIFIC_OPTIONS" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT" name="cubemap_front" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_FRONT" 
 					default="examplepanocube0.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_RIGHT" name="cubemap_right" showon="type:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_RIGHT" 
+				<field type="text" label="MOD_CUBEMAP_RIGHT" name="cubemap_right" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_RIGHT" 
 					default="examplepanocube1.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_BACK" name="cubemap_back" showon="type:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_BACK" 
+				<field type="text" label="MOD_CUBEMAP_BACK" name="cubemap_back" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_BACK" 
 					default="examplepanocube2.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_LEFT" name="cubemap_left" showon="type:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_LEFT" 
+				<field type="text" label="MOD_CUBEMAP_LEFT" name="cubemap_left" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_LEFT" 
 					default="examplepanocube3.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_UP" name="cubemap_up" showon="type:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_UP" 
+				<field type="text" label="MOD_CUBEMAP_UP" name="cubemap_up" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_UP" 
 					default="examplepanocube4.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_DOWN" name="cubemap_down" showon="type:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_DOWN" 
+				<field type="text" label="MOD_CUBEMAP_DOWN" name="cubemap_down" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_DOWN" 
 					default="examplepanocube5.jpg" size="60" maxlength="256" />
 
 
 
 				<!-- show only when MULTIRES selected -> type:multires,multires_hotspots,multires_tour -->
-				<field type="note" class="alert alert-info" name="multires_options" label="MOD_MULTIRES_OPTIONS" description="MOD_MULTIRES_SPECIFIC_OPTIONS" showon="type:multires,multires_hotspots,multires_tour" />
-				<field type="text" label="MOD_TITLE" name="multires_title" showon="type:multires,multires_hotspots,multires_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="George Peabody Library" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_AUTHOR" name="multires_author" showon="type:multires,multires_hotspots,multires_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_PREVIEW_IMAGE" name="multires_preview_image" showon="type:multires,multires_hotspots,multires_tour" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="/modules/mod_r3d_pannellum/samples/Library_Preview.jpg" class="input-xxlarge" size="32" maxlength="250" />
-				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" showon="type:multires,multires_hotspots,multires_tour" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="https://pannellum.org/images/multires/library" class="input-xxlarge" size="64" maxlength="256" filter="" />
-				<field type="text" label="MOD_MULTIRES_PATH" name="multires_path" showon="type:multires,multires_hotspots,multires_tour" description="MOD_THIS_IS_A_FORMAT_STRING_FOR_" default="/%l/%s%y_%x" class="input-medium" size="32" maxlength="256" filter="" />
-				<field type="text" label="MOD_MULTIRES_FALLBACKPATH" name="multires_fallbackpath" showon="type:multires,multires_hotspots,multires_tour" description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION" default="/fallback/%s" class="input-medium" size="32" maxlength="256" filter="" />
-				<field type="list" label="MOD_MULTIRES_EXTENSION" name="multires_extension" showon="type:multires,multires_hotspots,multires_tour" 
+				<field type="note" class="alert alert-info" name="multires_options" label="MOD_MULTIRES_OPTIONS" description="MOD_MULTIRES_SPECIFIC_OPTIONS" showon="ptype:multires,multires_hotspots,multires_tour" />
+				<field type="text" label="MOD_TITLE" name="multires_title" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="George Peabody Library" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_AUTHOR" name="multires_author" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PREVIEW_IMAGE" name="multires_preview_image" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="/modules/mod_r3d_pannellum/samples/Library_Preview.jpg" class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="https://pannellum.org/images/multires/library" class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH" name="multires_path" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_IS_A_FORMAT_STRING_FOR_" default="/%l/%s%y_%x" class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH" name="multires_fallbackpath" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION" default="/fallback/%s" class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION" name="multires_extension" showon="ptype:multires,multires_hotspots,multires_tour" 
 					description="MOD_SPECIFIES_THE_TILES____FILE_" 
 					default="jpg" class="btn-group btn-group-yesno input-small" >
 					<option value="jpg">JPG</option>
                     <option value="png">PNG</option>
 				</field>
-				<field type="text" label="MOD_MULTIRES_TILERESOLUTION" name="multires_tileresolution" showon="type:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P" default="512" class="input-mini" />
-				<field type="text" label="MOD_MULTIRES_MAXLEVEL" name="multires_maxlevel" showon="type:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z" default="6" class="input-mini" />
-				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION" name="multires_cuberesolution" showon="type:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION" default="8432" class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION" name="multires_tileresolution" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P" default="512" class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL" name="multires_maxlevel" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z" default="6" class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION" name="multires_cuberesolution" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION" default="8432" class="input-mini" />
 
 
 
 
 				<!-- show only when VIDEO show only when type:video -->
-				<field type="note" class="alert alert-info" name="myvideo" label="MOD_VIDEO" description="MOD_VIDEO_JS" showon="type:video" />
-				<field type="radio" label="MOD_DYNAMIC" showon="type:video" 
+				<field type="note" class="alert alert-info" name="myvideo" label="MOD_VIDEO" description="MOD_VIDEO_JS" showon="ptype:video" />
+				<field type="radio" label="MOD_DYNAMIC" showon="ptype:video" 
 					name="dynamic" description="MOD_THE_PANORAMA_SOURCE_IS_CONSI" 
 					default="1" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="text" label="MOD_VIDEOCLASSES" name="video_classes" showon="type:video" description="MOD_VIDEOCLASSES_DESC" default="video-js vjs-default-skin vjs-big-play-centered" class="input-xxlarge" size="32" maxlength="256" />
-				<field type="radio" label="MOD_VIDEOCONTROLS" showon="type:video" 
+				<field type="text" label="MOD_VIDEOCLASSES" name="video_classes" showon="ptype:video" description="MOD_VIDEOCLASSES_DESC" default="video-js vjs-default-skin vjs-big-play-centered" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="radio" label="MOD_VIDEOCONTROLS" showon="ptype:video" 
 					name="video_controls" description="MOD_VIDEOCONTROLS_DESC" 
 					default="1" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_VIDEOAUTOPLAY" showon="type:video" 
+				<field type="radio" label="MOD_VIDEOAUTOPLAY" showon="ptype:video" 
 					name="video_autoplay" description="MOD_VIDEOAUTOPLAY_DESC" 
 					default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
@@ -132,7 +132,7 @@
 				</field>
 				<field 
 					type="list"
-					label="MOD_VIDEOPRELOAD" showon="type:video"
+					label="MOD_VIDEOPRELOAD" showon="ptype:video"
 					name="video_preload"
 					description="MOD_VIDEOPRELOAD_DESC"
 					default="none" class="input-medium">
@@ -140,28 +140,28 @@
 					<option value="metadata">metadata</option>
 					<option value="none">none</option>
 				</field>
-				<field type="text" label="MOD_VIDEOSTYLE" showon="type:video" name="video_style" description="MOD_VIDEOSTYLE_DESC" default="width:100%;height:390px;" class="input-xxlarge" size="32" maxlength="256" />
-				<field type="text" label="MOD_VIDEOPOSTER" showon="type:video" name="video_poster" description="MOD_VIDEOPOSTER_DESC" default="https://pannellum.org/images/video/jfk-poster.jpg" class="input-xxlarge" size="32" maxlength="256" />
-				<field type="radio" label="MOD_VIDEOLOOP" showon="type:video" 
+				<field type="text" label="MOD_VIDEOSTYLE" showon="ptype:video" name="video_style" description="MOD_VIDEOSTYLE_DESC" default="width:100%;height:390px;" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="text" label="MOD_VIDEOPOSTER" showon="ptype:video" name="video_poster" description="MOD_VIDEOPOSTER_DESC" default="https://pannellum.org/images/video/jfk-poster.jpg" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="radio" label="MOD_VIDEOLOOP" showon="ptype:video" 
 					name="video_loop" description="MOD_VIDEOLOOP_DESC" 
 					default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_VIDEODATASETUP" showon="type:video" 
+				<field type="radio" label="MOD_VIDEODATASETUP" showon="ptype:video" 
 					name="video_datasetup" description="MOD_VIDEODATASETUP_DESC" 
 					default="0" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_VIDEOCROSSORIGIN" showon="type:video" 
+				<field type="radio" label="MOD_VIDEOCROSSORIGIN" showon="ptype:video" 
 					name="video_crossorigin" description="MOD_VIDEOCROSSORIGIN_DESC" 
 					default="1" class="btn-group btn-group-yesno" >
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field type="text" label="MOD_VIDEOWEBMSOURCE" name="video_webmsource" showon="type:video" description="MOD_VIDEOWEBMSOURCE_DESC" default="https://pannellum.org/images/video/jfk.webm" class="input-xxlarge" size="32" maxlength="256" />
-				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" showon="type:video" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="text" label="MOD_VIDEOWEBMSOURCE" name="video_webmsource" showon="ptype:video" description="MOD_VIDEOWEBMSOURCE_DESC" default="https://pannellum.org/images/video/jfk.webm" class="input-xxlarge" size="32" maxlength="256" />
+				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" showon="ptype:video" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="input-xxlarge" size="32" maxlength="256" />
 				<!-- END VIDEO show only when type:video -->
 
 
@@ -200,8 +200,8 @@
 				showon="optionalfields:1[AND]compass:1" 
 				description="MOD_SET_THE_OFFSET__IN_DEGREES__" default="" class="input-mini" />
 				
-				<field type="text" label="MOD_PREVIEW_IMAGE" name="preview_image" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour[AND]optionalfields:1" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="alma-preview.jpg" class="input-xxlarge" size="32" maxlength="250" />
-				<field type="text" label="MOD_FALLBACK" name="fallback" showon="type:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour[AND]optionalfields:1" description="MOD_IF_SET__THE_VALUE_IS_USED_AS" default="" class="" size="32" maxlength="250" filter="" />
+				<field type="text" label="MOD_PREVIEW_IMAGE" name="preview_image" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour[AND]optionalfields:1" description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE" default="alma-preview.jpg" class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_FALLBACK" name="fallback" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour[AND]optionalfields:1" description="MOD_IF_SET__THE_VALUE_IS_USED_AS" default="" class="" size="32" maxlength="250" filter="" />
 
 				<field type="text" label="MOD_YAW" name="yaw" showon="optionalfields:1" description="MOD_SETS_THE_PANORAMA___S_STARTI" default="0" class="input-mini" />
 				<field type="text" label="MOD_PITCH" name="pitch" showon="optionalfields:1" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION" default="0" class="input-mini" />
