@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 "hotspots_cssclass","hotspotdebug","scenefadeduration", */
 // get BASIC params for pannellum
 $panorama_id					= $params->get('panorama_id', 'panorama');
-$type							= $params->get('type', 'equirectangular');
+$ptype							= $params->get('ptype', 'equirectangular');
 $title							= $params->get('title', 'ALMA Correlator Facility');
 $author							= $params->get('author', 'Matthew Petroff');
 
