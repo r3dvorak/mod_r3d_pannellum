@@ -2,6 +2,22 @@ Changelog
 =========
 
 
+Changes in mod_r3d_pannellum 1.3.7
+--------------------------
+
+New Features:
+ - adding compatibility to Joomla 3.7
+
+Bugfixes:
+ - change $type to $ptype
+
+
+Changes in mod_r3d_pannellum 1.3.6
+--------------------------
+
+Bugfixes:
+ - Various
+
 
 Changes in mod_r3d_pannellum 1.3.5
 --------------------------
