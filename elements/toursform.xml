@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<fieldset name="scenes" label="Add Scenes and Hot Spots">
-		<field type="hidden" name="scene_type" value="scene" ></field>
 		<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="hotspots_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN" default="" class="input-medium" size="32" maxlength="120" filter="" />
 		<field type="text" label="MOD_TARGETPITCH" name="targetpitch" description="MOD_SPECIFIES_THE_PITCH_OF_THE_T" default="" class="input-mini" showon="hotspots_type:scene" />
 		<field type="text" label="MOD_TARGETYAW" name="targetyaw" description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR" default="" class="input-mini" />
