@@ -80,21 +80,35 @@ $tour_firstscene                = $params->get('tour_firstscene', '');
 $multiple_hotspots = $params->get('multiple_hotspots');
 $total = count((array)$multiple_hotspots);
 $hloops = $total-1;
-foreach ($multiple_hotspots as $key => $value) {
+foreach ($multiple_hotspots as $hkey => $hvalue) {
 
-    $hotspots_type[] 	= $value->hotspots_type;
-    $hotspots_pitch[] 	= $value->hotspots_pitch;
-    $hotspots_yaw[] 	= $value->hotspots_yaw;
-    $hotspots_text[] 	= $value->hotspots_text;
-    $hotspots_url[] 	= $value->hotspots_url;
-// tour only
-    $hotspots_sceneid[] 	= $value->hotspots_sceneid;
-    $targetpitch[] 			= $value->targetpitch;
-    $targetyaw[] 			= $value->targetyaw;
-    $targethfov[] 			= $value->targethfov;
-    $hotspots_cssclass[] 	= $value->hotspots_cssclass;
-    $scenefadeduration[] 	= $value->scenefadeduration;
+    $hotspots_type[]    = $hvalue->hotspots_type;
+    $hotspots_pitch[]   = $hvalue->hotspots_pitch;
+    $hotspots_yaw[]     = $hvalue->hotspots_yaw;
+    $hotspots_text[]    = $hvalue->hotspots_text;
+    $hotspots_url[]     = $hvalue->hotspots_url;
 }
+
+
+$multiple_tours = $params->get('multiple_tours');
+$totalt = count((array)$multiple_tours);
+$tloops = $totalt-1;
+
+//if (is_array($multiple_tours) || is_object($multiple_tours)) {
+    foreach ($multiple_tours as $tkey => $tvalue) {
+
+        $hotspots_sceneid[]     = $tvalue->hotspots_sceneid;
+        $targetpitch[]          = $tvalue->targetpitch;
+        $targetyaw[]            = $tvalue->targetyaw;
+        $targethfov[]           = $tvalue->targethfov;
+        $hotspots_cssclass[]    = $tvalue->hotspots_cssclass;
+        $scenefadeduration[]    = $tvalue->scenefadeduration;
+    }
+//}
+
+
+
+
 
 
 
