@@ -12,7 +12,7 @@
 	<authorUrl>http://www.r3d.de</authorUrl>
 	<copyright>Copyright © 2016 R3D - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.3.7</version>
+	<version>1.4.0</version>
 	<description>MOD_R3D_PANNELLUM_DESCRIPTION</description>
 	<files>
 		<filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
@@ -27,28 +27,28 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-				<field 
-					type="list"
-					label="MOD_TYPE"
-					name="ptype"
-					description="MOD_THIS_SPECIFIES_THE_PANORAMA_"
-					default="equirectangular">
-					<option value="equirectangular">Equirectangular</option>
-					<option value="equirectangular_hotspots">Equirectangular with Hot Spots</option>
-					<option value="equirectangular_tour">Equirectangular Tour</option>
-					<option value="cubemap">CubeMap</option>
-					<option value="cubemap_hotspots">CubeMap with Hot Spots</option>
-					<option value="cubemap_tour">CubeMap Tour</option>
-					<option value="multires">Multires</option>
-					<option value="multires_hotspots">Multires with Hot Spots</option>
-					<option value="multires_tour">Multires Tour</option>
-					<option value="video">Video</option>
+				<field
+					  type="list"
+					 label="MOD_TYPE"
+					 name="ptype"
+					 description="MOD_THIS_SPECIFIES_THE_PANORAMA_"
+					 default="equirectangular">
+					 <option value="equirectangular">Equirectangular</option>
+					 <option value="equirectangular_hotspots">Equirectangular with Hot Spots</option>
+					 <option value="equirectangular_tour">Equirectangular Tour</option>
+					 <option value="cubemap">CubeMap</option>
+					 <option value="cubemap_hotspots">CubeMap with Hot Spots</option>
+					 <option value="cubemap_tour">CubeMap Tour</option>
+					 <option value="multires">Multires</option>
+					 <option value="multires_hotspots">Multires with Hot Spots</option>
+					 <option value="multires_tour">Multires Tour</option>
+					 <option value="video">Video</option>
 				</field>
-				<field 
-					type="text" label="MOD_PANORAMA_ID" name="panorama_id" 
-					description="MOD_ENTER_LOWERCASE_NAME_OF_DIV_" 
-					size="32"
-					maxlength="32" />
+				<field
+					  type="text" label="MOD_PANORAMA_ID" name="panorama_id"
+					  description="MOD_ENTER_LOWERCASE_NAME_OF_DIV_"
+					  size="32"
+					 maxlength="32" />
 
 				<field type="text" label="MOD_TITLE" name="title" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY" default="ALMA Correlator Facility" class="" size="32" maxlength="120" filter="" />
 				<field type="text" label="MOD_AUTHOR" name="author" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour,cubemap,cubemap_hotspots,cubemap_tour" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION" default="Matthew Petroff" class="" size="32" maxlength="120" filter="" />
@@ -57,36 +57,34 @@
 				<!-- show only when type:equirectangular,equirectangular_hotspots,equirectangular_tour -->
 				<field name="equirectangular_options" type="note" class="alert alert-info" label="MOD_EQUIRECTANGULAR_OPTIONS" description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" />
 
-				<field type="text" label="MOD_PANORAMA" name="panorama" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" default="https://pannellum.org/images/alma.jpg" 
-					size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV" name="haov" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_HORIZO" 
-					default="360" class="input-mini"	size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV" name="vaov" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_VERTIC" 
-					default="180" class="input-mini"	size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET" name="voffset" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_VERTICAL_OFFSET_OF_" 
-					default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="text" label="MOD_PANORAMA" name="panorama" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_URL_TO_THE_EQUIRECT" default="https://pannellum.org/images/alma.jpg"
+					  size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV" name="haov" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+					  default="360" class="input-mini"	size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV" name="vaov" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+					  default="180" class="input-mini"	size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET" name="voffset" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+					  default="0" class="input-mini"	size="3" maxlength="3" />
 				<field type="radio" label="MOD_IGNOREGPANOXMP" name="ignoregpanoxmp" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED" default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
 				<field type="text" label="MOD_BACKGROUNDCOLOR" name="backgroundcolor" showon="ptype:equirectangular,equirectangular_hotspots,equirectangular_tour" description="MOD_SPECIFIES_AN_ARRAY_CONTAININ" default="0, 0, 0" size="16" maxlength="16" class="input-small" />
 				
 				<!-- show only when CUBEMAP selected -> type:cubemap,cubemap_hotspots,cubemap_tour -->
 				<field type="note" class="alert alert-info" name="mycubemap" label="MOD_CUBEMAP_OPTIONS" description="MOD_CUBEMAP_SPECIFIC_OPTIONS" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" />
-				<field type="text" label="MOD_CUBEMAP_FRONT" name="cubemap_front" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_FRONT" 
-					default="examplepanocube0.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_RIGHT" name="cubemap_right" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_RIGHT" 
-					default="examplepanocube1.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_BACK" name="cubemap_back" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_BACK" 
-					default="examplepanocube2.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_LEFT" name="cubemap_left" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_LEFT" 
-					default="examplepanocube3.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_UP" name="cubemap_up" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_UP" 
-					default="examplepanocube4.jpg" size="60" maxlength="256" />
-				<field type="text" label="MOD_CUBEMAP_DOWN" name="cubemap_down" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_DOWN" 
-					default="examplepanocube5.jpg" size="60" maxlength="256" />
-
-
+				<field type="text" label="MOD_CUBEMAP_FRONT" name="cubemap_front" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_FRONT"
+					  default="examplepanocube0.jpg" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT" name="cubemap_right" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+					  default="examplepanocube1.jpg" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK" name="cubemap_back" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_BACK"
+					  default="examplepanocube2.jpg" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT" name="cubemap_left" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_LEFT"
+					  default="examplepanocube3.jpg" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP" name="cubemap_up" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_UP"
+					  default="examplepanocube4.jpg" size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN" name="cubemap_down" showon="ptype:cubemap,cubemap_hotspots,cubemap_tour" description="MOD_THIS_IS_AN_ARRAY_DOWN"
+					  default="examplepanocube5.jpg" size="60" maxlength="256" />
 
 				<!-- show only when MULTIRES selected -> type:multires,multires_hotspots,multires_tour -->
 				<field type="note" class="alert alert-info" name="multires_options" label="MOD_MULTIRES_OPTIONS" description="MOD_MULTIRES_SPECIFIC_OPTIONS" showon="ptype:multires,multires_hotspots,multires_tour" />
@@ -96,10 +94,10 @@
 				<field type="text" label="MOD_MULTIRES_BASEPATH" name="multires_basepath" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_MULTIRES_BASEPATH_DESCRIPTION" default="https://pannellum.org/images/multires/library" class="input-xxlarge" size="64" maxlength="256" filter="" />
 				<field type="text" label="MOD_MULTIRES_PATH" name="multires_path" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_IS_A_FORMAT_STRING_FOR_" default="/%l/%s%y_%x" class="input-medium" size="32" maxlength="256" filter="" />
 				<field type="text" label="MOD_MULTIRES_FALLBACKPATH" name="multires_fallbackpath" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION" default="/fallback/%s" class="input-medium" size="32" maxlength="256" filter="" />
-				<field type="list" label="MOD_MULTIRES_EXTENSION" name="multires_extension" showon="ptype:multires,multires_hotspots,multires_tour" 
-					description="MOD_SPECIFIES_THE_TILES____FILE_" 
-					default="jpg" class="btn-group btn-group-yesno input-small" >
-					<option value="jpg">JPG</option>
+				<field type="list" label="MOD_MULTIRES_EXTENSION" name="multires_extension" showon="ptype:multires,multires_hotspots,multires_tour"
+					  description="MOD_SPECIFIES_THE_TILES____FILE_"
+					  default="jpg" class="btn-group btn-group-yesno input-small" >
+					 <option value="jpg">JPG</option>
                     <option value="png">PNG</option>
 				</field>
 				<field type="text" label="MOD_MULTIRES_TILERESOLUTION" name="multires_tileresolution" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P" default="512" class="input-mini" />
@@ -107,94 +105,111 @@
 				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION" name="multires_cuberesolution" showon="ptype:multires,multires_hotspots,multires_tour" description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION" default="8432" class="input-mini" />
 
 
-
-
 				<!-- show only when VIDEO show only when type:video -->
 				<field type="note" class="alert alert-info" name="myvideo" label="MOD_VIDEO" description="MOD_VIDEO_JS" showon="ptype:video" />
-				<field type="radio" label="MOD_DYNAMIC" showon="ptype:video" 
-					name="dynamic" description="MOD_THE_PANORAMA_SOURCE_IS_CONSI" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_DYNAMIC" showon="ptype:video"
+					  name="dynamic" description="MOD_THE_PANORAMA_SOURCE_IS_CONSI"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
 				<field type="text" label="MOD_VIDEOCLASSES" name="video_classes" showon="ptype:video" description="MOD_VIDEOCLASSES_DESC" default="video-js vjs-default-skin vjs-big-play-centered" class="input-xxlarge" size="32" maxlength="256" />
-				<field type="radio" label="MOD_VIDEOCONTROLS" showon="ptype:video" 
-					name="video_controls" description="MOD_VIDEOCONTROLS_DESC" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_VIDEOCONTROLS" showon="ptype:video"
+					  name="video_controls" description="MOD_VIDEOCONTROLS_DESC"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_VIDEOAUTOPLAY" showon="ptype:video" 
-					name="video_autoplay" description="MOD_VIDEOAUTOPLAY_DESC" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_VIDEOAUTOPLAY" showon="ptype:video"
+					  name="video_autoplay" description="MOD_VIDEOAUTOPLAY_DESC"
+					  default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
-				<field 
-					type="list"
-					label="MOD_VIDEOPRELOAD" showon="ptype:video"
-					name="video_preload"
-					description="MOD_VIDEOPRELOAD_DESC"
-					default="none" class="input-medium">
-					<option value="auto">auto</option>
-					<option value="metadata">metadata</option>
-					<option value="none">none</option>
+				<field
+					  type="list"
+					 label="MOD_VIDEOPRELOAD" showon="ptype:video"
+					 name="video_preload"
+					 description="MOD_VIDEOPRELOAD_DESC"
+					 default="none" class="input-medium">
+					 <option value="auto">auto</option>
+					 <option value="metadata">metadata</option>
+					 <option value="none">none</option>
 				</field>
 				<field type="text" label="MOD_VIDEOSTYLE" showon="ptype:video" name="video_style" description="MOD_VIDEOSTYLE_DESC" default="width:100%;height:390px;" class="input-xxlarge" size="32" maxlength="256" />
 				<field type="text" label="MOD_VIDEOPOSTER" showon="ptype:video" name="video_poster" description="MOD_VIDEOPOSTER_DESC" default="https://pannellum.org/images/video/jfk-poster.jpg" class="input-xxlarge" size="32" maxlength="256" />
-				<field type="radio" label="MOD_VIDEOLOOP" showon="ptype:video" 
-					name="video_loop" description="MOD_VIDEOLOOP_DESC" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_VIDEOLOOP" showon="ptype:video"
+					  name="video_loop" description="MOD_VIDEOLOOP_DESC"
+					  default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_VIDEODATASETUP" showon="ptype:video" 
-					name="video_datasetup" description="MOD_VIDEODATASETUP_DESC" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_VIDEODATASETUP" showon="ptype:video"
+					  name="video_datasetup" description="MOD_VIDEODATASETUP_DESC"
+					  default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_VIDEOCROSSORIGIN" showon="ptype:video" 
-					name="video_crossorigin" description="MOD_VIDEOCROSSORIGIN_DESC" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_VIDEOCROSSORIGIN" showon="ptype:video"
+					  name="video_crossorigin" description="MOD_VIDEOCROSSORIGIN_DESC"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
 				<field type="text" label="MOD_VIDEOWEBMSOURCE" name="video_webmsource" showon="ptype:video" description="MOD_VIDEOWEBMSOURCE_DESC" default="https://pannellum.org/images/video/jfk.webm" class="input-xxlarge" size="32" maxlength="256" />
 				<field type="text" label="MOD_VIDEOMP4SOURCE" name="video_mp4source" showon="ptype:video" description="MOD_VIDEOMP4SOURCE_DESC" default="https://pannellum.org/images/video/jfk.mp4" class="input-xxlarge" size="32" maxlength="256" />
 				<!-- END VIDEO show only when type:video -->
 
 
-				<!-- show OPTIONAL FIELDS when optionalfields:1 -->
-				<field 
-					type="radio"
-					label="Optional"
-					name="optionalfields"
-					description="MOD_OPTIONAL_FIELDS_DESC"
-					default="0"
-					class="btn-group btn-group-yesno"
-					>
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<!-- show only when NOT a TOUR! show only when ptype: equirectangular, equirectangular_hotspots, cubemap, cubemap_hotspots, multires, multires_hotspots -->
+				<field type="list" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" showon="ptype:equirectangular,equirectangular_hotspots,cubemap,cubemap_hotspots,multires,multires_hotspots"
+					 description="MOD_WHEN_TRUE__THE_MOUSE_POINTER"
+					  default="no" class="input-small" >
+					 <option value="no">False</option>
+					 <option value="yes">True</option>
 				</field>
-				<field 
-					type="radio"
-					label="MOD_AUTOLOAD"
-					name="autoload"
-					description="MOD_WHEN_SET_TO_TRUE__THE_PANORA"
-					default="0"
-					class="btn-group btn-group-yesno" showon="optionalfields:1"
-					>
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="subform" showon="ptype:equirectangular,equirectangular_hotspots,cubemap,cubemap_hotspots,multires,multires_hotspots"
+			    name="multiple_hotspots"
+			    label="MOD_HOTSPOTS_FIELD" 
+			    description="MOD_HOTSPOTS_FIELD_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scenesform.xml"
+			    multiple="true" 
+			    groupByFieldset="true" 
+			    layout="joomla.form.field.subform.repeatable-table" 
+				/>
+
+
+				<!-- show OPTIONAL FIELDS when optionalfields:1 -->
+				<field
+					  type="radio"
+					 label="Optional"
+					 name="optionalfields"
+					 description="MOD_OPTIONAL_FIELDS_DESC"
+					 default="0"
+					 class="btn-group btn-group-yesno"
+					 >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field
+					  type="radio"
+					 label="MOD_AUTOLOAD"
+					 name="autoload"
+					 description="MOD_WHEN_SET_TO_TRUE__THE_PANORA"
+					 default="0"
+					 class="btn-group btn-group-yesno" showon="optionalfields:1"
+					 >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
 				<field type="text" label="MOD_AUTOROTATE" name="autorotate" showon="optionalfields:1" description="MOD_SETTING_THIS_PARAMETER_CAUSE" class="input-mini" />
 				<field type="text" label="MOD_AUTOROTATEINACTIVITYDELAY" name="autorotateinactivitydelay" showon="optionalfields:1[AND]autorotate:1,2,3,4,5,6,7,8,9,10,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10" description="MOD_SETS_THE_DELAY__IN_MILLISECO" class="input-mini" />
 				<field type="text" label="MOD_AUTOROTATESTOPDELAY" name="autorotatestopdelay" showon="optionalfields:1[AND]autorotate:1,2,3,4,5,6,7,8,9,10,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10" description="MOD_SETS_THE_DELAY__IN_MILLISECO_DESCRIPTION" class="input-mini" />
 
 				<field type="radio" label="MOD_COMPASS" name="compass" showon="optionalfields:1" description="MOD_IF_TRUE__A_COMPASS_IS_DISPLA" default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JSHOW</option>
-					<option value="0">JHIDE</option>
+					 <option value="1">JSHOW</option>
+					 <option value="0">JHIDE</option>
 				</field>
 				<field type="text" label="MOD_NORTHOFFSET" name="northoffset" 
 				showon="optionalfields:1[AND]compass:1" 
@@ -207,124 +222,519 @@
 				<field type="text" label="MOD_PITCH" name="pitch" showon="optionalfields:1" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION" default="0" class="input-mini" />
 				<field type="text" label="MOD_HFOV" name="hfov" showon="optionalfields:1" description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1" default="100" class="input-mini" />
 
-				<field type="radio" label="MOD_ORIENTATIONONBYDEFAULT" showon="optionalfields:1" name="orientationonbydefault" 
-					description="MOD_IF_SET_TO_TRUE__DEVICE_ORIEN" 
-					default="0" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_ORIENTATIONONBYDEFAULT" showon="optionalfields:1" name="orientationonbydefault"
+					  description="MOD_IF_SET_TO_TRUE__DEVICE_ORIEN"
+					  default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
 				<field type="radio" label="MOD_SHOWZOOMCTRL" name="showzoomctrl"  showon="optionalfields:1"
-					description="MOD_IF_SET_TO_FALSE__THE_ZOOM_CO" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JSHOW</option>
-					<option value="0">JHIDE</option>
+					 description="MOD_IF_SET_TO_FALSE__THE_ZOOM_CO"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JSHOW</option>
+					 <option value="0">JHIDE</option>
 				</field>
-				<field type="radio" label="MOD_KEYBOARDZOOM" showon="optionalfields:1" 
-					name="keyboardzoom" description="MOD_IF_SET_TO_FALSE__ZOOMING_WIT" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_KEYBOARDZOOM" showon="optionalfields:1"
+					  name="keyboardzoom" description="MOD_IF_SET_TO_FALSE__ZOOMING_WIT"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_MOUSEZOOM" name="mousezoom" showon="optionalfields:1" 
-					description="MOD_IF_SET_TO_FALSE__ZOOMING_WIT_DESCRIPTION" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+				<field type="radio" label="MOD_MOUSEZOOM" name="mousezoom" showon="optionalfields:1"
+					  description="MOD_IF_SET_TO_FALSE__ZOOMING_WIT_DESCRIPTION"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
 				</field>
-				<field type="radio" label="MOD_SHOWFULLSCREENCTRL" name="showfullscreenctrl" showon="optionalfields:1" 
-					description="MOD_IF_SET_TO_FALSE__THE_FULLSCR" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JSHOW</option>
-					<option value="0">JHIDE</option>
+				<field type="radio" label="MOD_SHOWFULLSCREENCTRL" name="showfullscreenctrl" showon="optionalfields:1"
+					  description="MOD_IF_SET_TO_FALSE__THE_FULLSCR"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JSHOW</option>
+					 <option value="0">JHIDE</option>
 				</field>
-				<field type="radio" label="MOD_SHOWCONTROLS" name="showcontrols" showon="optionalfields:1" 
-					description="MOD_IF_SET_TO_FALSE__NO_CONTROLS" 
-					default="1" class="btn-group btn-group-yesno" >
-					<option value="1">JSHOW</option>
-					<option value="0">JHIDE</option>
+				<field type="radio" label="MOD_SHOWCONTROLS" name="showcontrols" showon="optionalfields:1"
+					  description="MOD_IF_SET_TO_FALSE__NO_CONTROLS"
+					  default="1" class="btn-group btn-group-yesno" >
+					 <option value="1">JSHOW</option>
+					 <option value="0">JHIDE</option>
 				</field>
 			</fieldset>
 			
-
-			
-			<!-- HOTSPOTS ONLY -->
+			<!-- HOTSPOTS ONLY
 			<fieldset name="hotspots" label="MOD_HOTSPOTS" description="MOD_THIS_SPECIFIES_AN_ARRAY_OF_H">
-				<field type="list" label="MOD_HOTSPOTDEBUG" name="hotspotdebug" 
-					description="MOD_WHEN_TRUE__THE_MOUSE_POINTER" 
-					default="no" class="input-small" >
-					<option value="no">False</option>
-					<option value="yes">True</option>
+			</fieldset> -->
+
+
+
+			<!-- TOUR ONE & HOTSPOTS -->
+			<fieldset name="tour_one" label="MOD_TOUR_ONE" description="MOD_TOUR_ONE_DESC">
+				<field type="list" label="MOD_HOTSPOTDEBUG" name="tour_one_hotspotdebug"
+					  description="MOD_WHEN_TRUE__THE_MOUSE_POINTER"
+					  default="no" class="input-small" >
+					 <option value="no">False</option>
+					 <option value="yes">True</option>
 				</field>
-				<field type="subform" 
-			    name="multiple_hotspots"
-			    label="MOD_HOTSPOTS_FIELD" 
-			    description="MOD_HOTSPOTS_FIELD_DESC"
-			    required="false"
-			    formsource="modules/mod_r3d_pannellum/elements/scenesform.xml"
-			    multiple="true" 
-			    groupByFieldset="true" 
-			    layout="joomla.form.field.subform.repeatable-table" 
-				/>
-			</fieldset>
-
-
-			<!-- TOURS & HOTSPOTS -->
-			<fieldset name="tours" label="MOD_TOURS" description="MOD_TOURS_DESC">
-				<field type="text" label="MOD_TOURS_FIRSTSCENE" name="tour_firstscene" description="MOD_TOURS_FIRSTSCENE_DESC" default="" class="input-medium" size="32" maxlength="256" />
+				<field type="text" label="MOD_TOURS_FIRSTSCENE" name="tour_firstscene" description="MOD_TOURS_FIRSTSCENE_DESC"
+					  default="Scene One"
+					  class="input-medium" size="32" maxlength="256" />
+				
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="scene_one_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+					  default="scene-one"
+					  class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE" name="scene_one_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+					  default="Scene One"
+					  class="" size="32" maxlength="120" filter="" />
 
 				<field type="subform" 
-			    name="multiple_tours"
-			    label="Add Tour" 
-			    description="Please Click to add Tour parameters"
+			    name="scene_one"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
 			    required="false"
-			    formsource="modules/mod_r3d_pannellum/elements/toursform.xml"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_one_form.xml"
 			    multiple="true" 
 				/>
 				<field type="subform" 
-			    name="scene_hotspots"
-			    label="Add Hot Spots" 
-			    description="Add Hot Spots to Tours"
+			    name="scene_one_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
 			    required="false"
-			    formsource="modules/mod_r3d_pannellum/elements/tour_hotspotsform.xml"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_one_hotspotsform.xml"
 			    multiple="true" 
 				/>
 			</fieldset>
+
+			<!-- TOUR TWO & HOTSPOTS -->
+			<fieldset name="tour_two" label="MOD_TOUR_TWO" description="MOD_TOUR_TWO_DESC">
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+				 name="scene_two_sceneid"
+				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+				 default="scene-two"
+				 class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE"
+				 name="scene_two_title"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+				 default="Scene Two"
+				 class="" size="32" maxlength="120" filter="" />
+
+				<field type="text" label="MOD_AUTHOR"
+				 name="scene_two_author"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
+				 default="Matthew Petroff"
+				 class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PANORAMA"
+				 name="scene_two_panorama"
+				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
+				 default="https://pannellum.org/images/alma.jpg"
+				 size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV"
+				 name="scene_two_haov"
+				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+				 default="360" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV"
+				 name="scene_two_vaov"
+				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+				 default="180" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET"
+				 name="scene_two_voffset"
+				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+				 default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="radio" label="MOD_IGNOREGPANOXMP"
+				 name="scene_two_ignoregpanoxmp"
+				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
+				 default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field type="text" label="MOD_BACKGROUNDCOLOR"
+				 name="scene_two_backgroundcolor"
+				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
+				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+
+				<field type="subform" 
+			    name="scene_two"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_two_form.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_two_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_two_hotspotsform.xml"
+			    multiple="true" 
+				/>
+			</fieldset>
+
+			<!-- TOUR THREE & HOTSPOTS -->
+			<fieldset name="tour_three" label="MOD_TOUR_THREE" description="MOD_TOUR_THREE_DESC">
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+				 name="scene_three_sceneid"
+				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+				 default="scene-three"
+				 class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE"
+				 name="scene_three_title"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+				 default="Scene Three"
+				 class="" size="32" maxlength="120" filter="" />
+
+				<field type="text" label="MOD_AUTHOR"
+				 name="scene_three_author"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
+				 default="Matthew Petroff"
+				 class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PANORAMA"
+				 name="scene_three_panorama"
+				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
+				 default="https://pannellum.org/images/alma.jpg"
+				 size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV"
+				 name="scene_three_haov"
+				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+				 default="360" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV"
+				 name="scene_three_vaov"
+				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+				 default="180" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET"
+				 name="scene_three_voffset"
+				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+				 default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="radio" label="MOD_IGNOREGPANOXMP"
+				 name="scene_three_ignoregpanoxmp"
+				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
+				 default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field type="text" label="MOD_BACKGROUNDCOLOR"
+				 name="scene_three_backgroundcolor"
+				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
+				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+
+				<field type="subform" 
+			    name="scene_three"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_three_form.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_three_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_three_hotspotsform.xml"
+			    multiple="true" 
+				/>
+			</fieldset>
+
+			<!-- TOUR FOUR & HOTSPOTS -->
+			<fieldset name="tour_four" label="MOD_TOUR_FOUR" description="MOD_TOUR_FOUR_DESC">
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+				 name="scene_four_sceneid"
+				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+				 default="scene-four"
+				 class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE"
+				 name="scene_four_title"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+				 default="Scene Four"
+				 class="" size="32" maxlength="120" filter="" />
+
+				<field type="text" label="MOD_AUTHOR"
+				 name="scene_four_author"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
+				 default="Matthew Petroff"
+				 class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PANORAMA"
+				 name="scene_four_panorama"
+				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
+				 default="https://pannellum.org/images/alma.jpg"
+				 size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV"
+				 name="scene_four_haov"
+				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+				 default="360" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV"
+				 name="scene_four_vaov"
+				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+				 default="180" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET"
+				 name="scene_four_voffset"
+				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+				 default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="radio" label="MOD_IGNOREGPANOXMP"
+				 name="scene_four_ignoregpanoxmp"
+				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
+				 default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field type="text" label="MOD_BACKGROUNDCOLOR"
+				 name="scene_four_backgroundcolor"
+				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
+				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+
+				<field type="subform" 
+			    name="scene_four"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_four_form.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_four_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_four_hotspotsform.xml"
+			    multiple="true" 
+				/>
+			</fieldset>
+
+			<!-- TOUR FIVE & HOTSPOTS -->
+			<fieldset name="tour_five" label="MOD_TOUR_FIVE" description="MOD_TOUR_FIVE_DESC">
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+				 name="scene_five_sceneid"
+				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+				 default="scene-five"
+				 class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE"
+				 name="scene_five_title"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+				 default="Scene Five"
+				 class="" size="32" maxlength="120" filter="" />
+
+				<field type="text" label="MOD_AUTHOR"
+				 name="scene_five_author"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
+				 default="Matthew Petroff"
+				 class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PANORAMA"
+				 name="scene_five_panorama"
+				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
+				 default="https://pannellum.org/images/alma.jpg"
+				 size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV"
+				 name="scene_five_haov"
+				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+				 default="360" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV"
+				 name="scene_five_vaov"
+				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+				 default="180" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET"
+				 name="scene_five_voffset"
+				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+				 default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="radio" label="MOD_IGNOREGPANOXMP"
+				 name="scene_five_ignoregpanoxmp"
+				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
+				 default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field type="text" label="MOD_BACKGROUNDCOLOR"
+				 name="scene_five_backgroundcolor"
+				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
+				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+
+				<field type="subform" 
+			    name="scene_five"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_five_form.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_five_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_five_hotspotsform.xml"
+			    multiple="true" 
+				/>
+			</fieldset>
+
+			<!-- TOUR SIX & HOTSPOTS -->
+			<fieldset name="tour_six" label="MOD_TOUR_SIX" description="MOD_TOUR_SIX_DESC">
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+				 name="scene_six_sceneid"
+				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+				 default="scene-six"
+				 class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE"
+				 name="scene_six_title"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+				 default="Scene Six"
+				 class="" size="32" maxlength="120" filter="" />
+
+				<field type="text" label="MOD_AUTHOR"
+				 name="scene_six_author"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
+				 default="Matthew Petroff"
+				 class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PANORAMA"
+				 name="scene_six_panorama"
+				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
+				 default="https://pannellum.org/images/alma.jpg"
+				 size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV"
+				 name="scene_six_haov"
+				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+				 default="360" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV"
+				 name="scene_six_vaov"
+				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+				 default="180" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET"
+				 name="scene_six_voffset"
+				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+				 default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="radio" label="MOD_IGNOREGPANOXMP"
+				 name="scene_six_ignoregpanoxmp"
+				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
+				 default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field type="text" label="MOD_BACKGROUNDCOLOR"
+				 name="scene_six_backgroundcolor"
+				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
+				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+
+				<field type="subform" 
+			    name="scene_six"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_six_form.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_six_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_six_hotspotsform.xml"
+			    multiple="true" 
+				/>
+			</fieldset>
+
+			<!-- TOUR SEVEN & HOTSPOTS -->
+			<fieldset name="tour_seven" label="MOD_TOUR_SEVEN" description="MOD_TOUR_SEVEN_DESC">
+
+				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+				 name="scene_seven_sceneid"
+				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+				 default="scene-seven"
+				 class="input-medium" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_TITLE"
+				 name="scene_seven_title"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
+				 default="Scene Seven"
+				 class="" size="32" maxlength="120" filter="" />
+
+				<field type="text" label="MOD_AUTHOR"
+				 name="scene_seven_author"
+				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
+				 default="Matthew Petroff"
+				 class="" size="32" maxlength="120" filter="" />
+				<field type="text" label="MOD_PANORAMA"
+				 name="scene_seven_panorama"
+				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
+				 default="https://pannellum.org/images/alma.jpg"
+				 size="32" maxlength="250" class="input-xxlarge" />
+				<field type="text" label="MOD_HAOV"
+				 name="scene_seven_haov"
+				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
+				 default="360" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VAOV"
+				 name="scene_seven_vaov"
+				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
+				 default="180" class="input-mini" size="3" maxlength="3" />
+				<field type="text" label="MOD_VOFFSET"
+				 name="scene_seven_voffset"
+				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
+				 default="0" class="input-mini"	size="3" maxlength="3" />
+				<field type="radio" label="MOD_IGNOREGPANOXMP"
+				 name="scene_seven_ignoregpanoxmp"
+				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
+				 default="0" class="btn-group btn-group-yesno" >
+					 <option value="1">JYES</option>
+					 <option value="0">JNO</option>
+				</field>
+				<field type="text" label="MOD_BACKGROUNDCOLOR"
+				 name="scene_seven_backgroundcolor"
+				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
+				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+
+				<field type="subform" 
+			    name="scene_seven"
+			    label="MOD_TOURS_CONNECT_TO_SCENE" 
+			    description="MOD_TOURS_CONNECT_TO_SCENE_DESC" 
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_seven_form.xml"
+			    multiple="true" 
+				/>
+				<field type="subform" 
+			    name="scene_seven_hotspots"
+			    label="MOD_TOURS_ADD_HOTSPOTS" 
+			    description="MOD_TOURS_ADD_HOTSPOTS_DESC"
+			    required="false"
+			    formsource="modules/mod_r3d_pannellum/elements/scene_seven_hotspotsform.xml"
+			    multiple="true" 
+				/>
+			</fieldset>
+
 
 			<fieldset
 				name="advanced">
 				<field
-					name="layout"
-					type="modulelayout"
-					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+					 name="layout"
+					 type="modulelayout"
+					 label="JFIELD_ALT_LAYOUT_LABEL"
+					 description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
 				<field
-					name="moduleclass_sfx"
-					type="textarea" rows="3"
-					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+					 name="moduleclass_sfx"
+					 type="textarea" rows="3"
+					 label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					 description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
 				<field
-					name="cache"
-					type="list"
-					default="1"
-					label="COM_MODULES_FIELD_CACHING_LABEL"
-					description="COM_MODULES_FIELD_CACHING_DESC">
-					<option
-						value="1">JGLOBAL_USE_GLOBAL</option>
-					<option
-						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+					 name="cache"
+					 type="list"
+					 default="1"
+					 label="COM_MODULES_FIELD_CACHING_LABEL"
+					 description="COM_MODULES_FIELD_CACHING_DESC">
+					 <option
+					 	value="1">JGLOBAL_USE_GLOBAL</option>
+					 <option
+					 	value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 				</field>
 				<field
-					name="cache_time"
-					type="text"
-					default="900"
-					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
-					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+					 name="cache_time"
+					 type="text"
+					 default="900"
+					 label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					 description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
 				<field
-					name="cachemode"
-					type="hidden"
-					default="static">
-					<option
-						value="static"></option>
+					 name="cachemode"
+					 type="hidden"
+					 default="static">
+					 <option
+					 	value="static"></option>
 				</field>
 			</fieldset>
 		</fields>

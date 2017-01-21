@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="scene_one_hotspots" label="MOD_TOURHOTSPOTS_LBL" description="MOD_TOURHOTSPOTS_LBL_DESC" >
+		<field type="text" label="MOD_TOURHOTSPOTS_PITCH"
+		 name="scene_one_hotspots_pitch"
+		 description="MOD_TOURHOTSPOTS_PITCH_DESC"
+		 default="14.1"
+		 class="input-mini" />
+		<field type="text" label="MOD_TOURHOTSPOTS_YAW"
+		 name="scene_one_hotspots_yaw"
+		 description="MOD_TOURHOTSPOTS_YAW_DESC"
+		 default="1.5"
+		 class="input-mini" />
+		<field type="text" label="MOD_TOURHOTSPOTS_TEXT"
+		 name="scene_one_hotspots_text"
+		 description="MOD_TOURHOTSPOTS_TEXT_DESC"
+		 default="Info button with test link to pannellum"
+		 class="input-xlarge" size="32" maxlength="256" filter="" />
+		<field type="url" label="MOD_TOURHOTSPOTS_URL"
+		 name="scene_one_hotspots_url"
+		 description="MOD_TOURHOTSPOTS_URL_DESC"
+		 default="https://pannellum.org/"
+		 class="input-xlarge" size="32" maxlength="256" filter="" />
+	</fieldset>
+</form>

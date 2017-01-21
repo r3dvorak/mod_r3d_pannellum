@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+Changes in mod_r3d_pannellum 1.4.0
+--------------------------
+
+New Features:
+ - Add 7 individual Tours with mutiple Hot Spots and scenes
+
+
 Changes in mod_r3d_pannellum 1.3.7
 --------------------------
 

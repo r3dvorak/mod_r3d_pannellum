@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="scenes-six" label="Add Scenes and Hot Spots">
+		<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL"
+		 name="scene_six_connect2_sceneid"
+		 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
+		 default="scene-seven"
+		 class="input-medium" size="32" maxlength="120" filter="" />
+
+		<field type="text" label="MOD_TARGETPITCH"
+		 name="scene_six_targetpitch"
+		 description="MOD_SPECIFIES_THE_PITCH_OF_THE_T"
+		 default=""
+		 class="input-mini" />
+		<field type="text" label="MOD_TARGETYAW"
+		 name="scene_six_targetyaw"
+		 description="MOD_SPECIFIES_THE_YAW_OF_THE_TAR"
+		 default=""
+		 class="input-mini" />
+		<field type="text" label="MOD_TARGETHFOV"
+		 name="scene_six_targethfov"
+		 description="MOD_SPECIFIES_THE_HFOV_OF_THE_TA"
+		 default=""
+		 class="input-mini" />
+		<field type="text" label="MOD_SCENEFADEDURATION"
+		 name="scene_six_scenefadeduration"
+		 description="MOD_SPECIFIES_THE_FADE_DURATION_"
+		 default=""
+		  class="input-mini" />
+		<field type="text" label="MOD_HOTSPOTS_CSSCLASS"
+		 name="scene_six_hotspots_cssclass"
+		 description="MOD_IF_SPECIFIED__STRING_IS_USED"
+		 default=""
+		  class="input-xlarge" size="32" maxlength="120" filter="" />
+	</fieldset>
+</form>
