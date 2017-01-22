@@ -284,7 +284,7 @@
 				<field type="text" label="MOD_TITLE" name="scene_one_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 					  default="Scene One"
 					  class="" size="32" maxlength="120" filter="" />
-
+				<!-- special in tour one: all other params will be taken from the default page ! -->
 				<field type="subform" 
 			    name="scene_one"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -303,6 +303,7 @@
 				/>
 			</fieldset>
 
+
 			<!-- TOUR TWO & HOTSPOTS -->
 			<fieldset name="tour_two" label="MOD_TOUR_TWO" description="MOD_TOUR_TWO_DESC">
 
@@ -311,6 +312,7 @@
 				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
 				 default="scene-two"
 				 class="input-medium" size="32" maxlength="120" filter="" />
+
 				<field type="text" label="MOD_TITLE"
 				 name="scene_two_title"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
@@ -322,35 +324,144 @@
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
 				 default="Matthew Petroff"
 				 class="" size="32" maxlength="120" filter="" />
+
+				<!-- NO default page - therefore set basic params, acc. to ptype -->
+				<!-- show only when equirectangular_tour selected -->
+				<field name="scene_two_equirectangular_options"
+				 type="note"
+				 class="alert alert-info"
+				 label="MOD_EQUIRECTANGULAR_OPTIONS"
+				 description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT"
+				 showon="ptype:equirectangular_tour" />
+
 				<field type="text" label="MOD_PANORAMA"
 				 name="scene_two_panorama"
 				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
-				 default="https://pannellum.org/images/alma.jpg"
-				 size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV"
-				 name="scene_two_haov"
-				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
-				 default="360" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV"
-				 name="scene_two_vaov"
-				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
-				 default="180" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET"
-				 name="scene_two_voffset"
-				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
-				 default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP"
-				 name="scene_two_ignoregpanoxmp"
-				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
-				 default="0" class="btn-group btn-group-yesno" >
-					 <option value="1">JYES</option>
-					 <option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR"
-				 name="scene_two_backgroundcolor"
-				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
-				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				 default=""
+				 size="32" maxlength="250" class="input-xxlarge"
+				 showon="ptype:equirectangular_tour" />
+				
+				<field type="text" label="MOD_YAW"
+				 name="scene_two_yaw"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_PITCH"
+				 name="scene_two_pitch"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_HFOV"
+				 name="scene_two_hfov"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+				 default="100"
+				 class="input-mini" />
 
+				<!-- show only when CUBEMAP TOUR selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_two_mycubemap"
+				 label="MOD_CUBEMAP_OPTIONS"
+				 description="MOD_CUBEMAP_SPECIFIC_OPTIONS"
+				 showon="ptype:cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT"
+				 name="scene_two_cubemap_front"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_FRONT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT"
+				 name="scene_two_cubemap_right"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK"
+				 name="scene_two_cubemap_back"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_BACK"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT"
+				 name="scene_two_cubemap_left"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_LEFT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP"
+				 name="scene_two_cubemap_up"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_UP"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN"
+				 name="scene_two_cubemap_down"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_DOWN"
+				 default=""
+				 size="60" maxlength="256" />
+
+				<!-- show only when multires_tour selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_two_multires_options"
+				 label="MOD_MULTIRES_OPTIONS"
+				 description="MOD_MULTIRES_SPECIFIC_OPTIONS"
+				 showon="ptype:multires_tour" />
+				<field type="text" label="MOD_PREVIEW_IMAGE"
+				 name="scene_two_multires_preview_image"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE"
+				 default=""
+				 class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH"
+				 name="scene_two_multires_basepath"
+				 showon="ptype:multires_tour"
+				 description="MOD_MULTIRES_BASEPATH_DESCRIPTION"
+				 default=""
+				 class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH"
+				 name="scene_two_multires_path"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR_"
+				 default="/%l/%s%y_%x"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH"
+				 name="scene_two_multires_fallbackpath"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION"
+				 default="/fallback/%s"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION"
+				 name="scene_two_multires_extension"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_THE_TILES____FILE_"
+				 default="jpg"
+				 class="btn-group btn-group-yesno input-small" >
+					<option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+				</field>
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION"
+				 name="scene_two_multires_tileresolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P"
+				 default="512"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL"
+				 name="scene_two_multires_maxlevel"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z"
+				 default="6"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION"
+				 name="scene_two_multires_cuberesolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION"
+				 default="8432"
+				 class="input-mini" />
+				
+				<!-- call SUBFORMS -->
 				<field type="subform" 
 			    name="scene_two"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -382,41 +493,149 @@
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 				 default="Scene Three"
 				 class="" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_AUTHOR"
 				 name="scene_three_author"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
 				 default="Matthew Petroff"
 				 class="" size="32" maxlength="120" filter="" />
+
+				<!-- NO default page - therefore set basic params, acc. to ptype -->
+				<!-- show only when equirectangular_tour selected -->
+				<field name="scene_three_equirectangular_options"
+				 type="note"
+				 class="alert alert-info"
+				 label="MOD_EQUIRECTANGULAR_OPTIONS"
+				 description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT"
+				 showon="ptype:equirectangular_tour" />
+
 				<field type="text" label="MOD_PANORAMA"
 				 name="scene_three_panorama"
 				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
-				 default="https://pannellum.org/images/alma.jpg"
-				 size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV"
-				 name="scene_three_haov"
-				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
-				 default="360" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV"
-				 name="scene_three_vaov"
-				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
-				 default="180" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET"
-				 name="scene_three_voffset"
-				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
-				 default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP"
-				 name="scene_three_ignoregpanoxmp"
-				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
-				 default="0" class="btn-group btn-group-yesno" >
-					 <option value="1">JYES</option>
-					 <option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR"
-				 name="scene_three_backgroundcolor"
-				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
-				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				 default=""
+				 size="32" maxlength="250" class="input-xxlarge"
+				 showon="ptype:equirectangular_tour" />
+				
+				<field type="text" label="MOD_YAW"
+				 name="scene_three_yaw"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_PITCH"
+				 name="scene_three_pitch"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_HFOV"
+				 name="scene_three_hfov"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+				 default="100"
+				 class="input-mini" />
 
+				<!-- show only when CUBEMAP TOUR selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_three_mycubemap"
+				 label="MOD_CUBEMAP_OPTIONS"
+				 description="MOD_CUBEMAP_SPECIFIC_OPTIONS"
+				 showon="ptype:cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT"
+				 name="scene_three_cubemap_front"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_FRONT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT"
+				 name="scene_three_cubemap_right"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK"
+				 name="scene_three_cubemap_back"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_BACK"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT"
+				 name="scene_three_cubemap_left"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_LEFT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP"
+				 name="scene_three_cubemap_up"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_UP"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN"
+				 name="scene_three_cubemap_down"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_DOWN"
+				 default=""
+				 size="60" maxlength="256" />
+
+				<!-- show only when multires_tour selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_three_multires_options"
+				 label="MOD_MULTIRES_OPTIONS"
+				 description="MOD_MULTIRES_SPECIFIC_OPTIONS"
+				 showon="ptype:multires_tour" />
+				<field type="text" label="MOD_PREVIEW_IMAGE"
+				 name="scene_three_multires_preview_image"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE"
+				 default=""
+				 class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH"
+				 name="scene_three_multires_basepath"
+				 showon="ptype:multires_tour"
+				 description="MOD_MULTIRES_BASEPATH_DESCRIPTION"
+				 default=""
+				 class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH"
+				 name="scene_three_multires_path"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR_"
+				 default="/%l/%s%y_%x"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH"
+				 name="scene_three_multires_fallbackpath"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION"
+				 default="/fallback/%s"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION"
+				 name="scene_three_multires_extension"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_THE_TILES____FILE_"
+				 default="jpg"
+				 class="btn-group btn-group-yesno input-small" >
+					<option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+				</field>
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION"
+				 name="scene_three_multires_tileresolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P"
+				 default="512"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL"
+				 name="scene_three_multires_maxlevel"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z"
+				 default="6"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION"
+				 name="scene_three_multires_cuberesolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION"
+				 default="8432"
+				 class="input-mini" />
+				
+				<!-- call SUBFORMS -->
 				<field type="subform" 
 			    name="scene_three"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -448,41 +667,149 @@
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 				 default="Scene Four"
 				 class="" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_AUTHOR"
 				 name="scene_four_author"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
 				 default="Matthew Petroff"
 				 class="" size="32" maxlength="120" filter="" />
+
+				<!-- NO default page - therefore set basic params, acc. to ptype -->
+				<!-- show only when equirectangular_tour selected -->
+				<field name="scene_four_equirectangular_options"
+				 type="note"
+				 class="alert alert-info"
+				 label="MOD_EQUIRECTANGULAR_OPTIONS"
+				 description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT"
+				 showon="ptype:equirectangular_tour" />
+
 				<field type="text" label="MOD_PANORAMA"
 				 name="scene_four_panorama"
 				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
-				 default="https://pannellum.org/images/alma.jpg"
-				 size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV"
-				 name="scene_four_haov"
-				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
-				 default="360" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV"
-				 name="scene_four_vaov"
-				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
-				 default="180" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET"
-				 name="scene_four_voffset"
-				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
-				 default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP"
-				 name="scene_four_ignoregpanoxmp"
-				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
-				 default="0" class="btn-group btn-group-yesno" >
-					 <option value="1">JYES</option>
-					 <option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR"
-				 name="scene_four_backgroundcolor"
-				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
-				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				 default=""
+				 size="32" maxlength="250" class="input-xxlarge"
+				 showon="ptype:equirectangular_tour" />
+				
+				<field type="text" label="MOD_YAW"
+				 name="scene_four_yaw"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_PITCH"
+				 name="scene_four_pitch"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_HFOV"
+				 name="scene_four_hfov"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+				 default="100"
+				 class="input-mini" />
 
+				<!-- show only when CUBEMAP TOUR selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_four_mycubemap"
+				 label="MOD_CUBEMAP_OPTIONS"
+				 description="MOD_CUBEMAP_SPECIFIC_OPTIONS"
+				 showon="ptype:cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT"
+				 name="scene_four_cubemap_front"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_FRONT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT"
+				 name="scene_four_cubemap_right"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK"
+				 name="scene_four_cubemap_back"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_BACK"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT"
+				 name="scene_four_cubemap_left"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_LEFT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP"
+				 name="scene_four_cubemap_up"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_UP"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN"
+				 name="scene_four_cubemap_down"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_DOWN"
+				 default=""
+				 size="60" maxlength="256" />
+
+				<!-- show only when multires_tour selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_four_multires_options"
+				 label="MOD_MULTIRES_OPTIONS"
+				 description="MOD_MULTIRES_SPECIFIC_OPTIONS"
+				 showon="ptype:multires_tour" />
+				<field type="text" label="MOD_PREVIEW_IMAGE"
+				 name="scene_four_multires_preview_image"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE"
+				 default=""
+				 class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH"
+				 name="scene_four_multires_basepath"
+				 showon="ptype:multires_tour"
+				 description="MOD_MULTIRES_BASEPATH_DESCRIPTION"
+				 default=""
+				 class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH"
+				 name="scene_four_multires_path"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR_"
+				 default="/%l/%s%y_%x"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH"
+				 name="scene_four_multires_fallbackpath"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION"
+				 default="/fallback/%s"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION"
+				 name="scene_four_multires_extension"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_THE_TILES____FILE_"
+				 default="jpg"
+				 class="btn-group btn-group-yesno input-small" >
+					<option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+				</field>
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION"
+				 name="scene_four_multires_tileresolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P"
+				 default="512"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL"
+				 name="scene_four_multires_maxlevel"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z"
+				 default="6"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION"
+				 name="scene_four_multires_cuberesolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION"
+				 default="8432"
+				 class="input-mini" />
+				
+				<!-- call SUBFORMS -->
 				<field type="subform" 
 			    name="scene_four"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -514,41 +841,149 @@
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 				 default="Scene Five"
 				 class="" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_AUTHOR"
 				 name="scene_five_author"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
 				 default="Matthew Petroff"
 				 class="" size="32" maxlength="120" filter="" />
+
+				<!-- NO default page - therefore set basic params, acc. to ptype -->
+				<!-- show only when equirectangular_tour selected -->
+				<field name="scene_five_equirectangular_options"
+				 type="note"
+				 class="alert alert-info"
+				 label="MOD_EQUIRECTANGULAR_OPTIONS"
+				 description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT"
+				 showon="ptype:equirectangular_tour" />
+
 				<field type="text" label="MOD_PANORAMA"
 				 name="scene_five_panorama"
 				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
-				 default="https://pannellum.org/images/alma.jpg"
-				 size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV"
-				 name="scene_five_haov"
-				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
-				 default="360" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV"
-				 name="scene_five_vaov"
-				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
-				 default="180" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET"
-				 name="scene_five_voffset"
-				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
-				 default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP"
-				 name="scene_five_ignoregpanoxmp"
-				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
-				 default="0" class="btn-group btn-group-yesno" >
-					 <option value="1">JYES</option>
-					 <option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR"
-				 name="scene_five_backgroundcolor"
-				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
-				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				 default=""
+				 size="32" maxlength="250" class="input-xxlarge"
+				 showon="ptype:equirectangular_tour" />
+				
+				<field type="text" label="MOD_YAW"
+				 name="scene_five_yaw"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_PITCH"
+				 name="scene_five_pitch"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_HFOV"
+				 name="scene_five_hfov"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+				 default="100"
+				 class="input-mini" />
 
+				<!-- show only when CUBEMAP TOUR selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_five_mycubemap"
+				 label="MOD_CUBEMAP_OPTIONS"
+				 description="MOD_CUBEMAP_SPECIFIC_OPTIONS"
+				 showon="ptype:cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT"
+				 name="scene_five_cubemap_front"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_FRONT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT"
+				 name="scene_five_cubemap_right"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK"
+				 name="scene_five_cubemap_back"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_BACK"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT"
+				 name="scene_five_cubemap_left"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_LEFT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP"
+				 name="scene_five_cubemap_up"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_UP"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN"
+				 name="scene_five_cubemap_down"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_DOWN"
+				 default=""
+				 size="60" maxlength="256" />
+
+				<!-- show only when multires_tour selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_five_multires_options"
+				 label="MOD_MULTIRES_OPTIONS"
+				 description="MOD_MULTIRES_SPECIFIC_OPTIONS"
+				 showon="ptype:multires_tour" />
+				<field type="text" label="MOD_PREVIEW_IMAGE"
+				 name="scene_five_multires_preview_image"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE"
+				 default=""
+				 class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH"
+				 name="scene_five_multires_basepath"
+				 showon="ptype:multires_tour"
+				 description="MOD_MULTIRES_BASEPATH_DESCRIPTION"
+				 default=""
+				 class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH"
+				 name="scene_five_multires_path"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR_"
+				 default="/%l/%s%y_%x"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH"
+				 name="scene_five_multires_fallbackpath"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION"
+				 default="/fallback/%s"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION"
+				 name="scene_five_multires_extension"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_THE_TILES____FILE_"
+				 default="jpg"
+				 class="btn-group btn-group-yesno input-small" >
+					<option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+				</field>
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION"
+				 name="scene_five_multires_tileresolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P"
+				 default="512"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL"
+				 name="scene_five_multires_maxlevel"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z"
+				 default="6"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION"
+				 name="scene_five_multires_cuberesolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION"
+				 default="8432"
+				 class="input-mini" />
+				
+				<!-- call SUBFORMS -->
 				<field type="subform" 
 			    name="scene_five"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -580,41 +1015,149 @@
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 				 default="Scene Six"
 				 class="" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_AUTHOR"
 				 name="scene_six_author"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
 				 default="Matthew Petroff"
 				 class="" size="32" maxlength="120" filter="" />
+
+				<!-- NO default page - therefore set basic params, acc. to ptype -->
+				<!-- show only when equirectangular_tour selected -->
+				<field name="scene_six_equirectangular_options"
+				 type="note"
+				 class="alert alert-info"
+				 label="MOD_EQUIRECTANGULAR_OPTIONS"
+				 description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT"
+				 showon="ptype:equirectangular_tour" />
+
 				<field type="text" label="MOD_PANORAMA"
 				 name="scene_six_panorama"
 				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
-				 default="https://pannellum.org/images/alma.jpg"
-				 size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV"
-				 name="scene_six_haov"
-				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
-				 default="360" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV"
-				 name="scene_six_vaov"
-				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
-				 default="180" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET"
-				 name="scene_six_voffset"
-				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
-				 default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP"
-				 name="scene_six_ignoregpanoxmp"
-				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
-				 default="0" class="btn-group btn-group-yesno" >
-					 <option value="1">JYES</option>
-					 <option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR"
-				 name="scene_six_backgroundcolor"
-				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
-				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				 default=""
+				 size="32" maxlength="250" class="input-xxlarge"
+				 showon="ptype:equirectangular_tour" />
+				
+				<field type="text" label="MOD_YAW"
+				 name="scene_six_yaw"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_PITCH"
+				 name="scene_six_pitch"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_HFOV"
+				 name="scene_six_hfov"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+				 default="100"
+				 class="input-mini" />
 
+				<!-- show only when CUBEMAP TOUR selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_six_mycubemap"
+				 label="MOD_CUBEMAP_OPTIONS"
+				 description="MOD_CUBEMAP_SPECIFIC_OPTIONS"
+				 showon="ptype:cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT"
+				 name="scene_six_cubemap_front"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_FRONT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT"
+				 name="scene_six_cubemap_right"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK"
+				 name="scene_six_cubemap_back"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_BACK"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT"
+				 name="scene_six_cubemap_left"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_LEFT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP"
+				 name="scene_six_cubemap_up"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_UP"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN"
+				 name="scene_six_cubemap_down"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_DOWN"
+				 default=""
+				 size="60" maxlength="256" />
+
+				<!-- show only when multires_tour selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_six_multires_options"
+				 label="MOD_MULTIRES_OPTIONS"
+				 description="MOD_MULTIRES_SPECIFIC_OPTIONS"
+				 showon="ptype:multires_tour" />
+				<field type="text" label="MOD_PREVIEW_IMAGE"
+				 name="scene_six_multires_preview_image"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE"
+				 default=""
+				 class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH"
+				 name="scene_six_multires_basepath"
+				 showon="ptype:multires_tour"
+				 description="MOD_MULTIRES_BASEPATH_DESCRIPTION"
+				 default=""
+				 class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH"
+				 name="scene_six_multires_path"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR_"
+				 default="/%l/%s%y_%x"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH"
+				 name="scene_six_multires_fallbackpath"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION"
+				 default="/fallback/%s"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION"
+				 name="scene_six_multires_extension"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_THE_TILES____FILE_"
+				 default="jpg"
+				 class="btn-group btn-group-yesno input-small" >
+					<option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+				</field>
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION"
+				 name="scene_six_multires_tileresolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P"
+				 default="512"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL"
+				 name="scene_six_multires_maxlevel"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z"
+				 default="6"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION"
+				 name="scene_six_multires_cuberesolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION"
+				 default="8432"
+				 class="input-mini" />
+				
+				<!-- call SUBFORMS -->
 				<field type="subform" 
 			    name="scene_six"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -646,41 +1189,149 @@
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 				 default="Scene Seven"
 				 class="" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_AUTHOR"
 				 name="scene_seven_author"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
 				 default="Matthew Petroff"
 				 class="" size="32" maxlength="120" filter="" />
+
+				<!-- NO default page - therefore set basic params, acc. to ptype -->
+				<!-- show only when equirectangular_tour selected -->
+				<field name="scene_seven_equirectangular_options"
+				 type="note"
+				 class="alert alert-info"
+				 label="MOD_EQUIRECTANGULAR_OPTIONS"
+				 description="MOD_EQUIRECTANGULAR_SPECIFIC_OPT"
+				 showon="ptype:equirectangular_tour" />
+
 				<field type="text" label="MOD_PANORAMA"
 				 name="scene_seven_panorama"
 				 description="MOD_SETS_THE_URL_TO_THE_EQUIRECT"
-				 default="https://pannellum.org/images/alma.jpg"
-				 size="32" maxlength="250" class="input-xxlarge" />
-				<field type="text" label="MOD_HAOV"
-				 name="scene_seven_haov"
-				 description="MOD_SETS_THE_PANORAMA___S_HORIZO"
-				 default="360" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VAOV"
-				 name="scene_seven_vaov"
-				 description="MOD_SETS_THE_PANORAMA___S_VERTIC"
-				 default="180" class="input-mini" size="3" maxlength="3" />
-				<field type="text" label="MOD_VOFFSET"
-				 name="scene_seven_voffset"
-				 description="MOD_SETS_THE_VERTICAL_OFFSET_OF_"
-				 default="0" class="input-mini"	size="3" maxlength="3" />
-				<field type="radio" label="MOD_IGNOREGPANOXMP"
-				 name="scene_seven_ignoregpanoxmp"
-				 description="MOD_IF_SET_TO_TRUE__ANY_EMBEDDED"
-				 default="0" class="btn-group btn-group-yesno" >
-					 <option value="1">JYES</option>
-					 <option value="0">JNO</option>
-				</field>
-				<field type="text" label="MOD_BACKGROUNDCOLOR"
-				 name="scene_seven_backgroundcolor"
-				 description="MOD_SPECIFIES_AN_ARRAY_CONTAININ"
-				 default="0, 0, 0" size="16" maxlength="16" class="input-small" />
+				 default=""
+				 size="32" maxlength="250" class="input-xxlarge"
+				 showon="ptype:equirectangular_tour" />
+				
+				<field type="text" label="MOD_YAW"
+				 name="scene_seven_yaw"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_PITCH"
+				 name="scene_seven_pitch"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+				 default="0"
+				 class="input-mini" />
+				<field type="text" label="MOD_HFOV"
+				 name="scene_seven_hfov"
+				 showon="ptype:equirectangular_tour"
+				 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+				 default="100"
+				 class="input-mini" />
 
+				<!-- show only when CUBEMAP TOUR selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_seven_mycubemap"
+				 label="MOD_CUBEMAP_OPTIONS"
+				 description="MOD_CUBEMAP_SPECIFIC_OPTIONS"
+				 showon="ptype:cubemap_tour" />
+				<field type="text" label="MOD_CUBEMAP_FRONT"
+				 name="scene_seven_cubemap_front"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_FRONT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_RIGHT"
+				 name="scene_seven_cubemap_right"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_RIGHT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_BACK"
+				 name="scene_seven_cubemap_back"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_BACK"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_LEFT"
+				 name="scene_seven_cubemap_left"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_LEFT"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_UP"
+				 name="scene_seven_cubemap_up"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_UP"
+				 default=""
+				 size="60" maxlength="256" />
+				<field type="text" label="MOD_CUBEMAP_DOWN"
+				 name="scene_seven_cubemap_down"
+				 showon="ptype:cubemap_tour"
+				 description="MOD_THIS_IS_AN_ARRAY_DOWN"
+				 default=""
+				 size="60" maxlength="256" />
+
+				<!-- show only when multires_tour selected -->
+				<field type="note" class="alert alert-info"
+				 name="scene_seven_multires_options"
+				 label="MOD_MULTIRES_OPTIONS"
+				 description="MOD_MULTIRES_SPECIFIC_OPTIONS"
+				 showon="ptype:multires_tour" />
+				<field type="text" label="MOD_PREVIEW_IMAGE"
+				 name="scene_seven_multires_preview_image"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_A_URL_FOR_A_PREVIE"
+				 default=""
+				 class="input-xxlarge" size="32" maxlength="250" />
+				<field type="text" label="MOD_MULTIRES_BASEPATH"
+				 name="scene_seven_multires_basepath"
+				 showon="ptype:multires_tour"
+				 description="MOD_MULTIRES_BASEPATH_DESCRIPTION"
+				 default=""
+				 class="input-xxlarge" size="64" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_PATH"
+				 name="scene_seven_multires_path"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR_"
+				 default="/%l/%s%y_%x"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="text" label="MOD_MULTIRES_FALLBACKPATH"
+				 name="scene_seven_multires_fallbackpath"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_IS_A_FORMAT_STRING_FOR__DESCRIPTION"
+				 default="/fallback/%s"
+				 class="input-medium" size="32" maxlength="256" filter="" />
+				<field type="list" label="MOD_MULTIRES_EXTENSION"
+				 name="scene_seven_multires_extension"
+				 showon="ptype:multires_tour"
+				 description="MOD_SPECIFIES_THE_TILES____FILE_"
+				 default="jpg"
+				 class="btn-group btn-group-yesno input-small" >
+					<option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+				</field>
+				<field type="text" label="MOD_MULTIRES_TILERESOLUTION"
+				 name="scene_seven_multires_tileresolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P"
+				 default="512"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_MAXLEVEL"
+				 name="scene_seven_multires_maxlevel"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_MAXIMUM_Z"
+				 default="6"
+				 class="input-mini" />
+				<field type="text" label="MOD_MULTIRES_CUBERESOLUTION"
+				 name="scene_seven_multires_cuberesolution"
+				 showon="ptype:multires_tour"
+				 description="MOD_THIS_SPECIFIES_THE_SIZE_IN_P_DESCRIPTION"
+				 default="8432"
+				 class="input-mini" />
+				
+				<!-- call SUBFORMS -->
 				<field type="subform" 
 			    name="scene_seven"
 			    label="MOD_TOURS_CONNECT_TO_SCENE" 
@@ -698,6 +1349,8 @@
 			    multiple="true" 
 				/>
 			</fieldset>
+
+
 
 
 			<fieldset

@@ -7,6 +7,22 @@
 		 default="scene-four"
 		 class="input-medium" size="32" maxlength="120" filter="" />
 
+		<field type="text" label="MOD_HFOV"
+		 name="scene_three_hfov"
+		 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
+		 default="100"
+		 class="input-mini" />
+		<field type="text" label="MOD_YAW"
+		 name="scene_three_yaw"
+		 description="MOD_SETS_THE_PANORAMA___S_STARTI"
+		 default="0"
+		 class="input-mini" />
+		<field type="text" label="MOD_PITCH"
+		 name="scene_three_pitch"
+		 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
+		 default="0"
+		 class="input-mini" />
+
 		<field type="text" label="MOD_TARGETPITCH"
 		 name="scene_three_targetpitch"
 		 description="MOD_SPECIFIES_THE_PITCH_OF_THE_T"
