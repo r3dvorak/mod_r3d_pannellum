@@ -8,17 +8,17 @@
 		 class="input-medium" size="32" maxlength="120" filter="" />
 
 		<field type="text" label="MOD_HFOV"
-		 name="scene_seven_hfov"
+		 name="scene_seven_shfov"
 		 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION1"
 		 default="100"
 		 class="input-mini" />
 		<field type="text" label="MOD_YAW"
-		 name="scene_seven_yaw"
+		 name="scene_seven_syaw"
 		 description="MOD_SETS_THE_PANORAMA___S_STARTI"
 		 default="0"
 		 class="input-mini" />
 		<field type="text" label="MOD_PITCH"
-		 name="scene_seven_pitch"
+		 name="scene_seven_spitch"
 		 description="MOD_SETS_THE_PANORAMA___S_STARTI_DESCRIPTION"
 		 default="0"
 		 class="input-mini" />
