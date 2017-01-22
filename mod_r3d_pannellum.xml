@@ -268,22 +268,20 @@
 
 			<!-- TOUR ONE & HOTSPOTS -->
 			<fieldset name="tour_one" label="MOD_TOUR_ONE" description="MOD_TOUR_ONE_DESC">
-				<field type="list" label="MOD_HOTSPOTDEBUG" name="tour_one_hotspotdebug"
+				<field type="list" label="MOD_HOTSPOTDEBUG" name="tours_hotspotdebug"
 					  description="MOD_WHEN_TRUE__THE_MOUSE_POINTER"
 					  default="no" class="input-small" >
 					 <option value="no">False</option>
 					 <option value="yes">True</option>
 				</field>
-				<field type="text" label="MOD_TOURS_FIRSTSCENE" name="tour_firstscene" description="MOD_TOURS_FIRSTSCENE_DESC"
+				<field type="text" label="MOD_TOURS_FIRSTSCENE" name="tours_firstscene" description="MOD_TOURS_FIRSTSCENE_DESC"
 					  default="Scene One"
 					  class="input-medium" size="32" maxlength="256" />
 				
 				<field type="text" label="MOD_HOTSPOTS_SCENEID_LABEL" name="scene_one_sceneid" description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
 					  default="scene-one"
 					  class="input-medium" size="32" maxlength="120" filter="" />
-				<field type="text" label="MOD_TITLE" name="scene_one_title" description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
-					  default="Scene One"
-					  class="" size="32" maxlength="120" filter="" />
+
 				<!-- special in tour one: all other params will be taken from the default page ! -->
 				<field type="subform" 
 			    name="scene_one"
@@ -312,13 +310,11 @@
 				 description="MOD_SPECIFIES_THE_ID_OF_THE_SCEN"
 				 default="scene-two"
 				 class="input-medium" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_TITLE"
 				 name="scene_two_title"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY"
 				 default="Scene Two"
 				 class="" size="32" maxlength="120" filter="" />
-
 				<field type="text" label="MOD_AUTHOR"
 				 name="scene_two_author"
 				 description="MOD_IF_SET__THE_VALUE_IS_DISPLAY_DESCRIPTION"
