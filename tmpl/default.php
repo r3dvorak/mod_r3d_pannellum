@@ -558,22 +558,33 @@ if($ptype == 'equirectangular_tour' || $ptype == 'cubemap_tour' || $ptype == 'mu
 <script>
 pannellum.viewer('<?php echo $panorama_id; ?>', {   
     "default": {
-        "firstScene": "<?php echo $tour_firstscene; ?>",
+    "firstScene": "<?php echo $tours_firstscene; ?>",
 <?php if($title) {  ?>
     "title": "<?php echo $title; ?>",
 <?php   } ?>
 <?php if($author) {  ?>
     "author": "<?php echo $author; ?>",
 <?php   } ?>
-        "sceneFadeDuration": 1000
+    "sceneFadeDuration": 1000
     },
-
     "scenes": {
-        "circle": {
-            "title": "Mason Circle",
-            "hfov": 110,
-            "pitch": -3,
-            "yaw": 117,
+        "<?php echo $scene_one_sceneid; ?>": {
+<?php if($title) {  ?>
+            "title": "<?php echo $title; ?>",
+<?php   } ?>
+<?php if($author) {  ?>
+            "author": "<?php echo $author; ?>",
+<?php   } ?>
+<?php for ($i = 0; $i <= $tloopsone; $i++) { ?>
+<?php if($scene_one_shfov) {  ?>
+            "hfov": "<?php echo $scene_one_shfov[$i]; ?>",
+<?php   } ?>
+<?php if($scene_one_spitch) {  ?>
+            "pitch": "<?php echo $scene_one_spitch[$i]; ?>",
+<?php   } ?>
+<?php if($scene_one_syaw) {  ?>
+            "yaw": "<?php echo $scene_one_syaw[$i]; ?>",
+<?php   } ?>
             "type": "equirectangular",
             "panorama": "https://pannellum.org/images/from-tree.jpg",
             "hotSpots": [
@@ -585,6 +596,7 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
                     "sceneId": "house"
                 }
             ]
+    <?php } ?>
         },
 
         "house": {
