@@ -4,15 +4,20 @@
     <title>R3D Pannellum Viewer</title>
     <description>Embed 360° Panoramas with Pannellum (Basic / Intermediate / Advanced)</description>
     <author>R3D Internet Dienstleistungen</author>
-    <version>5.0.0</version>
+    <version>5.0.1</version>
 
     <files>
         <filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
         <filename>helper.php</filename>
         <folder>tmpl</folder>
         <folder>language</folder>
-        <folder>media</folder>
+        <!-- Do NOT include the media folder here; it is installed via <media> below -->
     </files>
+
+    <!-- Install demo asset into /media/mod_r3d_pannellum -->
+    <media destination="mod_r3d_pannellum" folder="media">
+        <filename>demo.jpg</filename>
+    </media>
 
     <languages>
         <!-- Explicit language files -->
@@ -34,19 +39,25 @@
 
             <!-- Basic -->
             <fieldset name="basic" label="Basic Settings" showon="setup_level:basic">
-                <field name="panorama" type="media" label="Panorama Image" description="Select the equirectangular image" default="media/mod_r3d_pannellum/demo.jpg"/>
+                <field
+                    name="panorama"
+                    type="media"
+                    label="Panorama Image"
+                    description="Select the equirectangular image"
+                    default="media/mod_r3d_pannellum/demo.jpg"
+                />
                 <field name="autoload" type="radio" label="Auto Load" default="1">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </field>
             </fieldset>
 
-            <!-- Intermediate -->
+            <!-- Intermediate (mockup for now) -->
             <fieldset name="intermediate" label="Intermediate Settings" showon="setup_level:intermediate,advanced">
                 <field name="mock_intermediate" type="spacer" label="Intermediate Mockup" description="Hotspot settings will come here." />
             </fieldset>
 
-            <!-- Advanced -->
+            <!-- Advanced (mockup for now) -->
             <fieldset name="advanced" label="Advanced Settings" showon="setup_level:advanced">
                 <field name="mock_advanced" type="spacer" label="Advanced Mockup" description="Multi-scene tour settings will come here." />
             </fieldset>
