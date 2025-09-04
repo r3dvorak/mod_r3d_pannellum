@@ -14,7 +14,7 @@ jobs:
       - name: Read version from XML
         id: version
         run: |
-          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" mod_r3d_pannellum.xml)
+          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" mod_r3d_pannellum/mod_r3d_pannellum.xml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create ZIP package
