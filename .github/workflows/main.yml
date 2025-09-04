@@ -8,23 +8,59 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  build_release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Locate module XML and module dir
+        id: locate
+        shell: bash
+        run: |
+          set -e
+          # Find the first mod_* XML manifest in the repo root or subfolders
+          MODULE_XML="$(git ls-files | grep -E '/mod_[^/]+\.xml$' | head -n1)"
+          if [ -z "$MODULE_XML" ]; then
+            echo "❌ Could not find a module XML (mod_*.xml) in the repository."
+            exit 1
+          fi
+          MODULE_DIR="$(dirname "$MODULE_XML")"
+          MODULE_BASENAME="$(basename "$MODULE_DIR")"
+
+          echo "Found manifest: $MODULE_XML"
+          echo "Module dir:    $MODULE_DIR"
+          echo "Module name:   $MODULE_BASENAME"
+
+          echo "module_xml=$MODULE_XML"       >> $GITHUB_OUTPUT
+          echo "module_dir=$MODULE_DIR"       >> $GITHUB_OUTPUT
+          echo "module_basename=$MODULE_BASENAME" >> $GITHUB_OUTPUT
+
       - name: Determine version
         id: version
+        shell: bash
         run: |
+          set -e
           if [ -n "${{ github.event.inputs.manual_version }}" ]; then
             VERSION="${{ github.event.inputs.manual_version }}"
-          elif [ -f "mod_r3d_pannellum/mod_r3d_pannellum.xml" ]; then
-            VERSION=$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' mod_r3d_pannellum/mod_r3d_pannellum.xml | head -n1)
           else
-            VERSION="dev-build"
+            # Read <version>...</version> from the located manifest using Python (robust XML parsing)
+            VERSION="$(python3 - <<'PY'
+import sys, xml.etree.ElementTree as ET
+p = "${{ steps.locate.outputs.module_xml }}"
+try:
+    t = ET.parse(p)
+    v = (t.getroot().findtext('version') or '').strip()
+    print(v)
+except Exception as e:
+    print('')
+PY
+)"
           fi
 
           if [ -z "$VERSION" ]; then
@@ -34,25 +70,30 @@ jobs:
           echo "Using version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Create ZIP package
+      - name: Build ZIP
+        shell: bash
         run: |
-          mkdir build
-          zip -r build/mod_r3d_pannellum_v${{ steps.version.outputs.version }}.zip mod_r3d_pannellum \
-            -x "*.git*" \
-            -x "README.md" \
-            -x "CHANGELOG.md" \
-            -x ".github/*"
+          set -e
+          mkdir -p build
+          OUT="build/${{ steps.locate.outputs.module_basename }}_v${{ steps.version.outputs.version }}.zip"
 
-      - name: Create GitHub Release
+          # Zip exactly the module directory (no repo junk)
+          # Exclude common non-distribution items inside that folder if present
+          zip -r "$OUT" "${{ steps.locate.outputs.module_dir }}" \
+            -x "${{ steps.locate.outputs.module_dir }}/.git*" \
+               "${{ steps.locate.outputs.module_dir }}/.github/*" \
+               "${{ steps.locate.outputs.module_dir }}/README.md" \
+               "${{ steps.locate.outputs.module_dir }}/CHANGELOG.md"
+
+          echo "Built: $OUT"
+
+      - name: Create / Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.version }}
           name: Release v${{ steps.version.outputs.version }}
-          body: |
-            Joomla 5 module **mod_r3d_pannellum**  
-            Version: v${{ steps.version.outputs.version }}
-
-            This release was built automatically via GitHub Actions.
+          make_latest: true
+          generate_release_notes: true
           files: build/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
