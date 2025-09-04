@@ -1,4 +1,4 @@
-name: Build Joomla Module ZIP
+name: Build & Release Joomla Module ZIP
 
 on:
   workflow_dispatch:   # nur manuell starten
@@ -8,15 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout Code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Version aus XML lesen
       - name: Read version from XML
         id: version
         run: |
           VERSION=$(xmllint --xpath "string(//extension/version)" mod_r3d_pannellum.xml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
+      # 3. ZIP bauen
       - name: Create ZIP package
         run: |
           mkdir build
@@ -26,8 +29,17 @@ jobs:
             -x "CHANGELOG.md" \
             -x ".github/*"
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      # 4. Release erstellen mit ZIP
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: mod_r3d_pannellum-zip
-          path: build/*.zip
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Release v${{ steps.version.outputs.version }}
+          body: |
+            Joomla 5 module **mod_r3d_pannellum**  
+            Version: v${{ steps.version.outputs.version }}
+
+            This release was built automatically via GitHub Actions.
+          files: build/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
