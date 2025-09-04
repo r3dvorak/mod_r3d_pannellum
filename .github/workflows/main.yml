@@ -3,10 +3,10 @@ name: Build & Release Joomla Module ZIP
 on:
   workflow_dispatch:
     inputs:
-      manual_version:
-        description: 'Optional: set release version (e.g. 5.0.1). If empty, XML version will be used.'
-        required: false
-        default: ''
+      version:
+        description: 'Release version (e.g. 5.0.1)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -18,50 +18,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Determine version
-        id: version
-        shell: bash
+      - name: Create ZIP
         run: |
-          set -e
-          if [ -n "${{ github.event.inputs.manual_version }}" ]; then
-            VERSION="${{ github.event.inputs.manual_version }}"
-          else
-            # Read <version>...</version> from your manifest using Python (robust and preinstalled)
-            VERSION="$(python3 - <<'PY'
-import xml.etree.ElementTree as ET
-p = "mod_r3d_pannellum/mod_r3d_pannellum.xml"
-try:
-    t = ET.parse(p)
-    v = (t.getroot().findtext('version') or '').strip()
-    print(v)
-except Exception:
-    print('')
-PY
-)"
-          fi
-          if [ -z "$VERSION" ]; then VERSION="dev-build"; fi
-          echo "Using version: $VERSION"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Build ZIP
-        shell: bash
-        run: |
-          set -e
           mkdir -p build
-          OUT="build/mod_r3d_pannellum_v${{ steps.version.outputs.version }}.zip"
-          # Zip ONLY the module folder; exclude repo/meta files if present
-          zip -r "$OUT" mod_r3d_pannellum \
+          zip -r "build/mod_r3d_pannellum_v${{ github.event.inputs.version }}.zip" mod_r3d_pannellum \
             -x "mod_r3d_pannellum/.git*" \
                "mod_r3d_pannellum/.github/*" \
                "mod_r3d_pannellum/README.md" \
                "mod_r3d_pannellum/CHANGELOG.md"
-          echo "Built: $OUT"
 
       - name: Create / Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.version.outputs.version }}
-          name: Release v${{ steps.version.outputs.version }}
+          tag_name: v${{ github.event.inputs.version }}
+          name: Release v${{ github.event.inputs.version }}
           make_latest: true
           generate_release_notes: true
           files: build/*.zip
