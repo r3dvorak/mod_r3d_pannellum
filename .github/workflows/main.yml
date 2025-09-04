@@ -21,9 +21,17 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.manual_version }}" ]; then
             VERSION="${{ github.event.inputs.manual_version }}"
+          elif [ -f "mod_r3d_pannellum/mod_r3d_pannellum.xml" ]; then
+            VERSION=$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' mod_r3d_pannellum/mod_r3d_pannellum.xml | head -n1)
           else
-            VERSION=$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' mod_r3d_pannellum/mod_r3d_pannellum.xml)
+            VERSION="dev-build"
           fi
+
+          if [ -z "$VERSION" ]; then
+            VERSION="dev-build"
+          fi
+
+          echo "Using version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create ZIP package
