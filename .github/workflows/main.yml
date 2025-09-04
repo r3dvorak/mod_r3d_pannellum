@@ -8,18 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout Code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Version aus XML lesen
       - name: Read version from XML
         id: version
         run: |
-          VERSION=$(xmllint --xpath "string(//extension/version)" mod_r3d_pannellum.xml)
+          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" mod_r3d_pannellum.xml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      # 3. ZIP bauen
       - name: Create ZIP package
         run: |
           mkdir build
@@ -29,7 +26,6 @@ jobs:
             -x "CHANGELOG.md" \
             -x ".github/*"
 
-      # 4. Release erstellen mit ZIP
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
