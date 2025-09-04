@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       manual_version:
-        description: 'Optional: Set release version (e.g. 5.0.1). If empty, XML version will be used.'
+        description: 'Optional: set release version (e.g. 5.0.1). If empty, XML version will be used.'
         required: false
         default: ''
 
@@ -14,32 +14,9 @@ permissions:
 jobs:
   build_release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Locate module XML and module dir
-        id: locate
-        shell: bash
-        run: |
-          set -e
-          # Find the first mod_* XML manifest in the repo root or subfolders
-          MODULE_XML="$(git ls-files | grep -E '/mod_[^/]+\.xml$' | head -n1)"
-          if [ -z "$MODULE_XML" ]; then
-            echo "❌ Could not find a module XML (mod_*.xml) in the repository."
-            exit 1
-          fi
-          MODULE_DIR="$(dirname "$MODULE_XML")"
-          MODULE_BASENAME="$(basename "$MODULE_DIR")"
-
-          echo "Found manifest: $MODULE_XML"
-          echo "Module dir:    $MODULE_DIR"
-          echo "Module name:   $MODULE_BASENAME"
-
-          echo "module_xml=$MODULE_XML"       >> $GITHUB_OUTPUT
-          echo "module_dir=$MODULE_DIR"       >> $GITHUB_OUTPUT
-          echo "module_basename=$MODULE_BASENAME" >> $GITHUB_OUTPUT
 
       - name: Determine version
         id: version
@@ -49,42 +26,35 @@ jobs:
           if [ -n "${{ github.event.inputs.manual_version }}" ]; then
             VERSION="${{ github.event.inputs.manual_version }}"
           else
-            # Read <version>...</version> from the located manifest using Python (robust XML parsing)
+            # Read <version>...</version> from your manifest using Python (robust and preinstalled)
             VERSION="$(python3 - <<'PY'
-import sys, xml.etree.ElementTree as ET
-p = "${{ steps.locate.outputs.module_xml }}"
+import xml.etree.ElementTree as ET
+p = "mod_r3d_pannellum/mod_r3d_pannellum.xml"
 try:
     t = ET.parse(p)
     v = (t.getroot().findtext('version') or '').strip()
     print(v)
-except Exception as e:
+except Exception:
     print('')
 PY
 )"
           fi
-
-          if [ -z "$VERSION" ]; then
-            VERSION="dev-build"
-          fi
-
+          if [ -z "$VERSION" ]; then VERSION="dev-build"; fi
           echo "Using version: $VERSION"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build ZIP
         shell: bash
         run: |
           set -e
           mkdir -p build
-          OUT="build/${{ steps.locate.outputs.module_basename }}_v${{ steps.version.outputs.version }}.zip"
-
-          # Zip exactly the module directory (no repo junk)
-          # Exclude common non-distribution items inside that folder if present
-          zip -r "$OUT" "${{ steps.locate.outputs.module_dir }}" \
-            -x "${{ steps.locate.outputs.module_dir }}/.git*" \
-               "${{ steps.locate.outputs.module_dir }}/.github/*" \
-               "${{ steps.locate.outputs.module_dir }}/README.md" \
-               "${{ steps.locate.outputs.module_dir }}/CHANGELOG.md"
-
+          OUT="build/mod_r3d_pannellum_v${{ steps.version.outputs.version }}.zip"
+          # Zip ONLY the module folder; exclude repo/meta files if present
+          zip -r "$OUT" mod_r3d_pannellum \
+            -x "mod_r3d_pannellum/.git*" \
+               "mod_r3d_pannellum/.github/*" \
+               "mod_r3d_pannellum/README.md" \
+               "mod_r3d_pannellum/CHANGELOG.md"
           echo "Built: $OUT"
 
       - name: Create / Update GitHub Release
