@@ -1,0 +1,33 @@
+name: Build Joomla Module ZIP
+
+on:
+  workflow_dispatch:   # nur manuell starten
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read version from XML
+        id: version
+        run: |
+          VERSION=$(xmllint --xpath "string(//extension/version)" mod_r3d_pannellum.xml)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create ZIP package
+        run: |
+          mkdir build
+          zip -r build/mod_r3d_pannellum_v${{ steps.version.outputs.version }}.zip mod_r3d_pannellum \
+            -x "*.git*" \
+            -x "README.md" \
+            -x "CHANGELOG.md" \
+            -x ".github/*"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod_r3d_pannellum-zip
+          path: build/*.zip
