@@ -4,7 +4,7 @@
     <title>R3D Pannellum Viewer</title>
     <description>Embed 360° Panoramas with Pannellum (Basic / Intermediate / Advanced)</description>
     <author>R3D Internet Dienstleistungen</author>
-    <version>5.0.3</version>
+    <version>5.0.4</version>
 
     <files>
         <filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
