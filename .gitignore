@@ -1,0 +1,29 @@
+# Joomla module build artifacts
+*.zip
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Composer
+/vendor/
+/composer.lock
+
+# Node (falls du mal Build-Tools einsetzt)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+*.tmp
+*.cache
+*.bak
+*.swp
+*.swo
+*.old
+*.orig
+*.orig
+*.rej
