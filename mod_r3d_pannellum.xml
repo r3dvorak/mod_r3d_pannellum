@@ -60,7 +60,7 @@
                     <option value="0">No</option>
                 </field>
 
-                <field name="sp_init" type="spacer" label="Initial View" description="Starting camera orientation & zoom" />
+                <field name="sp_init" type="spacer" label="Initial View" description="Starting camera orientation and zoom" />
                 <field name="yaw"   type="number" label="Yaw (°)"   filter="float" />
                 <field name="pitch" type="number" label="Pitch (°)" filter="float" />
                 <field name="hfov"  type="number" label="HFOV (°)"  filter="float" />
@@ -72,7 +72,7 @@
                 <field name="auto_rotate_inactivity" type="number" label="Re-start after inactivity (ms)" filter="integer" default="0" />
                 <field name="auto_rotate_stop"        type="number" label="Stop after (ms)" filter="integer" default="0" />
 
-                <field name="sp_controls" type="spacer" label="Controls & Interaction" />
+                <field name="sp_controls" type="spacer" label="Controls and Interaction" />
                 <field name="show_zoom_ctrl"       type="radio" label="Show Zoom Buttons" default="1">
                     <option value="1">Yes</option><option value="0">No</option>
                 </field>
