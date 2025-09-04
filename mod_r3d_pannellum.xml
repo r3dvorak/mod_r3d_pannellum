@@ -4,17 +4,16 @@
     <title>R3D Pannellum Viewer</title>
     <description>Embed 360° Panoramas with Pannellum (Basic / Intermediate / Advanced)</description>
     <author>R3D Internet Dienstleistungen</author>
-    <version>5.0.1</version>
+    <version>5.0.3</version>
 
     <files>
         <filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
         <filename>helper.php</filename>
         <folder>tmpl</folder>
         <folder>language</folder>
-        <!-- Do NOT include the media folder here; it is installed via <media> below -->
     </files>
 
-    <!-- Install demo asset into /media/mod_r3d_pannellum -->
+    <!-- Demo asset in /media/mod_r3d_pannellum -->
     <media destination="mod_r3d_pannellum" folder="media">
         <filename>demo.jpg</filename>
     </media>
@@ -26,9 +25,10 @@
     </languages>
 
     <config>
+        <!-- Everything below shows inside the "Module" tab -->
         <fields name="params">
 
-            <!-- Setup Level -->
+            <!-- Setup Level (always first inside Module tab) -->
             <fieldset name="general" label="Setup">
                 <field name="setup_level" type="list" default="basic" label="Setup Level">
                     <option value="basic">Basic</option>
@@ -37,27 +37,74 @@
                 </field>
             </fieldset>
 
-            <!-- Basic -->
+            <!-- BASIC -->
             <fieldset name="basic" label="Basic Settings" showon="setup_level:basic">
+                <!-- Viewer container size -->
                 <field
-                    name="panorama"
-                    type="media"
-                    label="Panorama Image"
-                    description="Select the equirectangular image"
-                    default="media/mod_r3d_pannellum/demo.jpg"
-                />
+                    name="container_width"
+                    type="text"
+                    label="Viewer width"
+                    description="CSS value (e.g. 100%, 960px, 70vw)"
+                    default="100%" />
+                <field
+                    name="container_height"
+                    type="text"
+                    label="Viewer height"
+                    description="CSS value (e.g. 500px, 60vh)"
+                    default="500px" />
+
+                <!-- Core inputs -->
+                <field name="panorama" type="media" label="Panorama Image" default="media/mod_r3d_pannellum/demo.jpg" description="Select the equirectangular image" />
                 <field name="autoload" type="radio" label="Auto Load" default="1">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </field>
+
+                <field name="sp_init" type="spacer" label="Initial View" description="Starting camera orientation & zoom" />
+                <field name="yaw"   type="number" label="Yaw (°)"   filter="float" />
+                <field name="pitch" type="number" label="Pitch (°)" filter="float" />
+                <field name="hfov"  type="number" label="HFOV (°)"  filter="float" />
+                <field name="min_hfov" type="number" label="Min HFOV (°)" filter="float" />
+                <field name="max_hfov" type="number" label="Max HFOV (°)" filter="float" />
+
+                <field name="sp_rotate" type="spacer" label="Auto-Rotate" description="Automatically rotate panorama" />
+                <field name="auto_rotate" type="number" label="Rotate speed (°/s)" description="0 disables. Positive = CCW, negative = CW." filter="float" default="0" />
+                <field name="auto_rotate_inactivity" type="number" label="Re-start after inactivity (ms)" filter="integer" default="0" />
+                <field name="auto_rotate_stop"        type="number" label="Stop after (ms)" filter="integer" default="0" />
+
+                <field name="sp_controls" type="spacer" label="Controls & Interaction" />
+                <field name="show_zoom_ctrl"       type="radio" label="Show Zoom Buttons" default="1">
+                    <option value="1">Yes</option><option value="0">No</option>
+                </field>
+                <field name="show_fullscreen_ctrl" type="radio" label="Show Fullscreen Button" default="1">
+                    <option value="1">Yes</option><option value="0">No</option>
+                </field>
+                <field name="double_click_zoom"    type="radio" label="Double-click zoom" default="">
+                    <option value="">Use default</option><option value="1">Enable</option><option value="0">Disable</option>
+                </field>
+                <field name="mouse_zoom"           type="radio" label="Mouse wheel zoom" default="">
+                    <option value="">Use default</option><option value="1">Enable</option><option value="0">Disable</option>
+                </field>
+                <field name="disable_keyboard_ctrl" type="radio" label="Disable keyboard controls" default="">
+                    <option value="">Use default</option><option value="1">Yes</option><option value="0">No</option>
+                </field>
+                <field name="draggable"             type="radio" label="Mouse/touch dragging" default="">
+                    <option value="">Use default</option><option value="1">Enable</option><option value="0">Disable</option>
+                </field>
+
+                <field name="sp_compass" type="spacer" label="Compass" />
+                <field name="compass" type="radio" label="Show compass" default="">
+                    <option value="">Use default</option><option value="1">Yes</option><option value="0">No</option>
+                </field>
+                <field name="north_offset" type="number" label="North offset (°)" filter="float" />
             </fieldset>
 
-            <!-- Intermediate (mockup for now) -->
+            <!-- INTERMEDIATE -->
             <fieldset name="intermediate" label="Intermediate Settings" showon="setup_level:intermediate,advanced">
                 <field name="mock_intermediate" type="spacer" label="Intermediate Mockup" description="Hotspot settings will come here." />
             </fieldset>
 
-            <!-- Advanced (mockup for now) -->
+            <!-- ADVANCED -->
             <fieldset name="advanced" label="Advanced Settings" showon="setup_level:advanced">
                 <field name="mock_advanced" type="spacer" label="Advanced Mockup" description="Multi-scene tour settings will come here." />
             </fieldset>
