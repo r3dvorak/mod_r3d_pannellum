@@ -1,8 +1,7 @@
 # R3D Pannellum (Joomla 5 Module)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
-
-**Version:** 5.0.0  
+ 
 **Author:** Richard Dvorak, [r3d.de](https://r3d.de)  
 **License:** GNU GPL v3 or later (https://www.gnu.org/licenses/gpl-3.0.html)
 
