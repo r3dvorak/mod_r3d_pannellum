@@ -94,7 +94,7 @@ $multiple_tours = $params->get('multiple_tours');
 $totalt = count((array)$multiple_tours);
 $tloops = $totalt-1;
 
-//if (is_array($multiple_tours) || is_object($multiple_tours)) {
+if (is_array($multiple_tours) || is_object($multiple_tours)) {
     foreach ($multiple_tours as $tkey => $tvalue) {
 
         $hotspots_sceneid[]     = $tvalue->hotspots_sceneid;
@@ -104,7 +104,7 @@ $tloops = $totalt-1;
         $hotspots_cssclass[]    = $tvalue->hotspots_cssclass;
         $scenefadeduration[]    = $tvalue->scenefadeduration;
     }
-//}
+}
 
 
 

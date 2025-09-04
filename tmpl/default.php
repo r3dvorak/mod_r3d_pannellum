@@ -498,7 +498,7 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
         {
             "pitch": <?php echo $hotspots_pitch[$i]; ?>,
             "yaw": <?php echo $hotspots_yaw[$i]; ?>,
-            "type": "<?php echo $hotspots_type[$i]; ?>",
+            "type": "info",
             "text": "<?php echo $hotspots_text[$i]; ?>",
 <?php if($hotspots_url[$i]) {  ?>
             "URL": "<?php echo $hotspots_url[$i]; ?>"
@@ -583,6 +583,12 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
                     "type": "scene",
                     "text": "Spring House or Dairy",
                     "sceneId": "house"
+                },
+                {
+                    "pitch": -9.4,
+                    "yaw": 222.6,
+                    "type": "info",
+                    "text": "Art Museum Drive"
                 }
             ]
         },
@@ -602,6 +608,12 @@ pannellum.viewer('<?php echo $panorama_id; ?>', {
                     "sceneId": "circle",
                     "targetYaw": -23,
                     "targetPitch": 2
+                },
+                {
+                    "pitch": -0.9,
+                    "yaw": 144.4,
+                    "type": "info",
+                    "text": "North Charles Street"
                 }
             ]
         }
