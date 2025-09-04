@@ -1,7 +1,12 @@
 name: Build & Release Joomla Module ZIP
 
 on:
-  workflow_dispatch:   # nur manuell starten
+  workflow_dispatch:
+    inputs:
+      manual_version:
+        description: 'Optional: Set release version (e.g. 5.0.1). If empty, XML version will be used.'
+        required: false
+        default: ''
 
 jobs:
   build:
@@ -11,10 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Read version from XML
+      - name: Determine version
         id: version
         run: |
-          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" mod_r3d_pannellum/mod_r3d_pannellum.xml)
+          if [ -n "${{ github.event.inputs.manual_version }}" ]; then
+            VERSION="${{ github.event.inputs.manual_version }}"
+          else
+            VERSION=$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' mod_r3d_pannellum/mod_r3d_pannellum.xml)
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create ZIP package
