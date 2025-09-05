@@ -11,6 +11,7 @@
         <filename>helper.php</filename>
         <folder>tmpl</folder>
         <folder>language</folder>
+        <folder>forms</folder>
     </files>
 
     <!-- Demo asset in /media/mod_r3d_pannellum -->
@@ -143,7 +144,7 @@
                     description="MOD_R3D_PAN_HOTSPOTS_DESC"
                     multiple="true"
                     layout="joomla.form.field.subform.repeatable"
-                    buttons="add remove drag"
+                    buttons="add,remove,drag"
                     min="0"
                     max="50" 
                 />

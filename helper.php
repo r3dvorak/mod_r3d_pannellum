@@ -6,134 +6,157 @@
  * @author      Richard Dvorak, r3d.de
  * @copyright   Copyright (C) 2025 Richard Dvorak, https://r3d.de
  * @license     GNU GPL v3 or later (https://www.gnu.org/licenses/gpl-3.0.html)
- * @version     5.1.0
+ * @version     5.1.1
  * @file        modules/mod_r3d_pannellum/helper.php
  */
 
-defined('_JEXEC') or die;
+defined('_JEXEC') || die;
 
+use Joomla\CMS\Uri\Uri;
 use Joomla\Registry\Registry;
 
-final class ModR3dPannellumHelper
+class ModR3dPannellumHelper
 {
-    /**
-     * Build Pannellum config array from params
-     */
-    public static function buildConfig(Registry $params): array
+    /** Build the Pannellum config + container info from params */
+    public static function build(Registry $params): array
     {
+        // Unique DOM id
+        $id = 'r3dpan_' . bin2hex(random_bytes(4));
+
+        // Container size (defaults already set in XML)
+        $width  = trim((string) $params->get('container_width', '100%'));
+        $height = trim((string) $params->get('container_height', '400px'));
+        $style  = 'width:' . htmlspecialchars($width, ENT_QUOTES) . ';height:' . htmlspecialchars($height, ENT_QUOTES) . ';';
+
+        // Resolve panorama URL (allow absolute or relative)
+        $pan = (string) $params->get('panorama', '');
+        $panorama = $pan !== '' && !preg_match('#^https?://#i', $pan)
+            ? Uri::root() . ltrim($pan, '/')
+            : $pan;
+
         $cfg = [
-            'type' => 'equirectangular',
-            'panorama' => (string) $params->get('panorama', ''),
+            'type'     => 'equirectangular',
+            'panorama' => $panorama,
         ];
 
-        // Core options (basic)
+        // Helper closures to only set options when user provided a value
+        $setNum = function(string $name, string $param) use (&$cfg, $params) {
+            $raw = $params->get($param, '');
+            if ($raw !== '' && $raw !== null) {
+                // Cast to float when numeric
+                $cfg[$name] = (float) $raw;
+            }
+        };
+        $setBool3 = function(string $name, string $param) use (&$cfg, $params) {
+            // Param is '', '1', '0'  -> only set when not ''
+            $raw = $params->get($param, '');
+            if ($raw === '1' || $raw === 1) {
+                $cfg[$name] = true;
+            } elseif ($raw === '0' || $raw === 0) {
+                $cfg[$name] = false;
+            }
+        };
+
+        // Auto-load
         $cfg['autoLoad'] = (bool) $params->get('autoload', 1);
 
-        self::maybeNumber($cfg, 'yaw', $params->get('yaw', null));
-        self::maybeNumber($cfg, 'pitch', $params->get('pitch', null));
-        self::maybeNumber($cfg, 'hfov', $params->get('hfov', null));
-        self::maybeNumber($cfg, 'minHfov', $params->get('min_hfov', null));
-        self::maybeNumber($cfg, 'maxHfov', $params->get('max_hfov', null));
+        // Initial view
+        $setNum('yaw',  'yaw');
+        $setNum('pitch','pitch');
+        $setNum('hfov', 'hfov');
+        $setNum('minHfov', 'min_hfov');
+        $setNum('maxHfov', 'max_hfov');
 
         // Auto-rotate
-        self::maybeNumber($cfg, 'autoRotate', $params->get('auto_rotate', 0), 'float');
-        self::maybeInt($cfg, 'autoRotateInactivityDelay', $params->get('auto_rotate_inactivity', 0));
-        self::maybeInt($cfg, 'autoRotateStopDelay', $params->get('auto_rotate_stop', 0));
+        $setNum('autoRotate', 'auto_rotate');
+        $setNum('autoRotateInactivityDelay', 'auto_rotate_inactivity');
+        $setNum('autoRotateStopDelay', 'auto_rotate_stop');
 
-        // Controls
-        self::maybeBool($cfg, 'showZoomCtrl', $params->get('show_zoom_ctrl', ''));
-        self::maybeBool($cfg, 'showFullscreenCtrl', $params->get('show_fullscreen_ctrl', ''));
-        self::maybeBool($cfg, 'doubleClickZoom', $params->get('double_click_zoom', ''));
-        self::maybeBool($cfg, 'mouseZoom', $params->get('mouse_zoom', ''));
-        self::maybeBool($cfg, 'disableKeyboardCtrl', $params->get('disable_keyboard_ctrl', ''));
-        self::maybeBool($cfg, 'draggable', $params->get('draggable', ''));
+        // Controls / interaction
+        $setBool3('showZoomCtrl',        'show_zoom_ctrl');
+        $setBool3('showFullscreenCtrl',  'show_fullscreen_ctrl');
+        $setBool3('doubleClickZoom',     'double_click_zoom');
+        $setBool3('mouseZoom',           'mouse_zoom');
+        $setBool3('draggable',           'draggable');
+
+        // Keyboard control (param is "disable_*")
+        $rawDisableKb = $params->get('disable_keyboard_ctrl', '');
+        if ($rawDisableKb === '1' || $rawDisableKb === 1) {
+            $cfg['keyboardCtrl'] = false;
+        } elseif ($rawDisableKb === '0' || $rawDisableKb === 0) {
+            $cfg['keyboardCtrl'] = true;
+        }
 
         // Compass
-        self::maybeBool($cfg, 'compass', $params->get('compass', ''));
-        self::maybeNumber($cfg, 'northOffset', $params->get('north_offset', null));
+        $setBool3('compass', 'compass');
+        $setNum('northOffset', 'north_offset');
 
-        // Hotspots (intermediate)
-        $hotspots = $params->get('hotspots', []);
-        $hotspots = is_array($hotspots) ? $hotspots : [];
+        // -------------------------
+        // Hotspots (subform)
+        // -------------------------
+        $hotspotsParam = $params->get('hotspots', []);
+        $hotspots = [];
 
-        $hsOut = [];
-        foreach ($hotspots as $row) {
-            // Subform may wrap values under the form's <fields name="hotspot">
-            if (isset($row['hotspot']) && is_array($row['hotspot'])) {
-                $row = $row['hotspot'];
-            }
-
-            $type = isset($row['type']) ? (string) $row['type'] : 'info';
-
-            $hs = [
-                'yaw' => isset($row['yaw']) && $row['yaw'] !== '' ? (float) $row['yaw'] : null,
-                'pitch' => isset($row['pitch']) && $row['pitch'] !== '' ? (float) $row['pitch'] : null,
-                'type' => ($type === 'link') ? 'info' : $type, // 'link' is modeled as 'info' + URL
-            ];
-
-            // Common
-            if (!empty($row['text'])) {
-                $hs['text'] = (string) $row['text'];
-            }
-            if (!empty($row['cssClass'])) {
-                $hs['cssClass'] = (string) $row['cssClass'];
-            }
-
-            // Info / Link
-            if ($type === 'info' || $type === 'link') {
-                if (!empty($row['url'])) {
-                    // Pannellum expects capital 'URL'
-                    $hs['URL'] = (string) $row['url'];
+        if (is_array($hotspotsParam)) {
+            foreach ($hotspotsParam as $row) {
+                if (!is_array($row)) {
+                    continue;
                 }
-            }
 
-            // Scene
-            if ($type === 'scene') {
-                if (!empty($row['sceneId'])) {
-                    $hs['sceneId'] = (string) $row['sceneId'];
+                // Required: position
+                $yaw   = isset($row['yaw'])   && $row['yaw']   !== '' ? (float) $row['yaw']   : null;
+                $pitch = isset($row['pitch']) && $row['pitch'] !== '' ? (float) $row['pitch'] : null;
+
+                if ($yaw === null || $pitch === null) {
+                    continue; // skip incomplete rows
                 }
-                if ($row['targetYaw'] !== '' && $row['targetYaw'] !== null)
-                    $hs['targetYaw'] = (float) $row['targetYaw'];
-                if ($row['targetPitch'] !== '' && $row['targetPitch'] !== null)
-                    $hs['targetPitch'] = (float) $row['targetPitch'];
-                if ($row['targetHfov'] !== '' && $row['targetHfov'] !== null)
-                    $hs['targetHfov'] = (float) $row['targetHfov'];
-            }
 
-            // Drop nulls
-            $hs = array_filter($hs, static function ($v) {
-                return $v !== null && $v !== ''; });
+                $type = $row['type'] ?? 'info';
+                $hs = [
+                    'yaw'   => $yaw,
+                    'pitch' => $pitch,
+                    // default type; we may rewrite below
+                    'type'  => $type === 'link' ? 'info' : $type,
+                ];
 
-            // Minimal required: type + yaw + pitch
-            if (!isset($hs['yaw']) || !isset($hs['pitch'])) {
-                continue;
+                // Common fields
+                if (!empty($row['cssClass'])) {
+                    $hs['cssClass'] = (string) $row['cssClass'];
+                }
+
+                // Info / Link
+                if ($type === 'info' || $type === 'link') {
+                    if (!empty($row['text'])) {
+                        $hs['text'] = (string) $row['text'];
+                    }
+                    if (!empty($row['url'])) {
+                        // Pannellum expects 'URL' property (uppercase) for info hotspots
+                        $hs['URL'] = (string) $row['url'];
+                    }
+                }
+
+                // Scene link
+                if ($type === 'scene') {
+                    if (!empty($row['sceneId'])) {
+                        $hs['sceneId'] = (string) $row['sceneId'];
+                    }
+                    if ($row['targetYaw']   !== '' && $row['targetYaw']   !== null) $hs['targetYaw']   = (float) $row['targetYaw'];
+                    if ($row['targetPitch'] !== '' && $row['targetPitch'] !== null) $hs['targetPitch'] = (float) $row['targetPitch'];
+                    if ($row['targetHfov']  !== '' && $row['targetHfov']  !== null) $hs['targetHfov']  = (float) $row['targetHfov'];
+                }
+
+                $hotspots[] = $hs;
             }
-            $hsOut[] = $hs;
         }
 
-        if ($hsOut) {
-            $cfg['hotSpots'] = $hsOut;
+        if ($hotspots) {
+            $cfg['hotSpots'] = $hotspots;
         }
 
-        return $cfg;
-    }
-
-    private static function maybeNumber(array &$cfg, string $key, $val, string $cast = 'float'): void
-    {
-        if ($val === '' || $val === null)
-            return;
-        $cfg[$key] = ($cast === 'int') ? (int) $val : (float) $val;
-    }
-
-    private static function maybeInt(array &$cfg, string $key, $val): void
-    {
-        self::maybeNumber($cfg, $key, $val, 'int');
-    }
-
-    private static function maybeBool(array &$cfg, string $key, $val): void
-    {
-        if ($val === '' || $val === null)
-            return;
-        $cfg[$key] = (bool) (int) $val;
+        return [
+            'id'     => $id,
+            'style'  => $style,
+            'config' => $cfg,
+        ];
     }
 }

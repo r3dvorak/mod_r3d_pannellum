@@ -6,7 +6,7 @@
  * @author      Richard Dvorak, r3d.de
  * @copyright   Copyright (C) 2025 Richard Dvorak, https://r3d.de
  * @license     GNU GPL v3 or later (https://www.gnu.org/licenses/gpl-3.0.html)
- * @version     5.0.0
+ * @version     5.1.0
  * @file        modules/mod_r3d_pannellum/mod_r3d_pannellum.php
  */
 
@@ -16,6 +16,7 @@ use Joomla\CMS\Helper\ModuleHelper;
 
 require_once __DIR__ . '/helper.php';
 
-$config = ModR3dPannellumHelper::getConfig($params);
+// Build everything once and pass to the layout
+$build = ModR3dPannellumHelper::build($params);
 
 require ModuleHelper::getLayoutPath('mod_r3d_pannellum', $params->get('layout', 'default'));
