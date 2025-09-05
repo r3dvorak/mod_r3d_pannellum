@@ -4,7 +4,7 @@
     <title>R3D Pannellum Viewer</title>
     <description>Embed 360° Panoramas with Pannellum (Basic / Intermediate / Advanced)</description>
     <author>R3D Internet Dienstleistungen</author>
-    <version>5.0.6</version>
+    <version>5.1.0</version>
 
     <files>
         <filename module="mod_r3d_pannellum">mod_r3d_pannellum.php</filename>
@@ -28,11 +28,15 @@
         <!-- Everything below shows inside the "Module" tab -->
         <fields name="params">
 
-            
-
-            <!-- BASIC -->
+            <!-- BASIC: always visible; Setup Level first -->
             <fieldset name="basic" label="Basic Settings">
-                <!-- Setup Level (first in Module tab) -->
+                
+                <field
+                    name="setup_note"
+                    type="note"
+                    label="MOD_R3D_PAN_NOTE_SETUP_TITLE"
+                    description="MOD_R3D_PAN_NOTE_SETUP_DESC" />
+
                 <field
                     name="setup_level"
                     type="list"
@@ -43,13 +47,6 @@
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
                 </field>
-
-                <!-- Intro note explaining levels -->
-                <field
-                    name="setup_note"
-                    type="note"
-                    label="MOD_R3D_PAN_NOTE_SETUP_TITLE"
-                    description="MOD_R3D_PAN_NOTE_SETUP_DESC" />
 
                 <!-- Viewer container size -->
                 <field
@@ -74,8 +71,7 @@
                     type="media"
                     label="MOD_R3D_PAN_PANORAMA_LABEL"
                     description="MOD_R3D_PAN_PANORAMA_DESC"
-                    default="media/mod_r3d_pannellum/demo.jpg"
-                />
+                    default="media/mod_r3d_pannellum/demo.jpg" />
 
                 <field
                     name="autoload"
@@ -89,7 +85,6 @@
 
                 <field name="sp_init" type="spacer" label="MOD_R3D_PAN_INIT_LABEL" description="MOD_R3D_PAN_INIT_DESC" />
 
-                <!-- Initial view (add helpful ranges + hints) -->
                 <field name="yaw"   type="number" label="MOD_R3D_PAN_YAW_LABEL"   description="MOD_R3D_PAN_YAW_DESC"   hint="MOD_R3D_PAN_YAW_HINT"   filter="float" min="-180" max="180" step="1" />
                 <field name="pitch" type="number" label="MOD_R3D_PAN_PITCH_LABEL" description="MOD_R3D_PAN_PITCH_DESC" hint="MOD_R3D_PAN_PITCH_HINT" filter="float" min="-90"  max="90"  step="1" />
                 <field name="hfov"  type="number" label="MOD_R3D_PAN_HFOV_LABEL"  description="MOD_R3D_PAN_HFOV_DESC"  hint="MOD_R3D_PAN_HFOV_HINT"  filter="float" min="40"   max="120" step="1" />
@@ -99,97 +94,36 @@
 
                 <field name="sp_rotate" type="spacer" label="MOD_R3D_PAN_AR_LABEL" description="MOD_R3D_PAN_AR_DESC" />
 
-                <field
-                    name="auto_rotate"
-                    type="number"
-                    label="MOD_R3D_PAN_AR_SPEED_LABEL"
-                    description="MOD_R3D_PAN_AR_SPEED_DESC"
-                    filter="float"
-                    default="0" />
-
-                <field
-                    name="auto_rotate_inactivity"
-                    type="number"
-                    label="MOD_R3D_PAN_AR_INACT_LABEL"
-                    description="MOD_R3D_PAN_AR_INACT_DESC"
-                    filter="integer"
-                    default="0" />
-
-                <field
-                    name="auto_rotate_stop"
-                    type="number"
-                    label="MOD_R3D_PAN_AR_STOP_LABEL"
-                    description="MOD_R3D_PAN_AR_STOP_DESC"
-                    filter="integer"
-                    default="0" />
+                <field name="auto_rotate" type="number" label="MOD_R3D_PAN_AR_SPEED_LABEL" description="MOD_R3D_PAN_AR_SPEED_DESC" filter="float" default="0" />
+                <field name="auto_rotate_inactivity" type="number" label="MOD_R3D_PAN_AR_INACT_LABEL" description="MOD_R3D_PAN_AR_INACT_DESC" filter="integer" default="0" />
+                <field name="auto_rotate_stop"        type="number" label="MOD_R3D_PAN_AR_STOP_LABEL"  description="MOD_R3D_PAN_AR_STOP_DESC"  filter="integer" default="0" />
 
                 <field name="sp_controls" type="spacer" label="MOD_R3D_PAN_CTRL_LABEL" description="MOD_R3D_PAN_CTRL_DESC" />
 
-                <field
-                    name="show_zoom_ctrl"
-                    type="radio"
-                    label="MOD_R3D_PAN_SHOWZOOM_LABEL"
-                    description="MOD_R3D_PAN_SHOWZOOM_DESC"
-                    default="1">
+                <field name="show_zoom_ctrl"       type="radio" label="MOD_R3D_PAN_SHOWZOOM_LABEL" description="MOD_R3D_PAN_SHOWZOOM_DESC" default="1">
                     <option value="1">Yes</option><option value="0">No</option>
                 </field>
-
-                <field
-                    name="show_fullscreen_ctrl"
-                    type="radio"
-                    label="MOD_R3D_PAN_SHOWFS_LABEL"
-                    description="MOD_R3D_PAN_SHOWFS_DESC"
-                    default="1">
+                <field name="show_fullscreen_ctrl" type="radio" label="MOD_R3D_PAN_SHOWFS_LABEL"   description="MOD_R3D_PAN_SHOWFS_DESC"   default="1">
                     <option value="1">Yes</option><option value="0">No</option>
                 </field>
-
-                <field
-                    name="double_click_zoom"
-                    type="radio"
-                    label="MOD_R3D_PAN_DBLZOOM_LABEL"
-                    description="MOD_R3D_PAN_DBLZOOM_DESC"
-                    default="">
+                <field name="double_click_zoom"    type="radio" label="MOD_R3D_PAN_DBLZOOM_LABEL" description="MOD_R3D_PAN_DBLZOOM_DESC" default="">
                     <option value="">Use default</option><option value="1">Enable</option><option value="0">Disable</option>
                 </field>
-
-                <field
-                    name="mouse_zoom"
-                    type="radio"
-                    label="MOD_R3D_PAN_WHEEL_LABEL"
-                    description="MOD_R3D_PAN_WHEEL_DESC"
-                    default="">
+                <field name="mouse_zoom"           type="radio" label="MOD_R3D_PAN_WHEEL_LABEL"   description="MOD_R3D_PAN_WHEEL_DESC"   default="">
                     <option value="">Use default</option><option value="1">Enable</option><option value="0">Disable</option>
                 </field>
-
-                <field
-                    name="disable_keyboard_ctrl"
-                    type="radio"
-                    label="MOD_R3D_PAN_KEYBOARD_LABEL"
-                    description="MOD_R3D_PAN_KEYBOARD_DESC"
-                    default="">
+                <field name="disable_keyboard_ctrl" type="radio" label="MOD_R3D_PAN_KEYBOARD_LABEL" description="MOD_R3D_PAN_KEYBOARD_DESC" default="">
                     <option value="">Use default</option><option value="1">Yes</option><option value="0">No</option>
                 </field>
-
-                <field
-                    name="draggable"
-                    type="radio"
-                    label="MOD_R3D_PAN_DRAG_LABEL"
-                    description="MOD_R3D_PAN_DRAG_DESC"
-                    default="">
+                <field name="draggable"             type="radio" label="MOD_R3D_PAN_DRAG_LABEL"     description="MOD_R3D_PAN_DRAG_DESC"     default="">
                     <option value="">Use default</option><option value="1">Enable</option><option value="0">Disable</option>
                 </field>
 
                 <field name="sp_compass" type="spacer" label="MOD_R3D_PAN_COMPASS_LABEL" description="MOD_R3D_PAN_COMPASS_DESC" />
 
-                <field
-                    name="compass"
-                    type="radio"
-                    label="MOD_R3D_PAN_COMPASS_TOGGLE_LABEL"
-                    description="MOD_R3D_PAN_COMPASS_TOGGLE_DESC"
-                    default="">
+                <field name="compass" type="radio" label="MOD_R3D_PAN_COMPASS_TOGGLE_LABEL" description="MOD_R3D_PAN_COMPASS_TOGGLE_DESC" default="">
                     <option value="">Use default</option><option value="1">Yes</option><option value="0">No</option>
                 </field>
-
                 <field
                     name="north_offset"
                     type="number"
@@ -197,16 +131,25 @@
                     description="MOD_R3D_PAN_NORTH_DESC"
                     hint="MOD_R3D_PAN_NORTH_HINT"
                     filter="float"
-                    min="0" max="360" step="1" 
+                    min="0" max="360" step="1" />
+            </fieldset>
+
+            <!-- INTERMEDIATE: only when intermediate or advanced -->
+            <fieldset name="intermediate" label="Intermediate Settings" showon="setup_level:intermediate,advanced">
+                <field name="hotspots"
+                    type="subform"
+                    formsource="modules/mod_r3d_pannellum/forms/hotspot.xml"
+                    label="MOD_R3D_PAN_HOTSPOTS_LABEL"
+                    description="MOD_R3D_PAN_HOTSPOTS_DESC"
+                    multiple="true"
+                    layout="joomla.form.field.subform.repeatable"
+                    buttons="add remove drag"
+                    min="0"
+                    max="50" 
                 />
             </fieldset>
 
-            <!-- INTERMEDIATE -->
-            <fieldset name="intermediate" label="Intermediate Settings" showon="setup_level:intermediate,advanced">
-                <field name="mock_intermediate" type="spacer" label="Intermediate Mockup" description="Hotspot settings will come here." />
-            </fieldset>
-
-            <!-- ADVANCED -->
+            <!-- ADVANCED: only when advanced -->
             <fieldset name="advanced" label="Advanced Settings" showon="setup_level:advanced">
                 <field name="mock_advanced" type="spacer" label="Advanced Mockup" description="Multi-scene tour settings will come here." />
             </fieldset>
